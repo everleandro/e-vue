@@ -46,5 +46,21 @@
     "typescript": "~4.1.5",
     "vue-cli-plugin-storybook": "~2.1.0",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everleandro/e-vue.git"
+  },
+  "keywords": [
+    "simple",
+    "vue",
+    "components"
+  ],
+  "author": "ever.leandros91",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/everleandro/e-vue/issues"
+  },
+  "homepage": "https://github.com/everleandro/e-vue#readme"
 }
