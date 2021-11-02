@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name e-vue ./src/index.ts",
+    "build": "vue-cli-service build",
+    "webpack:build": "vue-cli-service build --target lib --name e-vue ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
