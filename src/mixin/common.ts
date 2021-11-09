@@ -1,5 +1,11 @@
 import { Component, Vue } from "vue-property-decorator";
-@Component
+import ripple from '@/directives/ripple'
+
+@Component({
+  directives: {
+    ripple
+  }
+})
 export default class Common extends Vue {
   mergeClass(availableClasses: Record<string, unknown>): string {
     const result = Object.keys(availableClasses).filter(

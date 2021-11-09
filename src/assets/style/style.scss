@@ -1,0 +1,13 @@
+@import "./animations.scss";
+.v-ripple-element {
+  position: relative;
+  overflow: hidden;
+
+  .v-ripple {
+    border-radius: 50%;
+    opacity: 0.7;
+    position: absolute;
+    transform: scale(0);
+    animation: v-ripple linear;
+  }
+}

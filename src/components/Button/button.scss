@@ -1,0 +1,173 @@
+@use "sass:map";
+$btn-border-radius: $border-radius-root;
+$btn-font-weight: 500;
+$btn-letter-spacing: 0.0892857143em;
+$btn-border-width: 2px;
+$btn-rounded-border-radius: 28px;
+$btn-text-transform: uppercase;
+$btn-transition-duration: 0.28s;
+
+$btn-states: (
+  "active": 0.18,
+  "focus": 0.05,
+  "hover": 0.1,
+);
+
+$btn-font-sizes: (
+  "x-small": 0.625rem,
+  "small": 0.75rem,
+  "default": 0.875rem,
+  "large": 0.875rem,
+  "x-large": 1rem,
+);
+
+$fab-font-sizes: (
+  "x-small": 18px,
+  "small": 20px,
+  "default": 24px,
+  "large": 28px,
+  "x-large": 32px,
+);
+
+$fab-height: (
+  "x-small": 32px,
+  "small": 40px,
+  "default": 56px,
+  "large": 64px,
+  "x-large": 72px,
+);
+
+$btn-height: (
+  "x-small": 35px,
+  "small": 40px,
+  "default": 45px,
+  "large": 45px,
+  "x-large": 50px,
+);
+
+.v-btn {
+  align-items: center;
+  border-radius: $btn-border-radius;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-weight: $btn-font-weight;
+  letter-spacing: $btn-letter-spacing;
+  justify-content: center;
+  outline: 0;
+  position: relative;
+  cursor: pointer;
+  color: $black;
+  border-color: $black;
+  text-decoration: none;
+  text-indent: $btn-letter-spacing;
+  text-transform: $btn-text-transform;
+  transition-duration: $btn-transition-duration;
+  transition-property: box-shadow, transform, opacity, background;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: middle;
+  white-space: nowrap;
+  &:before {
+    content: "";
+    background-color: currentColor;
+    border-radius: inherit;
+    bottom: 0;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    color: inherit;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  }
+  &:not(.v-btn--icon) {
+    padding: 0 16px;
+    min-width: 64px;
+  }
+  &:not(.v-btn--depressed):not(.v-btn--disabled) {
+    box-shadow: 0 3px 1px -2px rgb(0, 0, 0, 0.2), 0 2px 2px 0 rgb(0, 0, 0, 0.14),
+      0 1px 5px 0 rgb(0, 0, 0, 0.12);
+  }
+
+  &:not(.v-btn--outlined) {
+    border: none;
+  }
+  &--rounded {
+    border-radius: $btn-rounded-border-radius;
+  }
+  &--outlined {
+    border: $btn-border-width solid;
+    background-color: transparent;
+    &.v-btn--primary:not(.v-btn--disabled) {
+      border-color: $base-primary;
+      color: $base-primary;
+    }
+    &.v-btn--secondary:not(.v-btn--disabled) {
+      border-color: $base-secondary;
+      color: $base-secondary;
+    }
+    &.v-btn--disabled {
+      border-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.26);
+      background-color: transparent;
+    }
+  }
+  &--icon {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 100%;
+  }
+  &--fab {
+    border-radius: 100%;
+  }
+
+  &--disabled {
+    @include prefix(user-select, none);
+    background-color: rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.26);
+  }
+
+  $types-loop: "primary" $white $base-primary,
+    "secondary" $white $base-secondary;
+
+  @each $type, $color, $bg in $types-loop {
+    &--#{$type}:not(.v-btn--outlined):not(.v-btn--disabled) {
+      &:not(.v-btn--icon) {
+        color: $color;
+        background-color: $bg;
+      }
+      &.v-btn--icon {
+        color: $bg;
+      }
+    }
+  }
+
+  $states-loop: "hover", "focus", "active";
+
+  @each $state in $states-loop {
+    &:#{$state}:before {
+      opacity: map.get($btn-states, $state);
+    }
+  }
+
+  $size-loop: "default", "small", "x-small", "large", "x-large";
+
+  @each $size in $size-loop {
+    &.v-btn--size-#{$size} {
+      &:not(.v-btn--fab) {
+        font-size: map.get($btn-font-sizes, $size);
+        height: map.get($btn-height, $size);
+      }
+      &.v-btn--icon {
+        width: map.get($btn-height, $size);
+        max-width: map.get($btn-height, $size);
+        height: map.get($btn-height, $size);
+      }
+      &.v-btn--fab {
+        @include force-sizes(map.get($fab-height, $size));
+        font-size: map.get($fab-font-sizes, $size);
+      }
+    }
+  }
+}
