@@ -2,7 +2,10 @@
 
 ## Project setup
 ```
-npm install
+npm install @ever.leandros91/e-vue
+
+import { EButton, EForm, ECheckbox, ERadio, ESlider, ETextField } from "@ever.leandros91/e-vue";
+
 ```
 
 ### Compiles and hot-reloads for development
