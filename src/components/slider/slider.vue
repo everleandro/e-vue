@@ -11,7 +11,7 @@
           @click="barClick"
         >
           <input
-            :value="value"
+            :value="model"
             :id="id"
             :disabled="disabled"
             :readonly="readonly"

@@ -12,7 +12,7 @@ export const TextField = () => ({
   template: `
   <div> 
     <e-text-field :disabled="disabled" :dense="dense" :readonly="readonly" :limit="10" :counter="counter" :outlined="outlined" label="default" ></e-text-field>
-    <e-text-field outlined label="color success outlined" ></e-text-field>
+    <e-text-field outlined color="success" label="color success outlined" ></e-text-field>
     <e-text-field outlined label="prependIcon" prepend-icon="e-icon e-icon--test"></e-text-field>
     <e-text-field outlined label="appendIcon" append-icon="e-icon e-icon--test"></e-text-field>
   </div>
