@@ -1,0 +1,35 @@
+.e-radio {
+  align-items: center;
+  display: flex;
+  height: auto;
+  outline: none;
+}
+.e-field--radio-group {
+  &--column {
+    .e-radio {
+      &:not(:last-child):not(:only-child) {
+        margin-bottom: 8px;
+      }
+    }
+    .e-field--radio-group__field {
+      flex-direction: column;
+    }
+  }
+  &__field {
+    border: none;
+    cursor: default;
+    display: flex;
+    width: 100%;
+  }
+  &--row {
+    .e-radio {
+      &:not(:last-child):not(:only-child) {
+        margin-right: 16px;
+      }
+    }
+    .e-field--radio-group__field {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

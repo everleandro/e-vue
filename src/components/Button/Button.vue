@@ -2,7 +2,7 @@
   <div
     v-ripple="{ disabled: !ripple }"
     :is="tag"
-    :class="cssClass"
+    :class="rootClass(btnClass)"
     :style="style"
   >
     <span class="v-btn__content">
@@ -15,10 +15,9 @@
 import Common from "@/mixin/common";
 import { Component, Prop, Mixins } from "vue-property-decorator";
 @Component
-export default class VButton extends Mixins(Common) {
+export default class EButton extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
-  @Prop({ type: Boolean, default: false }) primary!: boolean;
-  @Prop({ type: Boolean, default: false }) secondary!: boolean;
+  @Prop({ type: String, default: "" }) color!: string;
   @Prop({ type: Boolean, default: true }) ripple!: boolean;
   @Prop({ type: Boolean, default: false }) fab!: boolean;
   @Prop({ type: Boolean, default: false }) depressed!: boolean;
@@ -32,35 +31,33 @@ export default class VButton extends Mixins(Common) {
 
   width = 0;
   height = 0;
+  availableRootClasses = {
+    disabled: "v-btn--disabled",
+    icon: "v-btn--icon",
+    depressed: "v-btn--depressed",
+    ripple: "v-ripple-element",
+    fab: "v-btn--fab",
+    outlined: "v-btn--outlined",
+    rounded: "v-btn--rounded",
+    XSmall: "v-btn--size-x-small",
+    small: "v-btn--size-small",
+    default: "v-btn--size-default",
+    large: "v-btn--size-large",
+    XLarge: "v-btn--size-x-large",
+  };
 
-  private get availableClasses(): Record<string, unknown> {
-    return {
-      disabled: "v-btn--disabled",
-      icon: "v-btn--icon",
-      secondary: "v-btn--secondary",
-      primary: "v-btn--primary",
-      depressed: "v-btn--depressed",
-      ripple: "v-ripple-element",
-      fab: "v-btn--fab",
-      outlined: "v-btn--outlined",
-      rounded: "v-btn--rounded",
-      XSmall: "v-btn--size-x-small",
-      small: "v-btn--size-small",
-      default: "v-btn--size-default",
-      large: "v-btn--size-large",
-      XLarge: "v-btn--size-x-large",
-    };
-  }
   get default(): boolean {
     return !this.small && !this.XSmall && !this.large && !this.XLarge;
+  }
+
+  get btnClass(): string {
+    return this.rootClass(`v-btn--${this.color} v-btn`);
   }
 
   get tag(): string {
     return this.$attrs.to ? "router-link" : "button";
   }
-  get cssClass(): string {
-    return `${this.mergeClass(this.availableClasses)} v-btn`;
-  }
+
   style(): { width?: string; height?: string } {
     const width = this.width ? { width: `${this.width}px` } : {};
     const height = this.height ? { height: `${this.height}px` } : {};

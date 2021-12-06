@@ -8,9 +8,9 @@ $btn-text-transform: uppercase;
 $btn-transition-duration: 0.28s;
 
 $btn-states: (
-  "active": 0.18,
   "focus": 0.05,
   "hover": 0.1,
+  "active": 0.3,
 );
 
 $btn-font-sizes: (
@@ -56,8 +56,8 @@ $btn-height: (
   outline: 0;
   position: relative;
   cursor: pointer;
-  color: $black;
-  border-color: $black;
+  color: map.get($colors, "black");
+  border-color: map.get($colors, "black");
   text-decoration: none;
   text-indent: $btn-letter-spacing;
   text-transform: $btn-text-transform;
@@ -99,12 +99,12 @@ $btn-height: (
     border: $btn-border-width solid;
     background-color: transparent;
     &.v-btn--primary:not(.v-btn--disabled) {
-      border-color: $base-primary;
-      color: $base-primary;
+      border-color: map.get($colors, "primary");
+      color: map.get($colors, "primary");
     }
     &.v-btn--secondary:not(.v-btn--disabled) {
-      border-color: $base-secondary;
-      color: $base-secondary;
+      border-color: map.get($colors, "secondary");
+      color: map.get($colors, "secondary");
     }
     &.v-btn--disabled {
       border-color: rgba(0, 0, 0, 0.12);
@@ -128,45 +128,36 @@ $btn-height: (
     color: rgba(0, 0, 0, 0.26);
   }
 
-  $types-loop: "primary" $white $base-primary,
-    "secondary" $white $base-secondary;
-
-  @each $type, $color, $bg in $types-loop {
-    &--#{$type}:not(.v-btn--outlined):not(.v-btn--disabled) {
+  @each $key, $value in $colors {
+    &--#{$key}:not(.v-btn--outlined):not(.v-btn--disabled) {
       &:not(.v-btn--icon) {
-        color: $color;
-        background-color: $bg;
+        color: map.get($contrast-colors, $key) or white;
+        background-color: $value;
       }
       &.v-btn--icon {
-        color: $bg;
+        color: $value;
       }
     }
   }
 
-  $states-loop: "hover", "focus", "active";
-
-  @each $state in $states-loop {
-    &:#{$state}:before {
-      opacity: map.get($btn-states, $state);
+  @each $key, $value in $btn-states {
+    &:#{$key}:before {
+      opacity: $value;
     }
   }
 
-  $size-loop: "default", "small", "x-small", "large", "x-large";
-
-  @each $size in $size-loop {
-    &.v-btn--size-#{$size} {
+  @each $key, $value in $btn-font-sizes {
+    &.v-btn--size-#{$key} {
       &:not(.v-btn--fab) {
-        font-size: map.get($btn-font-sizes, $size);
-        height: map.get($btn-height, $size);
+        font-size: $value;
+        height: map.get($btn-height, $key);
       }
       &.v-btn--icon {
-        width: map.get($btn-height, $size);
-        max-width: map.get($btn-height, $size);
-        height: map.get($btn-height, $size);
+        @include force-sizes(map.get($btn-height, $key));
       }
       &.v-btn--fab {
-        @include force-sizes(map.get($fab-height, $size));
-        font-size: map.get($fab-font-sizes, $size);
+        @include force-sizes(map.get($fab-height, $key));
+        font-size: map.get($fab-font-sizes, $key);
       }
     }
   }

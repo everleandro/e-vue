@@ -3,7 +3,7 @@ import { DirectiveOptions } from "vue";
 const ripple: DirectiveOptions = {
   bind: function (el, binding) {
     el.classList.add("v-ripple-element");
-    if (!(binding.value && binding.value.disabled === true))
+    if (!(binding?.value?.disabled === true))
       el.addEventListener("mousedown", function (e) {
         const circle = document.createElement("span");
         el.appendChild(circle);
@@ -12,14 +12,20 @@ const ripple: DirectiveOptions = {
         const radius = diameter / 2;
         const { color } = getComputedStyle(el);
         const background = color || "rgb(255, 255, 255)";
-        console.log(background);
-        console.log(el);
         circle.style.width = circle.style.height = diameter + "px";
         circle.style.animationDuration = "0.5s";
         circle.style.backgroundColor = background;
 
-        circle.style.left = e.clientX - (DOMRect.left + radius) + "px";
-        circle.style.top = e.clientY - (DOMRect.top + radius) + "px";
+        const center = !!binding?.value?.center;
+
+        circle.style.left = center
+          ? "0px"
+          : e.clientX - (DOMRect.left + radius) + "px";
+
+        circle.style.top = center
+          ? "0px"
+          : e.clientY - (DOMRect.top + radius) + "px";
+
         circle.classList.add("v-ripple");
         setTimeout(() => {
           if (circle) el.removeChild(circle);

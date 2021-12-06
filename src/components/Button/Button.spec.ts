@@ -1,12 +1,12 @@
 import { mount, createLocalVue, Wrapper } from "@vue/test-utils";
-import VButton from "@/components/Button/Button.vue";
+import EButton from "@/components/Button/Button.vue";
 const localVue = createLocalVue();
 
-describe("VButton.vue", () => {
+describe("EButton.vue", () => {
   let wrapper!: Wrapper<Vue>;
 
   beforeEach(() => {
-    wrapper = mount(VButton, { localVue });
+    wrapper = mount(EButton, { localVue });
   });
 
   it("dont fire cleck event when disabled", () => {

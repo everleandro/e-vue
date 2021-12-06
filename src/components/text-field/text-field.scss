@@ -1,0 +1,57 @@
+@use "sass:map";
+$text-field-border-radius: $border-radius-root;
+.e-text-field {
+  color: map.get($colors, "black");
+
+  &--outlined {
+    &.e-text-field--is-focused {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
+    &.e-field--has-error {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
+    .e-field__slot {
+      border: 1px solid;
+      height: 48px;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  &__slot {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    input {
+      flex: 1 1 auto;
+      line-height: 20px;
+      padding: 8px 0 8px 8px;
+      min-width: 0;
+      font-size: 16px;
+    }
+  }
+  .e-counter {
+    margin-left: 8px;
+  }
+  .e-messages,
+  .e-field__slot {
+    width: auto;
+    border-radius: $text-field-border-radius;
+  }
+
+  .e-field {
+    &__slot {
+      padding: 0 8px;
+    }
+    &__prepend-inner {
+      margin-right: auto;
+      padding-right: 4px;
+    }
+    &__append-inner {
+      margin-left: auto;
+      padding-left: 4px;
+    }
+  }
+}

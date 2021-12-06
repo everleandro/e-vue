@@ -1,19 +1,19 @@
 import { withKnobs, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
-import VButton from "./Button.vue";
+import EButton from "./Button.vue";
 
 export default {
-  component: VButton,
-  title: "Components/VButton",
+  component: EButton,
+  title: "Components/e-button",
   decorators: [withKnobs],
 };
 
-export const Primary = () => ({
-  components: { VButton },
+export const Index = () => ({
+  components: { EButton },
   template: `
   <div> 
-    <v-button 
-      primary 
+    <e-button 
+      color="primary" 
       :x-small="XSmall" 
       :small="small" 
       :x-large="XLarge" 
@@ -27,14 +27,14 @@ export const Primary = () => ({
       @click="click"
     >
       <i>P</i>
-    </v-button>
-    <v-button secondary @click="click">secondary</v-button>
-    <v-button disabled @click="click">Disabled</v-button>
-    <v-button :ripple="false" @click="click">No-Ripple</v-button>
-    <v-button depressed @click="click">Depressed</v-button>
-    <v-button rounded @click="click">Rounded</v-button>
-    <v-button fab @click="click">F</v-button>
-    <v-button outlined @click="click">Outlined</v-button>
+    </e-button>
+    <e-button color="secondary" @click="click">secondary</e-button>
+    <e-button disabled @click="click">Disabled</e-button>
+    <e-button :ripple="false" @click="click">No-Ripple</e-button>
+    <e-button depressed @click="click">Depressed</e-button>
+    <e-button rounded @click="click">Rounded</e-button>
+    <e-button fab @click="click">F</e-button>
+    <e-button outlined @click="click">Outlined</e-button>
   </div>
   `,
   props: {
