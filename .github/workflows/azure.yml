@@ -42,6 +42,7 @@ jobs:
         # deploy to Azure Web App.
         npm install
         npm run storybook:build --if-present
+        command: npm run chromatic # publish Storybook and run visual tests
     - name: 'Ever Vue'
       uses: azure/webapps-deploy@v2
       with:
