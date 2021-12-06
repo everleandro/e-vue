@@ -11,7 +11,7 @@
     "build": "vue-cli-service build",
     "webpack:build": "vue-cli-service build --target lib --name e-vue ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
-    "chromatic": "npx chromatic --project-token=e6f6af27b149",
+    "chromatic": "chromatic --project-token=e6f6af27b149",
     "lint": "vue-cli-service lint",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "build-storybook": "vue-cli-service storybook:build -c config/storybook",
