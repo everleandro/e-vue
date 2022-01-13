@@ -88,6 +88,11 @@ $btn-height: (
     box-shadow: 0 3px 1px -2px rgb(0, 0, 0, 0.2), 0 2px 2px 0 rgb(0, 0, 0, 0.14),
       0 1px 5px 0 rgb(0, 0, 0, 0.12);
   }
+  &--block{
+    display: flex;
+    flex: 1 0 auto;
+    min-width: 100%!important;
+  }
 
   &:not(.v-btn--outlined) {
     border: none;
@@ -98,18 +103,12 @@ $btn-height: (
   &--outlined {
     border: $btn-border-width solid;
     background-color: transparent;
-    &.v-btn--primary:not(.v-btn--disabled) {
-      border-color: map.get($colors, "primary");
-      color: map.get($colors, "primary");
-    }
-    &.v-btn--secondary:not(.v-btn--disabled) {
-      border-color: map.get($colors, "secondary");
-      color: map.get($colors, "secondary");
-    }
-    &.v-btn--disabled {
-      border-color: rgba(0, 0, 0, 0.12);
-      color: rgba(0, 0, 0, 0.26);
-      background-color: transparent;
+
+    @each $key, $value in $colors {
+      &.v-btn--#{$key}:not(.v-btn--disabled) {
+        border-color: $value;
+        color: $value;
+      }
     }
   }
   &--icon {

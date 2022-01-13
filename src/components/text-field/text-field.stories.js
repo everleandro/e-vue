@@ -1,9 +1,15 @@
-import { withKnobs, boolean } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number,
+} from "@storybook/addon-knobs";
 import ETextField from "./text-field.vue";
 
 export default {
   component: ETextField,
-  title: "Components/e-text-field",
+  title: "Components/Text Field",
   decorators: [withKnobs],
 };
 
@@ -11,21 +17,47 @@ export const TextField = () => ({
   components: { ETextField },
   template: `
   <div> 
-    <e-text-field :disabled="disabled" :dense="dense" :readonly="readonly" :limit="10" :counter="counter" :outlined="outlined" label="default" ></e-text-field>
-    <e-text-field outlined color="success" label="color success outlined" ></e-text-field>
-    <e-text-field outlined label="prependIcon" prepend-icon="e-icon e-icon--test"></e-text-field>
-    <e-text-field outlined label="appendIcon" append-icon="e-icon e-icon--test"></e-text-field>
+    <e-text-field 
+    :disabled="disabled" 
+    :dense="dense" 
+    :readonly="readonly" 
+    :limit="limit" 
+    :detail="detail"
+    :color="color" 
+    :rules="required?[_required]:[]"
+    :counter="counter" 
+    :outlined="outlined" 
+    :label="label"></e-text-field>
   </div>
   `,
   props: {
+    color: {
+      default: select(
+        "color",
+        ["success", "primary", "secondary", "error"],
+        "primary"
+      ),
+    },
+    limit: {
+      default: number("limit", 10),
+    },
+    detail: {
+      default: text("detail", "hint!!"),
+    },
+    label: {
+      default: text("label", "label"),
+    },
+    required: {
+      default: boolean("required", false),
+    },
+    counter: {
+      default: boolean("counter", true),
+    },
     disabled: {
       default: boolean("disabled", false),
     },
     outlined: {
       default: boolean("outlined", true),
-    },
-    counter: {
-      default: boolean("counter", false),
     },
     dense: {
       default: boolean("dense", false),
@@ -34,4 +66,10 @@ export const TextField = () => ({
       default: boolean("readonly", false),
     },
   },
+  methods: {
+    _required(val) {
+      return !!val || val === 0 || "field required";
+    },
+  },
 });
+TextField.parameters = { options: { showPanel: true } };

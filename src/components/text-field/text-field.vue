@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div v-if="!dense && !counter" class="e-field__details">
+      <div v-if="!dense" class="e-field__details">
         <div class="e-messages" role="alert">
           <div class="e-messages__wrapper" :class="textColorClass">
             {{ details }}

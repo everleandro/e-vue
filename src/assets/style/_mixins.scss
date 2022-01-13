@@ -1,3 +1,4 @@
+@use "sass:map";
 @mixin prefix($property, $value, $prefixes: webkit ms moz) {
   @each $prefix in $prefixes {
     #{'-' + $prefix + '-' + $property}: $value;
@@ -26,31 +27,31 @@
     #{$property}: $value;
   }
 }
-
-@mixin active-radio-effect($size, $color, $radio: 22px) {
-  &:after {
-    content: "";
-    opacity: 1;
-    position: absolute;
-    transition: all 400ms;
-    background: rgba($color, 0);
-    border-radius: 50%;
-    margin-top: 0;
-    margin-left: 0;
-    top: 0;
-    width: $size;
-    height: $size;
-    left: 0;
+@mixin _xs {
+  @media (max-width: #{map.get($breakpoint,'xs')}) {
+    @content;
   }
+}
+@mixin _sm {
+  @media (min-width: #{map.get($breakpoint,'xs') + 1px}) and (max-width: #{map.get($breakpoint,'sm')}) {
+    @content;
+  }
+}
 
-  &:active {
-    &:after {
-      transition-duration: 200ms;
-      background: rgba($color, 0.3);
-      width: calc(#{$size} + #{$radio});
-      height: calc(#{$size} + #{$radio});
-      margin-top: calc(#{$radio} / -2);
-      margin-left: calc(#{$radio} / -2);
-    }
+@mixin _md {
+  @media (min-width: #{map.get($breakpoint,'sm') + 1px}) and (max-width: #{map.get($breakpoint,'md')}) {
+    @content;
+  }
+}
+
+@mixin _lg {
+  @media (min-width: #{map.get($breakpoint,'md') + 1px}) and (max-width: #{map.get($breakpoint,'lg')}) {
+    @content;
+  }
+}
+
+@mixin _xl {
+  @media (min-width: #{map.get($breakpoint,'lg') + 1px}) {
+    @content;
   }
 }

@@ -12,6 +12,9 @@ module.exports = {
           @import "@/assets/style/icon.scss";
           @import "@/assets/style/field.scss";
           @import "@/assets/style/messages.scss";
+          @import "@/assets/style/grid.scss";
+          @import "@/assets/style/typography.scss";
+          @import "@/assets/style/helper.scss";
         `,
       },
     },

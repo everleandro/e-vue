@@ -10,11 +10,11 @@ import Field from "@/mixin/field";
 @Component
 export default class EForm extends Vue {
   @Prop({ type: Boolean, default: false }) value!: boolean;
-  @Prop({ type: Boolean, default: false }) lasy!: boolean;
+  @Prop({ type: Boolean, default: true }) lazy!: boolean;
   localValue = true;
 
   fieldsChild: Array<boolean> = [];
-  fieldsNames: Array<string> = ["e-text-field", "e-checkbox"];
+  fieldsNames: Array<string> = ["e-text-field", "e-checkbox", "e-radio-group"];
   unwatch: Array<() => void> = [];
 
   @Watch("fieldsChild", { immediate: true, deep: true })
@@ -30,17 +30,23 @@ export default class EForm extends Vue {
     this.localValue = val;
   }
   mounted() {
-    this.validate();
+    this.validate(true);
   }
   destroy() {
     this.unwatch.forEach((unwatch) => unwatch());
   }
 
-  validate(): boolean {
+  reset(): void {
+    const testList: Array<Field> = this.recursive(this, []);
+    testList.forEach((vueComponent: Field) => {
+      vueComponent.dirty = false;
+    });
+  }
+  validate(ignoreFieldDirty: boolean): boolean {
     const testList: Array<Field> = this.recursive(this, []);
     this.fieldsChild = new Array(testList.length).fill(false);
     testList.forEach((vueComponent: Field, index) => {
-      if (!this.lasy) vueComponent.dirty = true;
+      if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
       this.fieldsChild.splice(index, 1, !!vueComponent.hasError);
       const unwatch = this.$watch(

@@ -4,6 +4,7 @@
     :is="tag"
     :class="rootClass(btnClass)"
     :style="style"
+    v-on="$listeners"
   >
     <span class="v-btn__content">
       <slot name="default"></slot>
@@ -14,6 +15,7 @@
 <script lang="ts">
 import Common from "@/mixin/common";
 import { Component, Prop, Mixins } from "vue-property-decorator";
+
 @Component
 export default class EButton extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
@@ -23,6 +25,7 @@ export default class EButton extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) depressed!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: Boolean, default: false }) small!: boolean;
+  @Prop({ type: Boolean, default: false }) block!: boolean;
   @Prop({ type: Boolean, default: false }) XSmall!: boolean;
   @Prop({ type: Boolean, default: false }) large!: boolean;
   @Prop({ type: Boolean, default: false }) XLarge!: boolean;
@@ -37,6 +40,7 @@ export default class EButton extends Mixins(Common) {
     depressed: "v-btn--depressed",
     ripple: "v-ripple-element",
     fab: "v-btn--fab",
+    block: "v-btn--block",
     outlined: "v-btn--outlined",
     rounded: "v-btn--rounded",
     XSmall: "v-btn--size-x-small",

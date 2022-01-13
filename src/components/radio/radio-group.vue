@@ -22,7 +22,7 @@ import Common from "@/mixin/common";
 import Field from "@/mixin/field";
 import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
 import Radio from "@/components/radio/radio.vue";
-@Component
+@Component({ name: "e-radio-group" })
 export default class RadioGroup extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) mandatory!: boolean;
   @Prop({ type: Boolean, default: false }) row!: boolean;

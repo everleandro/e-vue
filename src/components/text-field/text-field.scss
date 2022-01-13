@@ -2,7 +2,8 @@
 $text-field-border-radius: $border-radius-root;
 .e-text-field {
   color: map.get($colors, "black");
-
+  padding-top: 12px;
+  margin-top: 4px;
   &--outlined {
     &.e-text-field--is-focused {
       .e-field__slot {
