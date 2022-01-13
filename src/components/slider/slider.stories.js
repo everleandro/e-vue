@@ -23,7 +23,7 @@ export const Slider = () => ({
   </e-row>
   <div class="mt-6">
     <e-slider 
-      v-model="value1" 
+      v-model="value"
       :disabled="disabled" 
       :decimal="decimal" 
       :label="label"
@@ -70,6 +70,6 @@ export const Slider = () => ({
       default: boolean("decimal", false),
     },
   },
-  data: () => ({}),
+  data: () => ({ value: 10 }),
 });
 Slider.parameters = { options: { showPanel: true } };
