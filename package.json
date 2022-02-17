@@ -56,9 +56,12 @@
     "url": "git+https://github.com/everleandro/e-vue.git"
   },
   "keywords": [
-    "simple",
-    "vue",
-    "components"
+    "ui frameworkcomponent",
+    "frameworkui",
+    "librarycomponent",
+    "librarymaterial",
+    "componentsvue",
+    "e-vue"
   ],
   "author": "ever.leandros91",
   "license": "ISC",

@@ -1,6 +1,6 @@
 # e-vue
 
-this is a library with frequently used components, perfectly adaptable to your needs
+ui-library with frequently used components perfectly adaptable to your needs, you can use each of the proposed components or simply use the one of your need
 
 ## Installation
 
@@ -18,12 +18,14 @@ Grid system comes with a 24 point built using flexbox
 
 ```html
 <!-- simple -->
-<e-row><e-col>column</e-col></e-row>
+<e-row>
+  <e-col>column</e-col>
+</e-row>
 
 <!-- with breakpoints -->
-<e-row
-  ><e-col xs="12" sm="24" md="6" lg="18" xl="8"
-    >diferent number of columns in diferents breakpoints</e-col
-  ></e-row
->
+<e-row>
+  <e-col xs="12" sm="24" md="6" lg="18" xl="8">
+    diferent number of columns in diferents breakpoints
+  </e-col>
+</e-row>
 ```
