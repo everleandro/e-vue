@@ -12,9 +12,11 @@ npm install @ever.leandros91/e-vue
 import { EButton, EForm, ECheckbox, ERadio, ESlider, ETextField, ERow, ECol }; from "@ever.leandros91/e-vue";
 ```
 
-## Examples
+# Doc
 
-[Live Demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
+You can see each of the components documented here [Live Demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
+
+## Examples
 
 #### Grid
 

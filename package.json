@@ -59,6 +59,7 @@
     "ui frameworkcomponent",
     "frameworkui",
     "librarycomponent",
+    "material",
     "librarymaterial",
     "componentsvue",
     "e-vue"
