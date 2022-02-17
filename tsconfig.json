@@ -28,6 +28,10 @@
       "scripthost"
     ]
   },
+  "typeRoots": [
+    "./node_modules/@types",
+    "types"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
