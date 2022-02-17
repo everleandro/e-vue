@@ -1,6 +1,6 @@
 {
   "name": "@ever.leandros91/e-vue",
-  "version": "0.1.43",
+  "version": "0.1.44",
   "private": false,
   "main": "./dist/e-vue.common.js",
   "files": [
