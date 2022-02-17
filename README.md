@@ -1,32 +1,29 @@
 # e-vue
 
-## Project setup
-```
+this is a library with frequently used components, perfectly adaptable to your needs
+
+## Installation
+
+```bash
 npm install @ever.leandros91/e-vue
-
-import { EButton, EForm, ECheckbox, ERadio, ESlider, ETextField } from "@ever.leandros91/e-vue";
-
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+```js
+import { EButton, EForm, ECheckbox, ERadio, ESlider, ETextField, ERow, ECol }; from "@ever.leandros91/e-vue";
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+#### Grid
 
-### Lints and fixes files
-```
-npm run lint
-```
+Grid system comes with a 24 point built using flexbox
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```html
+<!-- simple -->
+<e-row><e-col>column</e-col></e-row>
+
+<!-- with breakpoints -->
+<e-row
+  ><e-col xs="12" sm="24" md="6" lg="18" xl="8"
+    >diferent number of columns in diferents breakpoints</e-col
+  ></e-row
+>
+```

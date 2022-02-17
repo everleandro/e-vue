@@ -13,6 +13,7 @@ export const Slider = () => ({
   components: { ESlider, ERow, ECol },
   template: `
 <div class="container mt-6">
+    <pre>{{value}}</pre> 
     <e-slider
         v-model="value"
         :disabled="disabled"

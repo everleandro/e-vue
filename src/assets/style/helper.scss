@@ -2,17 +2,18 @@
 @use "sass:list";
 $alignments: start, center, end, space-around, space-between;
 $displays: block, flex, table;
+$text-aligment: right, left, center;
 
 $spaces-states: (
-        "pa": "padding",
-        "pr": "padding-right",
-        "pb": "padding-bottom",
-        "pl": "padding-left",
-        "ma": "margin",
-        "mr": "margin-right",
-        "mt": "margin-top",
-        "mb": "margin-bottom",
-        "ml": "margin-left",
+  "pa": "padding",
+  "pr": "padding-right",
+  "pb": "padding-bottom",
+  "pl": "padding-left",
+  "ma": "margin",
+  "mr": "margin-right",
+  "mt": "margin-top",
+  "mb": "margin-bottom",
+  "ml": "margin-left",
 );
 
 @each $key, $value in $spaces-states {
@@ -31,16 +32,28 @@ $spaces-states: (
   }
 }
 
+@each $value in $text-aligment {
+  .text-#{$value} {
+    text-align: $value;
+  }
+}
+
 @for $i from 0 through $space-amount {
-  .pa-#{$i} {
-    padding: $i !important;
-  }
-  .ma-#{$i} {
-    margin: $i !important;
-  }
   .mx-#{$i} {
     margin-right: #{$i}px !important;
     margin-left: #{$i}px !important;
+  }
+  .my-#{$i} {
+    margin-top: #{$i}px !important;
+    margin-bottom: #{$i}px !important;
+  }
+  .px-#{$i} {
+    padding-right: #{$i}px !important;
+    padding-left: #{$i}px !important;
+  }
+  .py-#{$i} {
+    padding-top: #{$i}px !important;
+    padding-bottom: #{$i}px !important;
   }
 }
 

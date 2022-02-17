@@ -80,4 +80,12 @@ export const Example = () => ({
  </div> `,
   props: {},
 });
-Example.parameters = { options: { showPanel: false } };
+Example.parameters = {
+  options: { showPanel: false },
+  previewTabs: {
+    "storybook/docs/panel": {
+      hidden: true,
+    },
+  },
+  viewMode: "canvas",
+};

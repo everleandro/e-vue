@@ -12,7 +12,7 @@ export const Example = () => ({
   <div class="container">
     <e-row>
       <e-col col="24">
-          <h1>Examples</h1>
+          <h1>Example</h1>
       </e-col>
       <e-col col="24">
         <hr class="e-divider mb-10"></hr>
@@ -44,4 +44,12 @@ export const Example = () => ({
   props: {},
   data: () => ({ model: "light" }),
 });
-Example.parameters = { options: { showPanel: false } };
+Example.parameters = {
+  options: { showPanel: false },
+  previewTabs: {
+    "storybook/docs/panel": {
+      hidden: true,
+    },
+  },
+  viewMode: "canvas",
+};
