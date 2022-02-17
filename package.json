@@ -19,12 +19,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.3",
-    "vue-property-decorator": "^9.1.2"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.0.26",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2",
     "@storybook/addon-knobs": "^6.3.1",
     "@storybook/addon-links": "^6.0.26",
     "@storybook/vue": "^6.0.26",
