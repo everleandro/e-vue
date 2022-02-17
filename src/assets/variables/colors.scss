@@ -7,10 +7,11 @@ $colors: (
   "success": #66bb6a,
   "red": #f44336,
   "error": #f44336,
-);
+) !default;
+
 $contrast-colors: (
   "white": black,
-);
+) !default;
 
 @each $color, $value in $colors {
   .#{$color} {

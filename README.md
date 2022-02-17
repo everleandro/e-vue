@@ -8,13 +8,28 @@ ui-library with frequently used components, adaptable to your needs. You can use
 npm install @ever.leandros91/e-vue
 ```
 
-```js
-import { EButton, EForm, ECheckbox, ERadio, ESlider, ETextField, ERow, ECol }; from "@ever.leandros91/e-vue";
+Custom styling
+
+```bash
+import "@ever.leandros91/e-vue/dist/e-vue.css";
 ```
 
-# Doc
+```js
+import {
+  EButton,
+  EForm,
+  ECheckbox,
+  ERadio,
+  ESlider,
+  ETextField,
+  ERow,
+  ECol,
+} from "@ever.leandros91/e-vue";
+```
 
-You can see each of the components documented here [Live Demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
+# Demo
+
+You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
 
 ## Examples
 

@@ -5,7 +5,8 @@
   "main": "./dist/e-vue.umd.js",
   "files": [
     "dist/*",
-    "types/*"
+    "types/*",
+    "assets/variables/*"
   ],
   "types": "./types/index.d.ts",
   "scripts": {
@@ -60,10 +61,9 @@
   },
   "keywords": [
     "ui framework",
-    "frameworkui",
     "library component",
-    "material",
-    "components",
+    "material component",
+    "typescript",
     "vue",
     "e-vue"
   ],
