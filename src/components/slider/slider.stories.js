@@ -12,27 +12,17 @@ export default {
 export const Slider = () => ({
   components: { ESlider, ERow, ECol },
   template: `
-<div class="container">
-  <e-row>
-    <e-col col="24">
-        <h1>Usage</h1>
-    </e-col>
-    <e-col col="24">
-      <hr class="e-divider mb-10"></hr>
-    </e-col>
-  </e-row>
-  <div class="mt-6">
-    <e-slider 
-      v-model="value"
-      :disabled="disabled" 
-      :decimal="decimal" 
-      :label="label"
-      :track-color="trackColor"
-      :thumb-color="thumbColor"
-      :color="color"
-      :thumb-label="thumbLabel"
+<div class="container mt-6">
+    <e-slider
+        v-model="value"
+        :disabled="disabled"
+        :decimal="decimal"
+        :label="label"
+        :track-color="trackColor"
+        :thumb-color="thumbColor"
+        :color="color"
+        :thumb-label="thumbLabel"
       ></e-slider>
-  </div>
   </div>
   `,
   props: {

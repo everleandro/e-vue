@@ -1,37 +1,39 @@
 import { withKnobs, boolean, select, radios } from "@storybook/addon-knobs";
+import { addParameters } from "@storybook/vue";
 import EButton from "./Button.vue";
 import ERow from "./../Grid/row.vue";
 import ECol from "./../Grid/col.vue";
 
 export default {
   component: EButton,
-  title: "Components/Button",
+  title: "Components/Button/Usage",
+  subcomponents: { ERow, ECol },
   decorators: [withKnobs],
 };
 
 export const Usage = () => ({
   components: { EButton, ERow, ECol },
   template: `
-<div class="container">
+  <div class="container">
     <e-row>
-        <e-col col="24">
-            <p>Buttons contain options like different colors, sizes and a ripple effect on click.</p>
-        </e-col>
-       <e-col>
-            <e-button 
-                :color="color" 
-                :disabled="disabled"
-                :rounded="rounded"
-                :outlined="outlined"
-                :block="block"
-                :depressed="depressed"
-                v-bind="{[size]: true,[type]:true}"
-            >
-              {{type==='default'?'Button':'I'}}
-            </e-button>
-        </e-col>    
+      <e-col col="24">
+          <p>Buttons contain options like different colors, sizes and a ripple effect on click.</p>
+      </e-col>
+      <e-col>
+        <e-button 
+            :color="color" 
+            :disabled="disabled"
+            :rounded="rounded"
+            :outlined="outlined"
+            :block="block"
+            :depressed="depressed"
+            v-bind="{[size]: true,[type]:true}"
+        >
+          {{type === 'default'?'Button':'I'}}
+        </e-button>
+      </e-col>    
     </e-row>
-</div>
+  </div>
   `,
   props: {
     color: {
@@ -62,6 +64,11 @@ export const Usage = () => ({
     rounded: {
       default: boolean("rounded", false),
     },
+  },
+});
+addParameters({
+  docs: {
+    component: { EButton },
   },
 });
 Usage.parameters = { options: { showPanel: true } };

@@ -1,25 +1,20 @@
 import { withKnobs, boolean, select } from "@storybook/addon-knobs";
 import ERadio from "./radio.vue";
 import ERadioGroup from "./radio-group.vue";
+import ERow from "./../Grid/row.vue";
+import ECol from "./../Grid/col.vue";
 
 export default {
-  component: ERadio,
+  component: ERadioGroup,
   title: "Components/Radio",
+  subcomponents: { ERadio, ERow, ECol },
   decorators: [withKnobs],
 };
 
 export const Radio = () => ({
-  components: { ERadio, ERadioGroup },
+  components: { ERadio, ERadioGroup, ERow, ECol },
   template: `
 <div class="container">
-  <e-row>
-    <e-col col="24">
-        <h1>Usage</h1>
-    </e-col>
-    <e-col col="24">
-      <hr class="e-divider mb-10"></hr>
-    </e-col>
-  </e-row>
   {{model}}
     <e-radio-group 
       v-model="model"

@@ -29,10 +29,10 @@ export default class EForm extends Vue {
     this.$emit("input", val);
     this.localValue = val;
   }
-  mounted() {
+  mounted(): void {
     this.validate(true);
   }
-  destroy() {
+  destroy(): void {
     this.unwatch.forEach((unwatch) => unwatch());
   }
 

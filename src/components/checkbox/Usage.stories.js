@@ -1,11 +1,13 @@
 import { withKnobs, boolean, select, text } from "@storybook/addon-knobs";
+import { addParameters } from "@storybook/vue";
 import ECheckbox from "./checkbox.vue";
 import ERow from "./../Grid/row.vue";
 import ECol from "./../Grid/col.vue";
 
 export default {
   component: ECheckbox,
-  title: "Components/Checkbox",
+  title: "Components/Checkbox/Usage",
+  subcomponents: { ERow, ECol },
   decorators: [withKnobs],
 };
 
@@ -53,5 +55,10 @@ export const Usage = () => ({
     },
   },
   data: () => ({ model: false }),
+});
+addParameters({
+  docs: {
+    component: { ECheckbox },
+  },
 });
 Usage.parameters = { options: { showPanel: true } };

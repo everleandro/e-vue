@@ -1,12 +1,9 @@
-import { withKnobs, boolean, select, text } from "@storybook/addon-knobs";
 import ECheckbox from "./checkbox.vue";
 import ERow from "./../Grid/row.vue";
 import ECol from "./../Grid/col.vue";
 
 export default {
-  component: ECheckbox,
-  title: "Components/Checkbox",
-  decorators: [withKnobs],
+  title: "Components/Checkbox/Example",
 };
 
 export const Example = () => ({
