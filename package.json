@@ -56,12 +56,12 @@
     "url": "git+https://github.com/everleandro/e-vue.git"
   },
   "keywords": [
-    "ui frameworkcomponent",
+    "ui framework",
     "frameworkui",
-    "librarycomponent",
+    "library component",
     "material",
-    "librarymaterial",
-    "componentsvue",
+    "components",
+    "vue",
     "e-vue"
   ],
   "author": "ever.leandros91",

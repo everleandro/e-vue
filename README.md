@@ -1,6 +1,6 @@
 # e-vue
 
-ui-library with frequently used components perfectly adaptable to your needs, you can use each of the proposed components or simply use the one of your need
+ui-library with frequently used components, adaptable to your needs. You can use each of the proposed components or just use the one you need
 
 ## Installation
 
