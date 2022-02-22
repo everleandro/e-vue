@@ -46,14 +46,19 @@ Grid system comes with a 24 point built using flexbox
 </e-row>
 ```
 
-#Custom styling
+# Custom styling
 
 ```bash
+// src/main.ts
+
 import "@ever.leandros91/e-vue/dist/e-vue.css";
+
 ```
 
 ```bash
+
 // vue.config.js
+
 module.exports = {
   css: {
     loaderOptions: {
@@ -68,9 +73,10 @@ module.exports = {
     },
   },
 };
+
 ```
 
-##Example variable file
+Example variable file
 
 ```scss
 // src/sass/variables.scss
@@ -92,7 +98,7 @@ $colors: (
 );
 ```
 
-##Sass variables
+##SASS variables
 
 #General
 
@@ -102,7 +108,7 @@ $border-radius-root: 1px !default;
 $space-base: 12px !default;
 ```
 
-#e-button
+# e-button
 
 ```scss
 $btn-border-radius: $border-radius-root !default;
@@ -152,7 +158,7 @@ $btn-height: (
 ) !default;
 ```
 
-#Grid
+# Grid
 
 ```scss
 $grid-cols: 24 !default;
@@ -164,7 +170,7 @@ $breakpoint: (
 ) !default;
 ```
 
-#Colors
+# Colors
 
 ```scss
 $colors: (
