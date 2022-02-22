@@ -8,12 +8,6 @@ ui-library with frequently used components, adaptable to your needs. You can use
 npm install @ever.leandros91/e-vue
 ```
 
-Custom styling
-
-```bash
-import "@ever.leandros91/e-vue/dist/e-vue.css";
-```
-
 ```js
 import {
   EButton,
@@ -52,13 +46,57 @@ Grid system comes with a 24 point built using flexbox
 </e-row>
 ```
 
-#### SASS variables
+#Custom styling
 
-e-vue allows you to customize the style through the scss variables it exposes
+```bash
+import "@ever.leandros91/e-vue/dist/e-vue.css";
+```
+
+```bash
+// vue.config.js
+module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+        // This is the path to your variables
+        @import "@/sass/variables.scss";
+        // This is mandatory
+        @import "@ever.leandros91/e-vue/styles/override.scss";
+        `,
+      },
+    },
+  },
+};
+```
+
+##Example variable file
+
+```scss
+// src/sass/variables.scss
+
+// Globals
+$border-radius-root: 4px;
+$root-font-size: 2rem;
+
+// Colors
+$colors: (
+  "primary": #f19933,
+  "secondary": #2c373c,
+  "white": white,
+  "black": black,
+  "disabled": rgba(0, 0, 0, 0.38),
+  "success": #66bb6a,
+  "red": #f44336,
+  "error": #f44336,
+);
+```
+
+##Sass variables
 
 #General
 
-```js
+```scss
 $root-font-size: 1rem !default;
 $border-radius-root: 1px !default;
 $space-base: 12px !default;
@@ -66,7 +104,7 @@ $space-base: 12px !default;
 
 #e-button
 
-```js
+```scss
 $btn-border-radius: $border-radius-root !default;
 $btn-font-weight: 500 !default;
 $btn-letter-spacing: 0.0892857143em !default;
@@ -116,12 +154,31 @@ $btn-height: (
 
 #Grid
 
-```js
+```scss
 $grid-cols: 24 !default;
 $breakpoint: (
   "xs": 600px,
   "sm": 960px,
   "md": 1264px,
   "lg": 1904px,
+) !default;
+```
+
+#Colors
+
+```scss
+$colors: (
+  "primary": #f19933,
+  "secondary": #2c373c,
+  "white": white,
+  "black": black,
+  "disabled": rgba(0, 0, 0, 0.38),
+  "success": #66bb6a,
+  "red": #f44336,
+  "error": #f44336,
+) !default;
+
+$contrast-colors: (
+  "white": black,
 ) !default;
 ```
