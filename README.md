@@ -51,3 +51,77 @@ Grid system comes with a 24 point built using flexbox
   </e-col>
 </e-row>
 ```
+
+#### SASS variables
+
+e-vue allows you to customize the style through the scss variables it exposes
+
+#General
+
+```js
+$root-font-size: 1rem !default;
+$border-radius-root: 1px !default;
+$space-base: 12px !default;
+```
+
+#e-button
+
+```js
+$btn-border-radius: $border-radius-root !default;
+$btn-font-weight: 500 !default;
+$btn-letter-spacing: 0.0892857143em !default;
+$btn-border-width: 2px !default;
+$btn-rounded-border-radius: 28px !default;
+$btn-text-transform: uppercase !default;
+$btn-transition-duration: 0.28s !default;
+
+$btn-states: (
+  "focus": 0.05,
+  "hover": 0.1,
+  "active": 0.3,
+) !default;
+
+$btn-font-sizes: (
+  "x-small": 0.625rem,
+  "small": 0.75rem,
+  "default": 0.875rem,
+  "large": 0.875rem,
+  "x-large": 1rem,
+) !default;
+
+$fab-font-sizes: (
+  "x-small": 18px,
+  "small": 20px,
+  "default": 24px,
+  "large": 28px,
+  "x-large": 32px,
+) !default;
+
+$fab-height: (
+  "x-small": 32px,
+  "small": 40px,
+  "default": 56px,
+  "large": 64px,
+  "x-large": 72px,
+) !default;
+
+$btn-height: (
+  "x-small": 35px,
+  "small": 40px,
+  "default": 45px,
+  "large": 45px,
+  "x-large": 50px,
+) !default;
+```
+
+#Grid
+
+```js
+$grid-cols: 24 !default;
+$breakpoint: (
+  "xs": 600px,
+  "sm": 960px,
+  "md": 1264px,
+  "lg": 1904px,
+) !default;
+```
