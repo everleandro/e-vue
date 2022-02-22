@@ -1,21 +1,13 @@
 @use "sass:map";
 .v-btn {
   align-items: center;
-  border-radius: $btn-border-radius;
   display: inline-flex;
   flex: 0 0 auto;
-  font-weight: $btn-font-weight;
-  letter-spacing: $btn-letter-spacing;
   justify-content: center;
   outline: 0;
   position: relative;
   cursor: pointer;
-  color: map.get($colors, "black");
-  border-color: map.get($colors, "black");
   text-decoration: none;
-  text-indent: $btn-letter-spacing;
-  text-transform: $btn-text-transform;
-  transition-duration: $btn-transition-duration;
   transition-property: box-shadow, transform, opacity, background;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   vertical-align: middle;
@@ -51,19 +43,8 @@
   &:not(.v-btn--outlined) {
     border: none;
   }
-  &--rounded {
-    border-radius: $btn-rounded-border-radius;
-  }
   &--outlined {
-    border: $btn-border-width solid;
     background-color: transparent;
-
-    @each $key, $value in $colors {
-      &.v-btn--#{$key}:not(.v-btn--disabled) {
-        border-color: $value;
-        color: $value;
-      }
-    }
   }
   &--icon {
     background-color: transparent;
@@ -79,39 +60,5 @@
     background-color: rgba(0, 0, 0, 0.12);
     pointer-events: none;
     color: rgba(0, 0, 0, 0.26);
-  }
-
-  @each $key, $value in $colors {
-    &--#{$key}:not(.v-btn--outlined):not(.v-btn--disabled) {
-      &:not(.v-btn--icon) {
-        color: map.get($contrast-colors, $key) or white;
-        background-color: $value;
-      }
-      &.v-btn--icon {
-        color: $value;
-      }
-    }
-  }
-
-  @each $key, $value in $btn-states {
-    &:#{$key}:before {
-      opacity: $value;
-    }
-  }
-
-  @each $key, $value in $btn-font-sizes {
-    &.v-btn--size-#{$key} {
-      &:not(.v-btn--fab) {
-        font-size: $value;
-        height: map.get($btn-height, $key);
-      }
-      &.v-btn--icon {
-        @include force-sizes(map.get($btn-height, $key));
-      }
-      &.v-btn--fab {
-        @include force-sizes(map.get($fab-height, $key));
-        font-size: map.get($fab-font-sizes, $key);
-      }
-    }
   }
 }

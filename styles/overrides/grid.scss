@@ -1,22 +1,8 @@
 @use "sass:math";
-
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
   margin: -$space-base;
-  &.no-gutters {
-    margin: 0;
-    & > .col,
-    & > [class*="col-"] {
-      padding: 0;
-    }
-  }
 }
 .col {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
   padding: $space-base;
 
   @for $i from 1 through $grid-cols {
@@ -45,19 +31,12 @@
     }
   }
 }
-// $breakpoint
 .container {
-  width: 100%;
   padding: $space-base;
-  margin-right: auto;
-  margin-left: auto;
   @include _lg {
     max-width: 1185px;
   }
   @include _md {
     max-width: 900px;
-  }
-  &--fluid {
-    width: 100%;
   }
 }

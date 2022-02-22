@@ -1,0 +1,17 @@
+@use "sass:map";
+$root-font-size: 1rem !default;
+$border-radius-root: 1px !default;
+$space-base: 12px !default;
+$grid-cols: 24 !default;
+$breakpoint: (
+  "xs": 600px,
+  "sm": 960px,
+  "md": 1264px,
+  "lg": 1904px,
+) !default;
+@import "./overrides/mixins.scss";
+@import "./overrides/grid.scss";
+@import "./overrides/slider.scss";
+@import "./overrides/text-field.scss";
+@import "./overrides/colors.scss";
+@import "./overrides/e-button.scss";

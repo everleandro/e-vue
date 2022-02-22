@@ -3,17 +3,16 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "@/assets/style/reset.scss";
-          @import "@/assets/variables/index.scss";
-          @import "@/assets/style/_mixins.scss";
-          @import "@/assets/style/animations.scss";
-          @import "@/assets/style/style.scss";
-          @import "@/assets/style/icon.scss";
-          @import "@/assets/style/field.scss";
-          @import "@/assets/style/messages.scss";
-          @import "@/assets/style/grid.scss";
-          @import "@/assets/style/typography.scss";
-          @import "@/assets/style/helper.scss";
+          @import "styles/reset.scss";
+          // @import "styles/overrides/main.scss";
+          @import "styles/_mixins.scss";
+          @import "styles/animations.scss";
+          @import "styles/field.scss";
+          @import "styles/helper.scss";
+          @import "styles/icon.scss";
+          @import "styles/main.scss";
+          @import "styles/messages.scss";
+          @import "styles/typography.scss";
         `,
       },
     },

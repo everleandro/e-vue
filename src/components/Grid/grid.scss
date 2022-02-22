@@ -1,0 +1,28 @@
+@use "sass:math";
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  &.no-gutters {
+    margin: 0;
+    & > .col,
+    & > [class*="col-"] {
+      padding: 0;
+    }
+  }
+}
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+// $breakpoint
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  &--fluid {
+    width: 100%;
+  }
+}

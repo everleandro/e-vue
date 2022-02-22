@@ -1,7 +1,5 @@
 @use "sass:map";
-$text-field-border-radius: $border-radius-root;
 .e-text-field {
-  color: map.get($colors, "black");
   padding-top: 12px;
   margin-top: 4px;
   &--outlined {
@@ -39,7 +37,6 @@ $text-field-border-radius: $border-radius-root;
   .e-messages,
   .e-field__slot {
     width: auto;
-    border-radius: $text-field-border-radius;
   }
 
   .e-field {

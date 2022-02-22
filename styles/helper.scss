@@ -3,6 +3,8 @@
 $alignments: start, center, end, space-around, space-between;
 $displays: block, flex, table;
 $text-aligment: right, left, center;
+$space-amount: 24;
+$space-step: 4px;
 
 $spaces-states: (
   "pa": "padding",

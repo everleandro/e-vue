@@ -14,3 +14,6 @@ export default class ERow extends Mixins(Common) {
   };
 }
 </script>
+<style lang="scss">
+@import "./grid.scss";
+</style>

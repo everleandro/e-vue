@@ -1,0 +1,10 @@
+@use "sass:map";
+.e-field__slider {
+  &--disabled {
+    .e-slider__thumb,
+    .e-slider__track-background,
+    .e-slider__track-fill {
+      background: map.get($colors, "primary");
+    }
+  }
+}

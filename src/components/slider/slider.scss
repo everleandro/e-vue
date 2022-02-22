@@ -133,11 +133,6 @@
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   &--disabled {
-    .e-slider__thumb,
-    .e-slider__track-background,
-    .e-slider__track-fill {
-      background: map.get($colors, "primary");
-    }
     .e-slider__thumb {
       width: 8px;
       height: 8px;

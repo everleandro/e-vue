@@ -6,17 +6,18 @@
   "files": [
     "dist/*",
     "types/*",
-    "assets/variables/*"
+    "styles/overrides/*",
+    "styles/override.scss"
   ],
   "types": "./types/index.d.ts",
   "scripts": {
+    "test-build-lib": "vue-cli-service build --target lib --name e-vue ./src/index.ts && npm pack && shx mv ../pack",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "webpack:build": "vue-cli-service build --target lib --name e-vue ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "chromatic": "chromatic --project-token=6f4f84d9a471",
     "lint": "vue-cli-service lint",
-    "test-build-lib": "vue-cli-service build --target lib --name e-vue ./src/index.ts && npm pack && shx mv ./e-vue-0.1.0.tgz ..",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "build-storybook": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
@@ -54,7 +55,7 @@
     "vue-cli-plugin-storybook": "~2.1.0",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "## Project setup ``` npm install ```",
+  "description": "vue components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/everleandro/e-vue.git"

@@ -27,31 +27,3 @@
     #{$property}: $value;
   }
 }
-@mixin _xs {
-  @media (max-width: #{map.get($breakpoint,'xs')}) {
-    @content;
-  }
-}
-@mixin _sm {
-  @media (min-width: #{map.get($breakpoint,'xs') + 1px}) and (max-width: #{map.get($breakpoint,'sm')}) {
-    @content;
-  }
-}
-
-@mixin _md {
-  @media (min-width: #{map.get($breakpoint,'sm') + 1px}) and (max-width: #{map.get($breakpoint,'md')}) {
-    @content;
-  }
-}
-
-@mixin _lg {
-  @media (min-width: #{map.get($breakpoint,'md') + 1px}) and (max-width: #{map.get($breakpoint,'lg')}) {
-    @content;
-  }
-}
-
-@mixin _xl {
-  @media (min-width: #{map.get($breakpoint,'lg') + 1px}) {
-    @content;
-  }
-}
