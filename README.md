@@ -80,9 +80,9 @@ $colors: (
 );
 ```
 
-## SASS variables
+# SASS variables
 
-# General
+### General
 
 ```scss
 $root-font-size: 1rem !default;
@@ -90,7 +90,7 @@ $border-radius-root: 1px !default;
 $space-base: 12px !default;
 ```
 
-# e-button
+### e-button
 
 ```scss
 $btn-border-radius: $border-radius-root !default;
@@ -140,7 +140,7 @@ $btn-height: (
 ) !default;
 ```
 
-# Grid
+### Grid
 
 ```scss
 $grid-cols: 24 !default;
@@ -152,7 +152,11 @@ $breakpoint: (
 ) !default;
 ```
 
-# Colors
+### Colors
+
+each of the colors defined in this file can be passed as prop="color" of the components declared in the librarythey also generate helper classes.
+
+##### Variables
 
 ```scss
 $colors: (
@@ -169,6 +173,23 @@ $colors: (
 $contrast-colors: (
   "white": black,
 ) !default;
+```
+
+##### Generated classes
+
+```scss
+.primary {
+  background-color: #f19933;
+  &--text {
+    color: #f19933;
+  }
+}
+.secondary {
+  background-color: #2c373c;
+  &--text {
+    color: #2c373c;
+  }
+}
 ```
 
 ## Grid Examples
