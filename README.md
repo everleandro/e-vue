@@ -154,7 +154,7 @@ $breakpoint: (
 
 ### Colors
 
-each of the colors defined in this file can be passed as prop="color" of the components declared in the librarythey also generate helper classes.
+each of the colors defined in this file can be passed as prop="color" of the components declared in the library they also generate helper classes.
 
 ##### Variables
 
@@ -190,6 +190,7 @@ $contrast-colors: (
     color: #2c373c;
   }
 }
+// ...
 ```
 
 ## Grid Examples
