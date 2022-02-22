@@ -2,10 +2,16 @@
 
 ui-library with frequently used components, adaptable to your needs. You can use each of the proposed components or just use the one you need
 
+# Demo
+
+You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
+
 ## Installation
 
 ```bash
+
 npm install @ever.leandros91/e-vue
+
 ```
 
 ```js
@@ -22,31 +28,7 @@ import {
 } from "@ever.leandros91/e-vue";
 ```
 
-# Demo
-
-You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
-
-## Examples
-
-#### Grid
-
-Grid system comes with a 24 point built using flexbox
-
-```html
-<!-- simple -->
-<e-row>
-  <e-col>column</e-col>
-</e-row>
-
-<!-- with breakpoints -->
-<e-row>
-  <e-col xs="12" sm="24" md="6" lg="18" xl="8">
-    diferent number of columns in diferents breakpoints
-  </e-col>
-</e-row>
-```
-
-# Custom styling
+# Setting
 
 ```bash
 // src/main.ts
@@ -98,9 +80,9 @@ $colors: (
 );
 ```
 
-##SASS variables
+## SASS variables
 
-#General
+# General
 
 ```scss
 $root-font-size: 1rem !default;
@@ -187,4 +169,22 @@ $colors: (
 $contrast-colors: (
   "white": black,
 ) !default;
+```
+
+## Grid Examples
+
+Grid system comes with a 24 point built using flexbox
+
+```html
+<!-- simple -->
+<e-row>
+  <e-col>column</e-col>
+</e-row>
+
+<!-- with breakpoints -->
+<e-row>
+  <e-col xs="12" sm="24" md="6" lg="18" xl="8">
+    diferent number of columns in diferents breakpoints
+  </e-col>
+</e-row>
 ```
