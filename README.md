@@ -217,4 +217,4 @@ If you find this project useful, you can buy me a coffee
 
 [Trust Wallet (BTC)](https://link.trustwallet.com/send?coin=0&address=bc1qx0x6tnvc30xtgm5n5etp7clkk5ce9fy7ye2khy)
 
-![donate](https://user-images.githubusercontent.com/14135808/83999111-a7947600-a994-11ea-84e9-9a215def4155.png)
+![donate](https://drive.google.com/file/d/1rqORo2yjW1JWHVATJQf0LBMbFnkFLQm-/view)
