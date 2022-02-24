@@ -4,7 +4,7 @@ ui-library with frequently used components, adaptable to your needs. You can use
 
 # Demo
 
-You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-usage--usage).
+You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-example--example).
 
 ## Installation
 
@@ -210,3 +210,11 @@ Grid system comes with a 24 point built using flexbox
   </e-col>
 </e-row>
 ```
+
+## One-time Donations
+
+If you find this project useful, you can buy me a coffee
+
+[Trust Wallet (BTC)](https://link.trustwallet.com/send?coin=0&address=bc1qx0x6tnvc30xtgm5n5etp7clkk5ce9fy7ye2khy)
+
+![donate](https://user-images.githubusercontent.com/14135808/83999111-a7947600-a994-11ea-84e9-9a215def4155.png)

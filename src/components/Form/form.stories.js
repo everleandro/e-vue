@@ -63,7 +63,7 @@ export const Form = () => ({
       <e-checkbox
         v-model="fields.acceptRules"
         :rules="[checkboxRule]"
-        label="acepto las politicas"
+        label="I accept the policies"
       ></e-checkbox>
     </e-form>
     <e-radio-group v-model="radio" row>
