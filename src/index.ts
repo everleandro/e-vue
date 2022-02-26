@@ -7,3 +7,4 @@ export { default as ESlider } from "@/components/slider/slider.vue";
 export { default as ETextField } from "@/components/text-field/text-field.vue";
 export { default as ERow } from "@/components/Grid/row.vue";
 export { default as Eol } from "@/components/Grid/col.vue";
+export { default as EDIalog } from "@/components/dialog/Dialog.vue";

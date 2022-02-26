@@ -4,7 +4,7 @@ ui-library with frequently used components, adaptable to your needs. You can use
 
 # Demo
 
-You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-kvbfebidpl.chromatic.com/?path=/story/components-button-example--example).
+You can see all components documented here [Online demo](https://61ae7d6549f6bb003ab4b803-sndwwypfhv.chromatic.com).
 
 ## Installation
 

@@ -9,3 +9,4 @@ export const ESlider: VueConstructor;
 export const ETextField: VueConstructor;
 export const ERow: VueConstructor;
 export const Eol: VueConstructor;
+export const EDIalog: VueConstructor;
