@@ -22,6 +22,7 @@ import {
   ERadio,
   RadioGroup,
   ESlider,
+  EDIalog,
   ETextField,
   ERow,
   ECol,
