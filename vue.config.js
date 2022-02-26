@@ -4,8 +4,9 @@ module.exports = {
       sass: {
         prependData: `
           @import "styles/reset.scss";
-          // @import "styles/overrides/main.scss";
+          @import "styles/override.scss";
           @import "styles/_mixins.scss";
+          @import "styles/transitions.scss";
           @import "styles/animations.scss";
           @import "styles/field.scss";
           @import "styles/helper.scss";

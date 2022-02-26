@@ -1,0 +1,21 @@
+$transition-duration: 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity $transition-duration;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition-property: transform, opacity;
+  transition-duration: $transition-duration;
+}
+.scale-enter,
+.scale-leave-to {
+  opacity: 0;
+  -webkit-transform: scale3d(0.3, 0.3, 0.3);
+  transform: scale3d(0.3, 0.3, 0.3);
+}

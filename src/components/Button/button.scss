@@ -1,5 +1,4 @@
-@use "sass:map";
-.v-btn {
+.e-btn {
   align-items: center;
   display: inline-flex;
   flex: 0 0 auto;
@@ -26,11 +25,11 @@
     position: absolute;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
   }
-  &:not(.v-btn--icon) {
+  &:not(.e-btn--icon) {
     padding: 0 16px;
     min-width: 64px;
   }
-  &:not(.v-btn--depressed):not(.v-btn--disabled) {
+  &:not(.e-btn--depressed):not(.e-btn--disabled) {
     box-shadow: 0 3px 1px -2px rgb(0, 0, 0, 0.2), 0 2px 2px 0 rgb(0, 0, 0, 0.14),
       0 1px 5px 0 rgb(0, 0, 0, 0.12);
   }
@@ -40,7 +39,7 @@
     min-width: 100% !important;
   }
 
-  &:not(.v-btn--outlined) {
+  &:not(.e-btn--outlined) {
     border: none;
   }
   &--outlined {

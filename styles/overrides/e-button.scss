@@ -44,8 +44,7 @@ $btn-height: (
   "x-large": 50px,
 ) !default;
 
-.v-btn {
-  border-radius: $btn-border-radius;
+.e-btn {
   font-weight: $btn-font-weight;
   letter-spacing: $btn-letter-spacing;
   color: map.get($colors, "black");
@@ -53,7 +52,9 @@ $btn-height: (
   text-indent: $btn-letter-spacing;
   text-transform: $btn-text-transform;
   transition-duration: $btn-transition-duration;
-
+  &:not(.e-btn--fab) {
+    border-radius: $btn-border-radius;
+  }
   &--rounded {
     border-radius: $btn-rounded-border-radius;
   }
@@ -61,7 +62,7 @@ $btn-height: (
     border: $btn-border-width solid;
 
     @each $key, $value in $colors {
-      &.v-btn--#{$key}:not(.v-btn--disabled) {
+      &.e-btn--#{$key}:not(.e-btn--disabled) {
         border-color: $value;
         color: $value;
       }
@@ -69,12 +70,12 @@ $btn-height: (
   }
 
   @each $key, $value in $colors {
-    &--#{$key}:not(.v-btn--outlined):not(.v-btn--disabled) {
-      &:not(.v-btn--icon) {
+    &--#{$key}:not(.e-btn--outlined):not(.e-btn--disabled) {
+      &:not(.e-btn--icon) {
         color: map.get($contrast-colors, $key) or white;
         background-color: $value;
       }
-      &.v-btn--icon {
+      &.e-btn--icon {
         color: $value;
       }
     }
@@ -87,15 +88,15 @@ $btn-height: (
   }
 
   @each $key, $value in $btn-font-sizes {
-    &.v-btn--size-#{$key} {
-      &:not(.v-btn--fab) {
+    &.e-btn--size-#{$key} {
+      &:not(.e-btn--fab) {
         font-size: $value;
         height: map.get($btn-height, $key);
       }
-      &.v-btn--icon {
+      &.e-btn--icon {
         @include force-sizes(map.get($btn-height, $key));
       }
-      &.v-btn--fab {
+      &.e-btn--fab {
         @include force-sizes(map.get($fab-height, $key));
         font-size: map.get($fab-font-sizes, $key);
       }

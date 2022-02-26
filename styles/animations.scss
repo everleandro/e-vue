@@ -1,6 +1,24 @@
-@keyframes v-ripple {
+@include animation("v-ripple") {
   to {
     transform: scale(2.5);
     opacity: 0;
+  }
+}
+@include animation("scale") {
+  from {
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+}
+@include animation("fadeIn") {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

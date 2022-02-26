@@ -6,7 +6,7 @@
     :style="style"
     v-on="$listeners"
   >
-    <span class="v-btn__content">
+    <span class="e-btn__content">
       <slot name="default"></slot>
     </span>
   </div>
@@ -35,19 +35,19 @@ export default class EButton extends Mixins(Common) {
   width = 0;
   height = 0;
   availableRootClasses = {
-    disabled: "v-btn--disabled",
-    icon: "v-btn--icon",
-    depressed: "v-btn--depressed",
+    disabled: "e-btn--disabled",
+    icon: "e-btn--icon",
+    depressed: "e-btn--depressed",
     ripple: "v-ripple-element",
-    fab: "v-btn--fab",
-    block: "v-btn--block",
-    outlined: "v-btn--outlined",
-    rounded: "v-btn--rounded",
-    XSmall: "v-btn--size-x-small",
-    small: "v-btn--size-small",
-    default: "v-btn--size-default",
-    large: "v-btn--size-large",
-    XLarge: "v-btn--size-x-large",
+    fab: "e-btn--fab",
+    block: "e-btn--block",
+    outlined: "e-btn--outlined",
+    rounded: "e-btn--rounded",
+    XSmall: "e-btn--size-x-small",
+    small: "e-btn--size-small",
+    default: "e-btn--size-default",
+    large: "e-btn--size-large",
+    XLarge: "e-btn--size-x-large",
   };
 
   get default(): boolean {
@@ -55,7 +55,7 @@ export default class EButton extends Mixins(Common) {
   }
 
   get btnClass(): string {
-    return this.rootClass(`v-btn--${this.color} v-btn`);
+    return this.rootClass(`e-btn--${this.color} e-btn`);
   }
 
   get tag(): string {
