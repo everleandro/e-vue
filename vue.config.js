@@ -4,7 +4,6 @@ module.exports = {
       sass: {
         prependData: `
           @import "styles/reset.scss";
-          // @import "styles/override.scss";
           @import "styles/_mixins.scss";
           @import "styles/main.scss";
           @import "styles/transitions.scss";
@@ -14,6 +13,7 @@ module.exports = {
           @import "styles/icon.scss";
           @import "styles/messages.scss";
           @import "styles/typography.scss";
+          // @import "styles/override.scss";
         `,
       },
     },

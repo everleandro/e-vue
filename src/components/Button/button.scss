@@ -25,7 +25,7 @@
     position: absolute;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
   }
-  &:not(.e-btn--icon) {
+  &:not(.e-btn--icon):not(.e-btn--fab) {
     padding: 0 16px;
     min-width: 64px;
   }

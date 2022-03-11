@@ -10,14 +10,14 @@ export default class Common extends Vue {
   availableRootClasses!: Record<string, string>;
 
   rootClass(
-    _default: string,
+    _default?: string,
     objCLass: Record<string, string> = this.availableRootClasses
   ): string {
     const result = Object.keys(objCLass).filter(
       (key: string) => !!(this as any)[key]
     );
     return (
-      result.map((key: string) => objCLass[key]).join(" ") + ` ${_default}`
+      `${_default} ` + result.map((key: string) => objCLass[key]).join(" ")
     );
   }
 }

@@ -10,3 +10,5 @@ export const ETextField: VueConstructor;
 export const ERow: VueConstructor;
 export const Eol: VueConstructor;
 export const EDIalog: VueConstructor;
+export const EIcon: VueConstructor;
+export const EBar: VueConstructor;

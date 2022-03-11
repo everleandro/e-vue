@@ -24,8 +24,8 @@ export default class EButton extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) fab!: boolean;
   @Prop({ type: Boolean, default: false }) depressed!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
-  @Prop({ type: Boolean, default: false }) small!: boolean;
   @Prop({ type: Boolean, default: false }) block!: boolean;
+  @Prop({ type: Boolean, default: false }) small!: boolean;
   @Prop({ type: Boolean, default: false }) XSmall!: boolean;
   @Prop({ type: Boolean, default: false }) large!: boolean;
   @Prop({ type: Boolean, default: false }) XLarge!: boolean;

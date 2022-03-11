@@ -8,3 +8,5 @@ export { default as ETextField } from "@/components/text-field/text-field.vue";
 export { default as ERow } from "@/components/Grid/row.vue";
 export { default as Eol } from "@/components/Grid/col.vue";
 export { default as EDIalog } from "@/components/dialog/Dialog.vue";
+export { default as EBar } from "@/components/bar/bar.vue";
+export { default as EIcon } from "@/components/icon/Icon.vue";

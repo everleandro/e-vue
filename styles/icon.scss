@@ -13,8 +13,6 @@
   @include prefix(user-select, none);
   &__svg {
     fill: currentColor;
-    height: 24px;
-    width: 24px;
   }
   &::after {
     background-color: currentColor;

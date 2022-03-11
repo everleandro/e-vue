@@ -26,6 +26,8 @@ import {
   ETextField,
   ERow,
   ECol,
+  EIcon,
+  EBar,
 } from "@ever.leandros91/e-vue";
 ```
 
