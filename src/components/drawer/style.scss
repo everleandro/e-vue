@@ -1,0 +1,49 @@
+.e-drawer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  max-width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  pointer-events: auto;
+  top: 0;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, visibility, width;
+  position: fixed;
+  z-index: 2;
+  &--close {
+    visibility: hidden;
+  }
+  &--absolute {
+    z-index: 1;
+    position: absolute;
+    &.e-drawer--open {
+      box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+        0 16px 24px 2px rgb(0, 0, 0, 0.4), 0 6px 30px 5px rgb(0, 0, 0, 0.2);
+    }
+  }
+  &__content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  &--right {
+    left: auto;
+    right: 0;
+    .e-drawer__border {
+      left: 0;
+      right: auto;
+      top: 0;
+    }
+  }
+  &__border {
+    background-color: rgba(0, 0, 0, 0.12);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+  }
+}

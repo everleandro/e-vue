@@ -44,6 +44,14 @@ $btn-height: (
   "x-large": 50px,
 ) !default;
 
+$icon-font-sizes: (
+  "x-small": 18px,
+  "small": 20px,
+  "default": 24px,
+  "large": 28px,
+  "x-large": 32px,
+) !default;
+
 .e-btn {
   font-weight: $btn-font-weight;
   letter-spacing: $btn-letter-spacing;
@@ -52,7 +60,7 @@ $btn-height: (
   text-indent: $btn-letter-spacing;
   text-transform: $btn-text-transform;
   transition-duration: $btn-transition-duration;
-  &:not(.e-btn--fab) {
+  &:not(.e-btn--fab):not(.e-btn--icon) {
     border-radius: $btn-border-radius;
   }
   &--rounded {
@@ -95,10 +103,23 @@ $btn-height: (
       }
       &.e-btn--icon {
         @include force-sizes(map.get($btn-height, $key));
+        .e-icon {
+          font-size: map.get($icon-font-sizes, $key);
+          .e-icon__svg {
+            height: map.get($icon-font-sizes, $key);
+            width: map.get($icon-font-sizes, $key);
+          }
+        }
       }
       &.e-btn--fab {
         @include force-sizes(map.get($fab-height, $key));
         font-size: map.get($fab-font-sizes, $key);
+        .e-icon {
+          .e-icon__svg {
+            height: map.get($fab-font-sizes, $key);
+            width: map.get($fab-font-sizes, $key);
+          }
+        }
       }
     }
   }

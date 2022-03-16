@@ -128,7 +128,9 @@ export default class ESlider extends Mixins(Common, Field) {
   mounted(): void {
     this.$nextTick(function () {
       this.offset = this.slider.getBoundingClientRect().left;
-      this.slider.addEventListener("resize", this.calculatePosition);
+      if (window) {
+        window.addEventListener("resize", this.calculatePosition);
+      }
       this.calculatePosition();
     });
   }

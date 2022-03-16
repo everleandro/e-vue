@@ -1,0 +1,23 @@
+.e-main {
+  max-width: 100%;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.e-app {
+  flex: 1 1 auto;
+  -webkit-backface-visibility: hidden;
+  overflow-x: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+}
+.e-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  &--fluid {
+    width: 100%;
+  }
+}

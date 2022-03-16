@@ -10,3 +10,6 @@ export { default as Eol } from "@/components/Grid/col.vue";
 export { default as EDIalog } from "@/components/dialog/Dialog.vue";
 export { default as EBar } from "@/components/bar/bar.vue";
 export { default as EIcon } from "@/components/icon/Icon.vue";
+export { default as EApp } from "@/components/app/app.vue";
+export { default as EMain } from "@/components/app/main.vue";
+export { default as EContainer } from "@/components/app/container.vue";

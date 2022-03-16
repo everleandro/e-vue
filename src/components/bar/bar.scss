@@ -1,14 +1,24 @@
 .e-app-bar {
   background-color: #f5f5f5;
+  position: absolute;
+  right: 0;
+  left: 0;
 }
-.e-app-bar,
 .e-bar {
+  contain: layout;
+  display: block;
+  flex: 1 1 auto;
+  right: 0px;
+  max-width: 100%;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   &:not(.outlined) {
-    box-shadow: 0 2px 12px -1px rgb(85 85 85 / 8%),
-      0 4px 12px 0 rgb(85 85 85 / 6%), 0 1px 12px 0 rgb(85 85 85 / 3%);
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   }
 }
 .e-bar {
+  flex-grow: 1;
+  display: block;
   &__content {
     align-items: center;
     display: flex;
@@ -23,5 +33,8 @@
         height: 48px;
       }
     }
+  }
+  &--fixed {
+    position: fixed;
   }
 }

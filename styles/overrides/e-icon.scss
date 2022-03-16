@@ -6,14 +6,12 @@ $icon-font-sizes: (
   "x-large": 32px,
 ) !default;
 
-.e-icon {
-  @each $key, $value in $icon-font-sizes {
-    &.e-icon--size-#{$key} {
-      font-size: $value;
-      .e-icon__svg {
-        height: $value;
-        width: $value;
-      }
+@each $key, $value in $icon-font-sizes {
+  .e-icon--size-#{$key} {
+    font-size: $value;
+    .e-icon__svg {
+      height: $value;
+      width: $value;
     }
   }
 }

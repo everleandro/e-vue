@@ -12,3 +12,6 @@ export const Eol: VueConstructor;
 export const EDIalog: VueConstructor;
 export const EIcon: VueConstructor;
 export const EBar: VueConstructor;
+export const EApp: VueConstructor;
+export const EContainer: VueConstructor;
+export const EMain: VueConstructor;

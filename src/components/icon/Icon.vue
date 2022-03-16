@@ -19,7 +19,7 @@
       ></path>
     </svg>
   </span>
-  <i v-else :class="rootClass(iconClass)" v-on="$listeners">
+  <i v-else :class="rootClass(iconClass)" v-on="$listeners" ref="i">
     <slot />
   </i>
 </template>
@@ -69,6 +69,13 @@ export default class EIcon extends Mixins(Common) {
     let result = "e-icon";
     if (defaultVNode) {
       result += ` ${defaultVNode.text}`;
+      this.$nextTick(() => {
+        const element: Element | undefined = this.$refs.i as Element;
+        if (element) {
+          element.innerHTML = "";
+        }
+      });
+      // defaultVNode.innerHTML = '';
     }
     if (this.color) {
       result += ` ${this.color}--text`;
