@@ -13,3 +13,4 @@ export { default as EIcon } from "@/components/icon/Icon.vue";
 export { default as EApp } from "@/components/app/app.vue";
 export { default as EMain } from "@/components/app/main.vue";
 export { default as EContainer } from "@/components/app/container.vue";
+export { default as EDrawer } from "@/components/drawer/component.vue";
