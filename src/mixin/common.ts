@@ -1,9 +1,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import ripple from "@/directives/ripple";
+import clickOutside from "@/directives/click-outside";
 
 @Component({
   directives: {
     ripple,
+    clickOutside,
   },
 })
 export default class Common extends Vue {
@@ -19,5 +21,8 @@ export default class Common extends Vue {
     return (
       `${_default} ` + result.map((key: string) => objCLass[key]).join(" ")
     );
+  }
+  colorText(color: string): string {
+    return `${color}--text`;
   }
 }

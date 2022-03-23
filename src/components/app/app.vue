@@ -15,14 +15,20 @@ export default class EApp extends Mixins(Common) {
   availableRootClasses = {};
 
   updateChildrenStyle(
-    fieldsNames: Array<string>,
-    property: Record<string, string>
+    childsStyleObject: Record<string, Record<string, string>>
   ): void {
+    const childsName = Object.keys(childsStyleObject);
     const childList = this.$children.filter((child) => {
-      return !!fieldsNames.find((name) => name === child.$options.name);
+      return !!childsName.find((name) => name === child.$options.name);
     });
     childList.forEach((child) => {
-      (child as any).layoutStyle(property);
+      const key = child.$options.name;
+      if (key) {
+        (child as any).appLayoutStyle = {
+          ...(child as any).appLayoutStyle,
+          ...childsStyleObject[key],
+        };
+      }
     });
   }
 }

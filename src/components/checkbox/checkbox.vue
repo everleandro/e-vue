@@ -52,7 +52,7 @@
           {{ label }}
         </label>
       </div>
-      <div class="e-messages" :class="rootColor + '--text'">
+      <div v-if="!dense" class="e-messages" :class="rootColor + '--text'">
         <div class="e-messages__wrapper">{{ details }}</div>
       </div>
     </div>

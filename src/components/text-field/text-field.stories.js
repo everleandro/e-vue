@@ -16,17 +16,17 @@ export default {
 export const TextField = () => ({
   components: { ETextField },
   template: `
-  <div> 
-    <e-text-field 
-    :disabled="disabled" 
-    :dense="dense" 
-    :readonly="readonly" 
-    :limit="limit" 
+  <div>
+    <e-text-field
+    :disabled="disabled"
+    :dense="dense"
+    :readonly="readonly"
+    :limit="limit"
     :detail="detail"
-    :color="color" 
+    :color="color"
     :rules="required?[_required]:[]"
-    :counter="counter" 
-    :outlined="outlined" 
+    :counter="counter"
+    :outlined="outlined"
     :label="label"></e-text-field>
   </div>
   `,

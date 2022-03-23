@@ -1,5 +1,10 @@
 <template>
-  <div :is="tag" :class="rootClass('e-drawer')" :style="style">
+  <div
+    :is="tag"
+    v-click-outside="handleOtside"
+    :class="rootClass('e-drawer')"
+    :style="style"
+  >
     <div v-if="right" class="e-drawer__border"></div>
     <div class="e-drawer__content" :style="{ width: `${width}px` }">
       <slot></slot>
@@ -31,6 +36,7 @@ export default class EDrawer extends Mixins(Common) {
     close: "e-drawer--close",
   };
   mdBreakpoint = false;
+  appLayoutStyle: Record<string, string> = {};
 
   @Watch("model", { immediate: true, deep: true })
   onModelChanged(): void {
@@ -41,7 +47,6 @@ export default class EDrawer extends Mixins(Common) {
   @Watch("mdBreakpoint", { immediate: true, deep: true })
   onMdBreakpointChanged(value: boolean): void {
     this.setOverlay();
-
     this.refreshLayoutStyle();
   }
 
@@ -64,6 +69,7 @@ export default class EDrawer extends Mixins(Common) {
   mounted(): void {
     this.setOverlay();
     this.observeBreakpoint();
+    this.refreshLayoutStyle();
     this.$nextTick(function () {
       window?.addEventListener("resize", this.observeBreakpoint);
     });
@@ -72,12 +78,23 @@ export default class EDrawer extends Mixins(Common) {
     window?.removeEventListener("resize", this.observeBreakpoint);
     this.destroyOverlay();
   }
+  handleOtside() {
+    if (this.absoluteComputed && this.model) {
+      this.model = false;
+      this.destroyOverlay();
+    }
+  }
+
   refreshLayoutStyle(): void {
-    if (this.$parent.$options.name === "e-app") {
+    const parent = this.$parent as EApp;
+    if (parent.$options.name === "e-app") {
       const property = this.right ? "right" : "left";
-      (this.$parent as EApp).updateChildrenStyle(["e-main", "e-bar"], {
-        [property]:
-          this.absoluteComputed || !this.model ? "0px" : `${this.width}px`,
+      const propertyValue =
+        this.absoluteComputed || !this.model ? "0px" : `${this.width}px`;
+
+      parent.updateChildrenStyle({
+        "e-main": { [`padding-${property}`]: propertyValue },
+        "e-bar": { [property]: propertyValue },
       });
     }
   }
@@ -87,15 +104,17 @@ export default class EDrawer extends Mixins(Common) {
     this.mdBreakpoint = windowWidth <= parseInt(mdValue);
   }
   setOverlay(): void {
-    if ((this.model && this.absolute) || (this.model && this.mdBreakpoint)) {
-      const parent: HTMLElement = document.body || new HTMLElement();
-      const overlayNode = document.createElement("div");
-      parent.prepend(overlayNode);
-      overlayNode.className = "e-overlay";
-      setTimeout(() => {
-        overlayNode.className = "e-overlay e-overlay--active";
-      }, 0);
-      this.overlayNode = overlayNode;
+    if (this.model && (this.absolute || this.mdBreakpoint)) {
+      if (!this.overlayNode) {
+        const parent: HTMLElement = document.body || new HTMLElement();
+        const overlayNode = document.createElement("div");
+        parent.prepend(overlayNode);
+        overlayNode.className = "e-overlay";
+        setTimeout(() => {
+          overlayNode.className = "e-overlay e-overlay--active";
+        }, 0);
+        this.overlayNode = overlayNode;
+      }
     } else {
       this.destroyOverlay();
     }
@@ -105,6 +124,7 @@ export default class EDrawer extends Mixins(Common) {
       this.overlayNode.className = "e-overlay e-overlay--inactive";
       setTimeout(() => {
         this.overlayNode && this.overlayNode.remove();
+        this.overlayNode = null;
       }, 300);
     }
   }
@@ -115,7 +135,11 @@ export default class EDrawer extends Mixins(Common) {
       top: "0px",
       transform: `translateX(${translateX})`,
     };
-    return result;
+    const appLayoutStyleCopy = { ...this.appLayoutStyle };
+    if (this.absoluteComputed) {
+      delete appLayoutStyleCopy["padding-top"];
+    }
+    return { ...result, ...appLayoutStyleCopy };
   }
 }
 </script>

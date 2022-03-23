@@ -42,20 +42,20 @@ $spaces-states: (
 
 @for $i from 0 through $space-amount {
   .mx-#{$i} {
-    margin-right: #{$i}px !important;
-    margin-left: #{$i}px !important;
+    margin-right: calc(#{$i} * #{$space-step}) !important;
+    margin-left: calc(#{$i} * #{$space-step}) !important;
   }
   .my-#{$i} {
-    margin-top: #{$i}px !important;
-    margin-bottom: #{$i}px !important;
+    margin-top: calc(#{$i} * #{$space-step}) !important;
+    margin-bottom: calc(#{$i} * #{$space-step}) !important;
   }
   .px-#{$i} {
-    padding-right: #{$i}px !important;
-    padding-left: #{$i}px !important;
+    padding-right: calc(#{$i} * #{$space-step}) !important;
+    padding-left: calc(#{$i} * #{$space-step}) !important;
   }
   .py-#{$i} {
-    padding-top: #{$i}px !important;
-    padding-bottom: #{$i}px !important;
+    padding-top: calc(#{$i} * #{$space-step}) !important;
+    padding-bottom: calc(#{$i} * #{$space-step}) !important;
   }
 }
 
@@ -75,3 +75,4 @@ $spaces-states: (
 .fill-height {
   width: 100%;
 }
+

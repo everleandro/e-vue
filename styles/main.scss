@@ -33,7 +33,7 @@ $root-font-family: "Roboto", sans-serif;
   border-top-width: thin;
 }
 .e-overlay {
-  z-index: 1;
+  z-index: 3;
   align-items: center;
   border-radius: inherit;
   display: flex;
@@ -47,8 +47,17 @@ $root-font-family: "Roboto", sans-serif;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), z-index 1ms;
   &--active {
     background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
   }
   &--inactive {
     background-color: transparent;
   }
+}
+.e-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+.e-card {
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-sizing: border-box;
 }

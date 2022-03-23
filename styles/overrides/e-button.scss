@@ -60,7 +60,7 @@ $icon-font-sizes: (
   text-indent: $btn-letter-spacing;
   text-transform: $btn-text-transform;
   transition-duration: $btn-transition-duration;
-  &:not(.e-btn--fab):not(.e-btn--icon) {
+  &:not(.e-btn--fab):not(.e-btn--icon):not(.e-btn--rounded) {
     border-radius: $btn-border-radius;
   }
   &--rounded {

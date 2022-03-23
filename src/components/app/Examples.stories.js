@@ -29,7 +29,7 @@ export const Example = () => ({
       </div>
     </e-drawer>
  
-    <e-bar app>
+    <e-bar app clipped>
       <e-button icon color="primary" @click="val=!val">  
         <e-icon 
         :path="['M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z']" 
@@ -55,7 +55,7 @@ export const Example = () => ({
 </div> `,
   props: {},
   data: () => ({
-    val: false,
+    val: true,
     val2: false,
   }),
 });

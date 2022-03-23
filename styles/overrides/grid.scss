@@ -4,13 +4,16 @@
 }
 .col {
   padding: $space-base;
-
+  box-sizing: border-box;
   @for $i from 1 through $grid-cols {
     $_col_percent: math.div($i, $grid-cols) * 100%;
     &-#{$i} {
       flex: 0 0 $_col_percent;
       max-width: $_col_percent;
     }
+  }
+  @for $i from 1 through $grid-cols {
+    $_col_percent: math.div($i, $grid-cols) * 100%;
     &-sm-#{$i} {
       @include _sm {
         flex: 0 0 $_col_percent;

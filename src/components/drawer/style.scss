@@ -17,7 +17,7 @@
     visibility: hidden;
   }
   &--absolute {
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     &.e-drawer--open {
       box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
