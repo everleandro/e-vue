@@ -11,9 +11,11 @@
           <label :for="id" class="e-label"> {{ label }}</label>
           <input
             v-model="model"
+            v-bind="$attrs"
             :id="id"
             :maxlength="limit"
             type="text"
+            v-on="$listeners"
             @blur="handleBlur"
             @focus="handleFocus"
           />

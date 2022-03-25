@@ -6,6 +6,7 @@
   outline: 0;
   position: relative;
   cursor: pointer;
+  @include prefix(user-select, none);
   text-decoration: none;
   transition-property: box-shadow, transform, opacity, background;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -63,7 +64,6 @@
   }
 
   &--disabled {
-    @include prefix(user-select, none);
     background-color: rgba(0, 0, 0, 0.12);
     pointer-events: none;
     color: rgba(0, 0, 0, 0.26);

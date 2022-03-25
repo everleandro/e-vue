@@ -22,7 +22,7 @@
 import Common from "@/mixin/common";
 import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
 
-@Component
+@Component({ name: "e-dialog" })
 export default class EDIalog extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) fullscreen!: boolean;
   @Prop({ type: Boolean, default: false }) value!: boolean;
