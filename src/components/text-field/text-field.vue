@@ -14,8 +14,7 @@
             v-bind="$attrs"
             :id="id"
             :maxlength="limit"
-            type="text"
-            v-on="$listeners"
+            :type="type"
             @blur="handleBlur"
             @focus="handleFocus"
           />
@@ -49,6 +48,7 @@ import { Component, Mixins, Prop } from "vue-property-decorator";
 export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: null }) prependIcon!: boolean;
+  @Prop({ type: String, default: "text" }) type!: string;
   @Prop({ type: String, default: null }) appendIcon!: boolean;
   localValue = "";
   focused = false;
