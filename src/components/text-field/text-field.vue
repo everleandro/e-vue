@@ -10,12 +10,12 @@
         <div class="e-text-field__slot">
           <label :for="id" class="e-label"> {{ label }}</label>
           <input
-            v-model="model"
             v-bind="$attrs"
             :id="id"
             :maxlength="limit"
             :type="type"
             @blur="handleBlur"
+            @input="handleInput"
             @focus="handleFocus"
           />
         </div>
@@ -62,6 +62,10 @@ export default class TextField extends Mixins(Common, Field) {
   handleBlur(evt: InputEvent): void {
     this.focused = false;
     this.$emit("blur", evt);
+  }
+  handleInput(evt: InputEvent): void {
+    this.model = (evt.target as any).value;
+    this.$emit("input", evt);
   }
   handleFocus(evt: InputEvent): void {
     this.focused = true;

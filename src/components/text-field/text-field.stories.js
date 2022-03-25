@@ -18,6 +18,7 @@ export const TextField = () => ({
   template: `
   <div>
     <e-text-field
+    v-model="model"
     :disabled="disabled"
     :dense="dense"
     :readonly="readonly"
@@ -30,6 +31,9 @@ export const TextField = () => ({
     :label="label"></e-text-field>
   </div>
   `,
+  data: () => ({
+    model: 'model'
+  }),
   props: {
     color: {
       default: select(
