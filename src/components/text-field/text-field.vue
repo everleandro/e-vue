@@ -10,8 +10,8 @@
         <div class="e-text-field__slot">
           <label :for="id" class="e-label"> {{ label }}</label>
           <input
-            :value="value"
             :id="id"
+            :value="model"
             :maxlength="limit"
             :type="type"
             @blur="handleBlur"
@@ -65,7 +65,6 @@ export default class TextField extends Mixins(Common, Field) {
   }
   handleInput(evt: InputEvent): void {
     this.model = (evt.target as any).value;
-    this.$emit("input", evt);
   }
   handleFocus(evt: InputEvent): void {
     this.focused = true;
