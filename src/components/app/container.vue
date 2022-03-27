@@ -8,7 +8,7 @@
 import Common from "@/mixin/common";
 import { Component, Mixins } from "vue-property-decorator";
 
-@Component({ name: "e-main" })
+@Component({ name: "e-container" })
 export default class EApp extends Mixins(Common) {
   availableRootClasses = {};
 }
