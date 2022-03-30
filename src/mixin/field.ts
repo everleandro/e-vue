@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import { PropType } from "vue";
 // import clickOutside from "@/directives/click-outside";
 
@@ -28,6 +28,7 @@ export default class Field extends Vue {
   localDisabled!: boolean;
   dirty = false;
   localReadonly!: boolean;
+  focused = false;
 
   get model(): any {
     return this.value !== null ? this.value : this.localValue;
@@ -54,5 +55,12 @@ export default class Field extends Vue {
   }
   get details(): string {
     return this.hasError ? this.errorMessage : "" || this.detail;
+  }
+  get textColorClass(): string {
+    return this.hasError
+      ? `error--text`
+      : this.focused
+      ? `${this.rootColor}--text`
+      : "";
   }
 }

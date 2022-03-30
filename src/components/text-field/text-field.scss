@@ -38,18 +38,4 @@
   .e-field__slot {
     width: auto;
   }
-
-  .e-field {
-    &__slot {
-      padding: 0 8px;
-    }
-    &__prepend-inner {
-      margin-right: auto;
-      padding-right: 4px;
-    }
-    &__append-inner {
-      margin-left: auto;
-      padding-left: 4px;
-    }
-  }
 }

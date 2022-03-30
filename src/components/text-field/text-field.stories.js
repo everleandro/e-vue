@@ -18,21 +18,22 @@ export const TextField = () => ({
   template: `
   <div>
     <e-text-field
-    v-model="model"
-    :disabled="disabled"
-    :dense="dense"
-    :readonly="readonly"
-    :limit="limit"
-    :detail="detail"
-    :color="color"
-    :rules="required?[_required]:[]"
-    :counter="counter"
-    :outlined="outlined"
-    :label="label"></e-text-field>
+      v-model="model"
+      :disabled="disabled"
+      :dense="dense"
+      :readonly="readonly"
+      :limit="limit"
+      :detail="detail"
+      :color="color"
+      :rules="required?[_required]:[]"
+      :counter="counter"
+      :outlined="outlined"
+      :label="label"
+    />
   </div>
   `,
   data: () => ({
-    model: 'model'
+    model: ''
   }),
   props: {
     color: {
@@ -52,7 +53,7 @@ export const TextField = () => ({
       default: text("label", "label"),
     },
     required: {
-      default: boolean("required", false),
+      default: boolean("required", true),
     },
     counter: {
       default: boolean("counter", true),

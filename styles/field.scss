@@ -6,9 +6,35 @@
   letter-spacing: normal;
   max-width: 100%;
   text-align: left;
+  &__icon {
+    align-items: center;
+    display: inline-flex;
+    height: 24px;
+    flex: 1 0 auto;
+    justify-content: center;
+    min-width: 24px;
+    width: 24px;
+  }
   .e-label {
     font-size: 16px;
     text-transform: capitalize;
+  }
+
+  &__prepend-inner {
+    margin-right: auto;
+    padding-right: 4px;
+  }
+  &__append-inner {
+    margin-left: auto;
+    padding-left: 4px;
+  }
+
+  &__prepend-inner,
+  &__append-inner {
+    align-self: flex-start;
+    display: inline-flex;
+    line-height: 1;
+    @include prefix(user-select, none);
   }
   &__details {
     display: flex;
@@ -135,7 +161,9 @@
     align-items: center;
     color: inherit;
     display: flex;
+    height: 48px;
     margin-bottom: 8px;
+    padding: 0 8px;
     min-height: inherit;
     position: relative;
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);

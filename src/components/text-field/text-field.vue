@@ -43,7 +43,7 @@
 <script lang="ts">
 import Common from "@/mixin/common";
 import Field from "@/mixin/field";
-import { Component, Mixins, Prop } from "vue-property-decorator";
+import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
 @Component({ name: "e-text-field" })
 export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
@@ -51,7 +51,6 @@ export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: String, default: "text" }) type!: string;
   @Prop({ type: String, default: null }) appendIcon!: boolean;
   localValue = "";
-  focused = false;
   availableRootClasses = {
     disabled: "e-field--is-disabled",
     readonly: "e-field--is-readonly",
@@ -59,8 +58,13 @@ export default class TextField extends Mixins(Common, Field) {
     outlined: "e-text-field--outlined",
     focused: "e-text-field--is-focused",
   };
+  @Watch("model")
+  handeler() {
+    this.dirty = true;
+  }
   handleBlur(evt: InputEvent): void {
     this.focused = false;
+    this.dirty = true;
     this.$emit("blur", evt);
   }
   handleInput(evt: InputEvent): void {
@@ -68,14 +72,8 @@ export default class TextField extends Mixins(Common, Field) {
   }
   handleFocus(evt: InputEvent): void {
     this.focused = true;
+    console.log("this.focused", this.focused);
     this.$emit("focus", evt);
-  }
-  get textColorClass(): string {
-    return this.hasError
-      ? `error--text`
-      : this.focused
-      ? `${this.rootColor}--text`
-      : "";
   }
 }
 </script>
