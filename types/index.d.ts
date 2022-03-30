@@ -21,3 +21,4 @@ export const EList: VueConstructor;
 export const EListGroup: VueConstructor;
 export const EListItem: VueConstructor;
 export const EVue: VueConstructor;
+export const ESelect: VueConstructor;

@@ -78,7 +78,7 @@ import EList from "@/components/List/List.vue";
 import EListGroup from "@/components/List/List-group.vue";
 import EListItem from "@/components/List/List-item.vue";
 @Component({ name: "e-select", components: { EList, EListGroup, EListItem } })
-export default class TextField extends Mixins(Common, Field) {
+export default class ESelect extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: "text" }) type!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
