@@ -1,5 +1,5 @@
 import {
-  withKnobs
+  withKnobs, boolean, text, select
 } from "@storybook/addon-knobs";
 import ESelect from "./component.vue";
 
@@ -13,15 +13,46 @@ export const Select = () => ({
   components: { ESelect },
   template: `
   <div>
-    <e-select v-model="model" :items="items" outlined :rules="[_required]"></e-select>
+    <e-select
+      v-model="model" 
+      :label="label" 
+      :dense="dense" 
+      :color="color" 
+      :items="items" 
+      :detail="detail" 
+      :outlined="outlined" 
+      :rules="[_required]"
+    />
+    <p> model-value: {{model}} </p>
   </div>
   `,
   data: () => ({
     model: null,
-    items: ['item1', 'item2', 'item3']
+    items: [{ label: 'item1', value: 1 }, { label: 'item2', value: 2 }, { label: 'item3', value: 3 }, { label: 'item4', value: 4 }]
   }),
   props: {
-
+    color: {
+      default: select(
+        "color",
+        ["success", "primary", "secondary", "error"],
+        "primary"
+      ),
+    },
+    detail: {
+      default: text("detail", "hint!!"),
+    },
+    label: {
+      default: text("label", "label"),
+    },
+    required: {
+      default: boolean("required", true),
+    },
+    dense: {
+      default: boolean("dense", false),
+    },
+    outlined: {
+      default: boolean("outlined", true),
+    },
   },
   methods: {
     _required(val) {

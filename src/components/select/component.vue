@@ -9,9 +9,9 @@
         class="e-field__slot"
       >
         <div class="e-select__slot" @click="handleSelectSlotCLick">
-          <label for="input-1010" class="e-label"> Standard</label>
+          <label for="input-1010" class="e-label"> {{ label }}</label>
           <div class="e-select__selections">
-            <div class="e-select__selection">{{ model }}</div>
+            <div class="e-select__selection">{{ displayedText(model) }}</div>
             <input
               :id="id"
               readonly="readonly"
@@ -44,14 +44,14 @@
               v-click-outside="handleOutsideMenu"
               class="e-menu__content"
             >
-              <e-list>
+              <e-list :color="color">
                 <e-list-group v-model="model">
                   <e-list-item
                     v-for="(item, index) in items"
                     :key="index"
                     :value="item"
                   >
-                    {{ item }}
+                    {{ displayedText(item) }}
                   </e-list-item>
                 </e-list-group>
               </e-list>
@@ -80,7 +80,7 @@ import EListItem from "@/components/List/List-item.vue";
 @Component({ name: "e-select", components: { EList, EListGroup, EListItem } })
 export default class ESelect extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
-  @Prop({ type: String, default: "text" }) type!: string;
+  @Prop({ type: String, default: "label" }) itemText!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
     string | number | Record<any, any>
   >;
@@ -107,6 +107,11 @@ export default class ESelect extends Mixins(Common, Field) {
     focused: "e-select--is-focused",
     opened: "e-select--is-open",
   };
+
+  displayedText(item: any): string {
+    return this.isObject(item) ? item[this.itemText] : item;
+  }
+
   handleOutsideMenu() {
     if (this.opened) {
       this.opened = false;

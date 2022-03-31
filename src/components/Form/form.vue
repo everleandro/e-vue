@@ -14,7 +14,12 @@ export default class EForm extends Vue {
   localValue = true;
 
   fieldsChild: Array<boolean> = [];
-  fieldsNames: Array<string> = ["e-text-field", "e-checkbox", "e-radio-group"];
+  fieldsNames: Array<string> = [
+    "e-text-field",
+    "e-checkbox",
+    "e-radio-group",
+    "e-select",
+  ];
   unwatch: Array<() => void> = [];
 
   @Watch("fieldsChild", { immediate: true, deep: true })

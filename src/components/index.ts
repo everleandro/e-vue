@@ -17,3 +17,4 @@ export { default as EDrawer } from "@/components/drawer/Component.vue";
 export { default as EList } from "@/components/List/List.vue";
 export { default as EListItem } from "@/components/List/List-item.vue";
 export { default as EListGroup } from "@/components/List/List-group.vue";
+export { default as ESelect } from "@/components/select/component.vue";

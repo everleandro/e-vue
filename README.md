@@ -28,15 +28,24 @@ import {
   ECol,
   EIcon,
   EBar,
+  ESelect,
 } from "@ever.leandros91/e-vue";
 ```
 
 # Setting
 
+### vue app
+
 ```bash
 // src/main.ts
 
 import "@ever.leandros91/e-vue/dist/e-vue.css";
+import Vue from 'vue'
+import { EVue } from '@ever.leandros91/e-vue'
+
+// this line auto imports all components and directives
+Vue.use(EVue)
+
 
 ```
 
@@ -51,8 +60,6 @@ module.exports = {
         prependData: `
         // This is the path to your variables
         @import "@/sass/variables.scss";
-        // This is mandatory
-        @import "@ever.leandros91/e-vue/styles/override.scss";
         `,
       },
     },
@@ -61,7 +68,40 @@ module.exports = {
 
 ```
 
-Example variable file
+### nuxt app
+
+```bash
+// plugins/e-vue.js
+
+import Vue from 'vue'
+import { EVue } from '@ever.leandros91/e-vue'
+
+Vue.use(EVue)
+
+
+```
+
+```bash
+
+// nuxt.config.js
+
+ css: [
+    '@ever.leandros91/e-vue/dist/e-vue.css',
+     // This is the path to your variables
+    '~sass/variables.scss',
+  ],
+
+```
+
+```bash
+
+// sass/variables.scss
+
+ @import '@ever.leandros91/e-vue/styles/override.scss';
+
+```
+
+# Example variable file
 
 ```scss
 // src/sass/variables.scss
@@ -81,6 +121,9 @@ $colors: (
   "red": #f44336,
   "error": #f44336,
 );
+
+// This is mandatory
+@import "@ever.leandros91/e-vue/styles/override.scss";
 ```
 
 # SASS variables

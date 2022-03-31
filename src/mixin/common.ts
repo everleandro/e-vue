@@ -25,4 +25,7 @@ export default class Common extends Vue {
   colorText(color: string): string {
     return `${color}--text`;
   }
+  isObject(arg: any): boolean {
+    return typeof arg === "object" && !Array.isArray(arg) && arg !== null;
+  }
 }

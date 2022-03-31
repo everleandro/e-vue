@@ -3,6 +3,7 @@ import EForm from "./form.vue";
 import ETextField from "../text-field/text-field.vue";
 import ECheckbox from "../checkbox/checkbox.vue";
 import EButton from "../Button/Button.vue";
+import ESelect from "../select/component.vue";
 import ERow from "./../Grid/row.vue";
 import ECol from "./../Grid/col.vue";
 import ERadio from "./../radio/radio.vue";
@@ -14,6 +15,7 @@ export default {
   subcomponents: {
     ETextField,
     ECheckbox,
+    ESelect,
     EButton,
     ERow,
     ECol,
@@ -28,6 +30,7 @@ export const Form = () => ({
     EForm,
     ETextField,
     ECheckbox,
+    ESelect,
     EButton,
     ERow,
     ECol,
@@ -60,6 +63,7 @@ export const Form = () => ({
         outlined
         :rules="[required, emailRule]"
       ></e-text-field>
+      <e-select v-model="selectModel" :rules="[required]" :items="['value1','value2']">
       <e-checkbox
         v-model="fields.acceptRules"
         :rules="[checkboxRule]"
@@ -96,6 +100,7 @@ export const Form = () => ({
     form1Model: null,
     form2Model: null,
     radio: "M",
+    selectModel: null,
     fields: {
       email: "",
       name: "",
