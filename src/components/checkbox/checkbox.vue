@@ -64,7 +64,7 @@ import Common from "@/mixin/common";
 import Field from "@/mixin/field";
 import { Component, Prop, Mixins } from "vue-property-decorator";
 @Component({ name: "e-checkbox" })
-export default class Checkbox extends Mixins(Common, Field) {
+export default class ECheckbox extends Mixins(Common, Field) {
   @Prop({ type: [Boolean, String, Number], default: false })
   falseValue!: boolean;
   @Prop({ type: [Boolean, String, Number], default: true })
@@ -73,6 +73,7 @@ export default class Checkbox extends Mixins(Common, Field) {
   localValue = false;
   availableRootClasses = {
     disabled: "e-field--is-disabled",
+    dense: "e-field--dense",
     readonly: "e-field--is-readonly",
   };
 

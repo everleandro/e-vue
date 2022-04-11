@@ -53,6 +53,7 @@ export default class Radio extends Mixins(Common, Field) {
   localValue = false;
   availableRootClasses = {
     disabled: "e-field--is-disabled",
+    dense: "e-field--dense",
     localDisabled: "e-field--is-disabled",
     localReadonly: "e-field--is-readonly",
     readonly: "e-field--is-readonly",

@@ -1,3 +1,8 @@
-.test-123 {
-  background-color: red;
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  background: rgba(1, 60, 60, 0.05);
+  border: thin solid rgba(0, 0, 0, 0.12);
 }

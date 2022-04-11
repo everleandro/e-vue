@@ -29,6 +29,7 @@ import {
   EIcon,
   EBar,
   ESelect,
+  EExpandTransition,
 } from "@ever.leandros91/e-vue";
 ```
 

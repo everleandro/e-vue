@@ -4,7 +4,7 @@ import * as _directives from "@/directives";
 
 import OurVue from "vue";
 
-export function install(Vue: VueConstructor, args: any = {}) {
+export function install(Vue: VueConstructor, args: any = {}): void {
   if (OurVue !== Vue) {
     console.error(
       `Multiple instances of Vue detected See https://github.com/vuetifyjs/vuetify/issues/4068 If you're seeing "$attrs is readonly", it's caused by this`

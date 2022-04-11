@@ -16,6 +16,7 @@ export default class EBar extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) app!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: Boolean, default: false }) fixed!: boolean;
+  @Prop({ type: Boolean, default: false }) depressed!: boolean;
   @Prop({ type: String, default: "" }) color!: string;
   @Prop({ type: Boolean, default: false }) clipped!: boolean;
 
@@ -23,6 +24,7 @@ export default class EBar extends Mixins(Common) {
     dense: "e-bar--dense",
     fixed: "e-bar--fixed",
     clipped: "e-bar--clipped",
+    depressed: "e-bar--depressed",
     app: "e-app-bar",
     outlined: "outlined",
   };

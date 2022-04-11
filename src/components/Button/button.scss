@@ -35,9 +35,11 @@
       0 1px 5px 0 rgb(0, 0, 0, 0.12);
   }
   &--block {
-    display: flex;
-    flex: 1 0 auto;
-    min-width: 100% !important;
+    &:not(.e-btn--fab):not(.e-btn--icon) {
+      display: flex;
+      flex: 1 0 auto;
+      min-width: 100% !important;
+    }
   }
 
   &:not(.e-btn--outlined) {

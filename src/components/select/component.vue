@@ -90,12 +90,12 @@ export default class ESelect extends Mixins(Common, Field) {
   opened = false;
 
   @Watch("opened")
-  onOpenedChange(value: boolean) {
+  onOpenedChange(value: boolean): void {
     this.focused = value;
   }
 
   @Watch("model")
-  onModelChange() {
+  onModelChange(): void {
     this.opened = false;
   }
 
@@ -104,6 +104,7 @@ export default class ESelect extends Mixins(Common, Field) {
     readonly: "e-field--is-readonly",
     hasError: "e-field--has-error",
     outlined: "e-select--outlined",
+    dense: "e-field--dense",
     focused: "e-select--is-focused",
     opened: "e-select--is-open",
   };

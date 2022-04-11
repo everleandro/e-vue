@@ -20,11 +20,11 @@ export default class ECol extends Mixins(Common) {
 
   get colClass(): Record<string, string | null> {
     const col = this.col ? `col-${this.col}` : null;
-    const xs = this.xs ? `col-lg-${this.xs}` : null;
+    const xs = this.xs ? `col-xs-${this.xs}` : null;
     const sm = this.sm ? `col-sm-${this.sm}` : null;
     const md = this.md ? `col-md-${this.md}` : null;
     const lg = this.lg ? `col-lg-${this.lg}` : null;
-    const xl = this.xl ? `col-lg-${this.xl}` : null;
+    const xl = this.xl ? `col-xl-${this.xl}` : null;
     return { col, xs, sm, lg, md, xl };
   }
 }

@@ -3,11 +3,11 @@ import { install } from "@/install";
 export default class EVue {
   static installed: boolean;
   static version: string;
-  static install: (Vue: VueConstructor, args?: any) => void;
+  static install: (Vue: VueConstructor, args?: never) => void;
   constructor() {
     EVue.installed = true;
   }
-  init(root: any, ssrContext: any) {
+  init(root: never, ssrContext: never): void {
     console.log("root", root);
     console.log("ssrContext", ssrContext);
   }

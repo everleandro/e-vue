@@ -167,6 +167,11 @@
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
     width: 100%;
   }
+  &--dense {
+    .e-field__slot {
+      margin-bottom: 0;
+    }
+  }
   &--is-disabled:not(.e-field--is-readonly) {
     pointer-events: none;
     color: rgba(0, 0, 0, 0.38);
