@@ -59,15 +59,17 @@
                 :class="colorConfig.thumbColor"
               >
                 <div>
-                  <span>{{ model }}</span>
+                  <span>
+                    <slot name="thumb-label">{{ model }}</slot>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="e-messages">
-        <div class="e-messages__wrapper"></div>
+      <div v-if="!dense" class="e-messages" :class="rootColor + '--text'">
+        <div class="e-messages__wrapper">{{ details }}</div>
       </div>
     </div>
   </div>
