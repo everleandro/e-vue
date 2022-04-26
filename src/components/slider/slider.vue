@@ -44,7 +44,7 @@
               'e-slider__thumb-container--active': dragging,
               [colorConfig.thumbColor + '--text']: true,
             }"
-            :style="slider_tyle"
+            :style="sliderStyle"
             @focus="focus"
             @focusout="focusout"
           >
@@ -83,6 +83,7 @@ import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
 export default class ESlider extends Mixins(Common, Field) {
   @Prop({ type: Number, default: 100 }) max!: number;
   @Prop({ type: Number, default: 0 }) min!: number;
+  @Prop({ type: Number, default: 10 }) step!: number;
   @Prop({ type: Boolean, default: false }) decimal!: boolean;
   @Prop({ type: Boolean, default: false }) thumbLabel!: boolean;
   @Prop({ type: Boolean, default: false }) vertical!: boolean;
@@ -129,7 +130,6 @@ export default class ESlider extends Mixins(Common, Field) {
 
   mounted(): void {
     this.$nextTick(function () {
-      this.offset = this.slider.getBoundingClientRect().left;
       if (window) {
         window.addEventListener("resize", this.calculatePosition);
       }
@@ -148,7 +148,7 @@ export default class ESlider extends Mixins(Common, Field) {
     };
   }
 
-  get slider_tyle(): Record<string, string> {
+  get sliderStyle(): Record<string, string> {
     return { left: `${this.percent()}%` };
   }
 
@@ -202,19 +202,27 @@ export default class ESlider extends Mixins(Common, Field) {
   dragStart(): void {
     this.dragging = true;
   }
+  get calculatedStep(): number {
+    return this.width / (this.max - this.min);
+  }
   calculatePosition(): void {
     this.width = this.slider.offsetWidth;
-    const step = this.width / this.max;
+    const min = Math.round(this.model);
+    const max = Math.round(this.model);
     const val =
-      (this.model as number) > this.max ? this.max : (this.model as number);
-    this.position = step * val;
+      max >= this.max
+        ? this.max
+        : min <= this.min
+        ? this.min
+        : (this.model as number);
+    this.position = this.calculatedStep * val;
   }
   getPosition(evt: MouseEvent): number {
     return evt.clientX - this.offset;
   }
   setPosition(pos: number): void {
     const value = this.calculateValue(pos);
-    if (pos >= 0 && pos <= this.width && this.max >= value) {
+    if (pos >= this.min && pos <= this.width && this.max >= value) {
       this.position = pos;
       if (value !== this.model) {
         this.model = value + this.min;
@@ -222,7 +230,8 @@ export default class ESlider extends Mixins(Common, Field) {
     }
   }
   calculateValue(pos: number): number {
-    const step = this.width / (this.max - this.min);
+    this.offset = this.slider.getBoundingClientRect().left;
+    const step = this.calculatedStep;
     const result = pos != 0 ? pos / step : 0;
     return this.decimal
       ? Math.round((result + Number.EPSILON) * 10) / 10
@@ -230,9 +239,10 @@ export default class ESlider extends Mixins(Common, Field) {
   }
   dragEnd(): void {
     const value = this.calculateValue(this.position);
+    const step = this.calculatedStep;
     if (this.min <= value)
       setTimeout(() => {
-        this.position = value * (this.width / (this.max - this.min));
+        this.position = value * step;
       });
     this.dragging = false;
   }

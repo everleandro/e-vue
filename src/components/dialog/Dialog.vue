@@ -26,7 +26,7 @@ import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
 export default class EDIalog extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) fullscreen!: boolean;
   @Prop({ type: Boolean, default: false }) value!: boolean;
-  @Prop({ type: Boolean, default: false }) persistant!: boolean;
+  @Prop({ type: Boolean, default: false }) persistent!: boolean;
   @Prop({ type: [Number, String], default: null }) maxWidth!: string | number;
   animated = false;
   active = false;
@@ -53,7 +53,7 @@ export default class EDIalog extends Mixins(Common) {
     fullscreen: "e-dialog--fullscreen",
     animated: "e-dialog--animated",
     model: "e-dialog--active",
-    persistant: "e-dialog--persistant",
+    persistent: "e-dialog--persistant",
   };
 
   handleExcListener({ key }: KeyboardEvent) {
@@ -76,7 +76,7 @@ export default class EDIalog extends Mixins(Common) {
     return { ...maxWidth };
   }
   close(): void {
-    if (this.persistant) {
+    if (this.persistent) {
       this.animated = true;
       setTimeout((): void => {
         this.animated = false;
