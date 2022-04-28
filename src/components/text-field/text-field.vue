@@ -8,12 +8,19 @@
           </div>
         </div>
         <div class="e-text-field__slot">
-          <label :for="id" class="e-label"> {{ label }}</label>
+          <label
+            :for="id"
+            class="e-label"
+            :class="{ [textColorClass]: !outlined }"
+          >
+            {{ label }}
+          </label>
           <input
             :id="id"
             :value="model"
             :maxlength="limit"
             :type="type"
+            :placeholder="placeholder"
             @blur="handleBlur"
             @input="handleInput"
             @focus="handleFocus"
@@ -31,7 +38,7 @@
             {{ details }}
           </div>
         </div>
-        <div v-if="counter" class="e-counter" :class="textColorClass">
+        <div v-if="counter || limit" class="e-counter" :class="textColorClass">
           {{ model.length }}
           <template v-if="limit"> / {{ limit }} </template>
         </div>
@@ -48,6 +55,7 @@ import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
 export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: null }) prependIcon!: boolean;
+  @Prop({ type: String, default: undefined }) placeholder!: string;
   @Prop({ type: String, default: "text" }) type!: string;
   @Prop({ type: String, default: null }) appendIcon!: boolean;
   localValue = "";

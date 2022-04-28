@@ -19,7 +19,7 @@ export default class Field extends Vue {
   })
   rules!: ((param: string | boolean) => string | boolean)[];
   @Prop({ type: String, default: "primary" }) color!: string;
-  @Prop({ type: Number, default: null }) limit!: number;
+  @Prop({ type: [Number, String], default: undefined }) limit!: number | string;
   @Prop({ type: String, default: "" }) label!: string;
   @Prop({ default: null }) value!: any;
 

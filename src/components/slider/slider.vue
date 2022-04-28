@@ -81,8 +81,8 @@ import Field from "@/mixin/field";
 import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
 @Component
 export default class ESlider extends Mixins(Common, Field) {
-  @Prop({ type: Number, default: 100 }) max!: number;
-  @Prop({ type: Number, default: 0 }) min!: number;
+  @Prop({ type: [Number, String], default: 100 }) max!: number | string;
+  @Prop({ type: [Number, String], default: 0 }) min!: number | string;
   @Prop({ type: Number, default: 10 }) step!: number;
   @Prop({ type: Boolean, default: false }) decimal!: boolean;
   @Prop({ type: Boolean, default: false }) thumbLabel!: boolean;
@@ -203,17 +203,17 @@ export default class ESlider extends Mixins(Common, Field) {
     this.dragging = true;
   }
   get calculatedStep(): number {
-    return this.width / (this.max - this.min);
+    return this.width / (parseInt(this.max) - parseInt(this.min));
   }
   calculatePosition(): void {
     this.width = this.slider.offsetWidth;
     const min = Math.round(this.model);
     const max = Math.round(this.model);
     const val =
-      max >= this.max
-        ? this.max
-        : min <= this.min
-        ? this.min
+      max >= parseInt(this.max)
+        ? parseInt(this.max)
+        : min <= parseInt(this.min)
+        ? parseInt(this.min)
         : (this.model as number);
     this.position = this.calculatedStep * val;
   }
@@ -222,7 +222,7 @@ export default class ESlider extends Mixins(Common, Field) {
   }
   setPosition(pos: number): void {
     const value = this.calculateValue(pos);
-    if (pos >= this.min && pos <= this.width && this.max >= value) {
+    if (pos >= this.min && pos <= this.width && parseInt(this.max) >= value) {
       this.position = pos;
       if (value !== this.model) {
         this.model = value + this.min;

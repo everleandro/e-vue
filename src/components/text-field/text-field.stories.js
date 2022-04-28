@@ -25,6 +25,7 @@ export const TextField = () => ({
       :limit="limit"
       :detail="detail"
       :color="color"
+      prepend-icon="mdi mdi-account"
       :rules="required?[_required]:[]"
       :counter="counter"
       :outlined="outlined"
@@ -33,7 +34,7 @@ export const TextField = () => ({
   </div>
   `,
   data: () => ({
-    model: ''
+    model: "",
   }),
   props: {
     color: {
