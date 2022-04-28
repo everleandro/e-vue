@@ -8,7 +8,7 @@ export default class EVue {
     EVue.installed = true;
   }
   init(root: never, ssrContext: never): void {
-    console.log("root", root);
+    console.log("[root]", root);
     console.log("ssrContext", ssrContext);
   }
 }
