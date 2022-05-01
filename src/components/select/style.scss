@@ -4,9 +4,10 @@
     right: 0px;
     margin-bottom: -2px;
   }
+
   &--is-open {
     .e-field__icon.e-field__icon--append {
-      .e-icon {
+      .e-icon.flip-icon {
         transform: rotate(180deg);
       }
     }
@@ -23,8 +24,14 @@
       }
     }
     .e-field__slot {
-      border: 1px solid;
+      border-style: solid;
+      border-width: 1px;
       border-color: rgba(0, 0, 0, 0.1);
+    }
+    &.e-select--is-hovered {
+      .e-field__slot {
+        border-color: currentColor;
+      }
     }
   }
   &__slot {

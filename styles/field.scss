@@ -177,6 +177,18 @@
     pointer-events: none;
     color: rgba(0, 0, 0, 0.38);
   }
+  button {
+    color: currentColor;
+    cursor: pointer;
+  }
+  &.e-select--outlined,
+  &.e-text-field--outlined {
+    &.e-field--is-disabled {
+      .e-field__slot {
+        border-style: dashed;
+      }
+    }
+  }
   &--is-readonly {
     pointer-events: none;
   }

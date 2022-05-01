@@ -1,15 +1,25 @@
 <template>
   <div :class="rootClass('e-field e-select ' + textColorClass)">
     <div class="e-field__control">
-      <div
-        role="button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        aria-owns="list-1010"
-        class="e-field__slot"
-      >
-        <div class="e-select__slot" @click="handleSelectSlotCLick">
-          <label for="input-1010" class="e-label"> {{ label }}</label>
+      <div role="button" aria-expanded="false" class="e-field__slot">
+        <div v-if="prependIcon" class="e-field__prepend-inner">
+          <div class="e-field__icon e-field__icon--prepend-inner">
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="prependIcon"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="e-select__slot"
+          @click="handleSelectSlotCLick"
+          @mouseenter="handleHover(true)"
+          @mouseleave="handleHover(false)"
+        >
+          <label :for="id" class="e-label" :class="textColorClass">
+            {{ label }}
+          </label>
           <div class="e-select__selections">
             <div class="e-select__selection">{{ displayedText(model) }}</div>
             <input
@@ -18,12 +28,38 @@
               type="text"
               aria-readonly="false"
               autocomplete="off"
-              aria-activedescendant="list-item-1177-1"
             />
+          </div>
+          <div v-show="showClearable" class="e-field__append-inner">
+            <div
+              class="e-field__icon e-field__icon--clear e-icon--size-default"
+            >
+              <button
+                type="button"
+                aria-label="clear icon"
+                class="e-icon"
+                @click="clear"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  aria-hidden="true"
+                  class="e-icon__svg"
+                >
+                  <path
+                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
           </div>
           <div class="e-field__append-inner">
             <div class="e-field__icon e-field__icon--append">
-              <span aria-hidden="true" class="e-icon e-icon--size-x-large">
+              <span
+                aria-hidden="true"
+                class="e-icon flip-icon e-icon--size-default"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -35,6 +71,16 @@
                 </svg>
               </span>
             </div>
+          </div>
+        </div>
+
+        <div v-if="appendIcon" class="e-field__append-inner">
+          <div class="e-field__icon e-field__icon--append">
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="appendIcon"
+            ></i>
           </div>
         </div>
         <div class="e-menu">
@@ -80,9 +126,12 @@ import EListItem from "@/components/List/List-item.vue";
 @Component({ name: "e-select", components: { EList, EListGroup, EListItem } })
 export default class ESelect extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
+  @Prop({ type: String, default: undefined }) prependIcon!: string;
+  @Prop({ type: Boolean, default: false }) clearable!: boolean;
+  @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
-    string | number | Record<any, any>
+    string | number | Record<never, never>
   >;
 
   localValue = "";
@@ -107,19 +156,25 @@ export default class ESelect extends Mixins(Common, Field) {
     dense: "e-field--dense",
     focused: "e-select--is-focused",
     opened: "e-select--is-open",
+    hovered: "e-select--is-hovered",
   };
 
-  displayedText(item: any): string {
+  displayedText(item: never): string {
     return this.isObject(item) ? item[this.itemText] : item;
   }
-
-  handleOutsideMenu() {
+  get showClearable(): boolean {
+    return this.clearable && !!this.model;
+  }
+  clear(): void {
+    this.model = null;
+  }
+  handleOutsideMenu(): void {
     if (this.opened) {
       this.opened = false;
       this.dirty = true;
     }
   }
-  handleSelectSlotCLick() {
+  handleSelectSlotCLick(): void {
     this.opened = !this.opened;
   }
 }

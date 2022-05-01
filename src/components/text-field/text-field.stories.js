@@ -22,6 +22,7 @@ export const TextField = () => ({
       :disabled="disabled"
       :dense="dense"
       :readonly="readonly"
+      :clearable="clearable"
       :limit="limit"
       :detail="detail"
       :color="color"
@@ -61,6 +62,9 @@ export const TextField = () => ({
     },
     disabled: {
       default: boolean("disabled", false),
+    },
+    clearable: {
+      default: boolean("clearable", false),
     },
     outlined: {
       default: boolean("outlined", true),

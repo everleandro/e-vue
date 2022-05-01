@@ -29,6 +29,7 @@ export default class Field extends Vue {
   dirty = false;
   localReadonly!: boolean;
   focused = false;
+  hovered = false;
 
   get model(): any {
     return this.value !== null ? this.value : this.localValue;
@@ -37,6 +38,9 @@ export default class Field extends Vue {
     this.$emit("input", val);
     this.localValue = val;
     this.dirty = true;
+  }
+  handleHover(hovered: boolean): void {
+    this.hovered = hovered;
   }
   get rootColor(): string {
     return this.disabled || this.localDisabled
@@ -59,7 +63,7 @@ export default class Field extends Vue {
   get textColorClass(): string {
     return this.hasError
       ? `error--text`
-      : this.focused
+      : this.focused || this.hovered
       ? `${this.rootColor}--text`
       : "";
   }

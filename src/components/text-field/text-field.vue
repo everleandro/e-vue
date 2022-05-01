@@ -4,15 +4,19 @@
       <div class="e-field__slot">
         <div v-if="prependIcon" class="e-field__prepend-inner">
           <div class="e-field__icon e-field__icon--prepend-inner">
-            <i aria-hidden="true" :class="prependIcon"></i>
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="prependIcon"
+            ></i>
           </div>
         </div>
-        <div class="e-text-field__slot">
-          <label
-            :for="id"
-            class="e-label"
-            :class="{ [textColorClass]: !outlined }"
-          >
+        <div
+          class="e-text-field__slot"
+          @mouseenter="handleHover(true)"
+          @mouseleave="handleHover(false)"
+        >
+          <label :for="id" class="e-label" :class="textColorClass">
             {{ label }}
           </label>
           <input
@@ -26,9 +30,14 @@
             @focus="handleFocus"
           />
         </div>
+
         <div v-if="appendIcon" class="e-field__append-inner">
           <div class="e-field__icon e-field__icon--append">
-            <i aria-hidden="true" :class="appendIcon"></i>
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="appendIcon"
+            ></i>
           </div>
         </div>
       </div>
@@ -56,6 +65,7 @@ export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: null }) prependIcon!: boolean;
   @Prop({ type: String, default: undefined }) placeholder!: string;
+  @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: "text" }) type!: string;
   @Prop({ type: String, default: null }) appendIcon!: boolean;
   localValue = "";
@@ -65,10 +75,18 @@ export default class TextField extends Mixins(Common, Field) {
     hasError: "e-field--has-error",
     outlined: "e-text-field--outlined",
     focused: "e-text-field--is-focused",
+    hovered: "e-text-field--is-hovered",
   };
   @Watch("model")
-  handeler() {
+  handler(): void {
     this.dirty = true;
+  }
+
+  clear(): void {
+    this.model = "";
+  }
+  get showClearable(): boolean {
+    return this.clearable && `${this.model}`.length > 0;
   }
   handleBlur(evt: InputEvent): void {
     this.focused = false;
@@ -80,7 +98,6 @@ export default class TextField extends Mixins(Common, Field) {
   }
   handleFocus(evt: InputEvent): void {
     this.focused = true;
-    console.log("this.focused", this.focused);
     this.$emit("focus", evt);
   }
 }

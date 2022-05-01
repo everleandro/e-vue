@@ -2,19 +2,27 @@
 .e-text-field {
   padding-top: 12px;
   margin-top: 4px;
+
   &--outlined {
+    &.e-text-field--is-hovered {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
     &.e-text-field--is-focused {
       .e-field__slot {
         border-color: currentColor;
       }
     }
+
     &.e-field--has-error {
       .e-field__slot {
         border-color: currentColor;
       }
     }
     .e-field__slot {
-      border: 1px solid;
+      border-style: solid;
+      border-width: 1px;
       border-color: rgba(0, 0, 0, 0.1);
     }
   }

@@ -31,9 +31,9 @@ export default class EButton extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) XLarge!: boolean;
   @Prop({ type: Boolean, default: false }) rounded!: boolean;
   @Prop({ type: Boolean, default: false }) icon!: boolean;
+  @Prop({ type: [String, Number], default: undefined }) width!: boolean;
+  @Prop({ type: [String, Number], default: undefined }) height!: boolean;
 
-  width = 0;
-  height = 0;
   availableRootClasses = {
     disabled: "e-btn--disabled",
     icon: "e-btn--icon",

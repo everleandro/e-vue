@@ -63,7 +63,7 @@ export const Form = () => ({
         outlined
         :rules="[required, emailRule]"
       ></e-text-field>
-      <e-select v-model="selectModel" :rules="[required]" :items="['value1','value2']">
+      <e-select v-model="selectModel" :rules="[required]" :items="['value1','value2']"/>
       <e-checkbox
         v-model="fields.acceptRules"
         :rules="[checkboxRule]"

@@ -16,7 +16,7 @@ export default class Common extends Vue {
     objCLass: Record<string, string> = this.availableRootClasses
   ): string {
     const result = Object.keys(objCLass).filter(
-      (key: string) => !!(this as any)[key]
+      (key: string) => !!(this as never)[key]
     );
     return (
       `${_default} ` + result.map((key: string) => objCLass[key]).join(" ")
@@ -25,7 +25,7 @@ export default class Common extends Vue {
   colorText(color: string): string {
     return `${color}--text`;
   }
-  isObject(arg: any): boolean {
+  isObject(arg: never): boolean {
     return typeof arg === "object" && !Array.isArray(arg) && arg !== null;
   }
 }
