@@ -55,7 +55,7 @@ export default class EButton extends Mixins(Common) {
   }
 
   get btnClass(): string {
-    return this.rootClass(`e-btn--${this.color} e-btn`);
+    return this.rootClass(`e-btn--${this.color} e-btn e-btn--69`);
   }
 
   get tag(): string {
