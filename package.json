@@ -1,6 +1,6 @@
 {
   "name": "@ever.leandros91/e-vue",
-  "version": "0.1.70",
+  "version": "0.1.71",
   "private": false,
   "main": "./dist/e-vue.umd.js",
   "files": [
