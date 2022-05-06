@@ -203,17 +203,17 @@ export default class ESlider extends Mixins(Common, Field) {
     this.dragging = true;
   }
   get calculatedStep(): number {
-    return this.width / (parseInt(this.max) - parseInt(this.min));
+    return this.width / (parseInt(`${this.max}`) - parseInt(`${this.min}`));
   }
   calculatePosition(): void {
     this.width = this.slider.offsetWidth;
     const min = Math.round(this.model);
     const max = Math.round(this.model);
     const val =
-      max >= parseInt(this.max)
-        ? parseInt(this.max)
-        : min <= parseInt(this.min)
-        ? parseInt(this.min)
+      max >= parseInt(`${this.max}`)
+        ? parseInt(`${this.max}`)
+        : min <= parseInt(`${this.min}`)
+        ? parseInt(`${this.min}`)
         : (this.model as number);
     this.position = this.calculatedStep * val;
   }
@@ -222,10 +222,14 @@ export default class ESlider extends Mixins(Common, Field) {
   }
   setPosition(pos: number): void {
     const value = this.calculateValue(pos);
-    if (pos >= this.min && pos <= this.width && parseInt(this.max) >= value) {
+    if (
+      pos >= this.min &&
+      pos <= this.width &&
+      parseInt(`${this.max}`) >= value
+    ) {
       this.position = pos;
       if (value !== this.model) {
-        this.model = value + this.min;
+        this.model = value + parseInt(`${this.min}`);
       }
     }
   }
