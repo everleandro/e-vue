@@ -12,6 +12,9 @@
     }
   }
   &--column {
+    .e-field__slot {
+      height: auto;
+    }
     .e-radio {
       &:not(:last-child):not(:only-child) {
         margin-bottom: 8px;
