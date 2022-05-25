@@ -1,16 +1,20 @@
 <template>
-  <form v-on="$listeners">
+  <form :class="rootClass('e-form')" @submit="$emit('submit')">
     <slot></slot>
   </form>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { Component, Mixins, Prop, Vue, Watch } from "vue-property-decorator";
 import Field from "@/mixin/field";
+import Common from "@/mixin/common";
 @Component
-export default class EForm extends Vue {
+export default class EForm extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) value!: boolean;
   @Prop({ type: Boolean, default: true }) lazy!: boolean;
+  @Prop({ type: Boolean, default: false }) grid!: boolean;
+  @Prop({ type: [String], default: "unset" }) LabelMinWidth!: string;
+  @Prop({ type: Boolean, default: false }) inputsHoverState!: boolean;
   localValue = true;
 
   fieldsChild: Array<boolean> = [];
@@ -20,11 +24,14 @@ export default class EForm extends Vue {
     "e-radio-group",
     "e-select",
   ];
+  availableRootClasses = {
+    grid: "row no-gutters",
+  };
   unwatch: Array<() => void> = [];
 
   @Watch("fieldsChild", { immediate: true, deep: true })
   onFieldsChildChanged(val: Array<boolean>): void {
-    this.model = !val.find((e) => e === true);
+    this.model = !val.find((e) => e);
   }
 
   get model(): boolean {
@@ -51,9 +58,11 @@ export default class EForm extends Vue {
     const testList: Array<Field> = this.recursive(this, []);
     this.fieldsChild = new Array(testList.length).fill(false);
     testList.forEach((vueComponent: Field, index) => {
+      vueComponent.inputsHoverState = this.inputsHoverState;
+      vueComponent.LabelMinWidth = this.LabelMinWidth;
       if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
-      this.fieldsChild.splice(index, 1, !!vueComponent.hasError);
+      this.fieldsChild.splice(index, 1, vueComponent.hasError);
       const unwatch = this.$watch(
         () => vueComponent.hasError,
         (val) => {

@@ -34,7 +34,7 @@
             :id="id"
             role="checkbox"
             type="checkbox"
-            @click="change"
+            @input="change"
             :value="checked"
           />
           <div
@@ -44,11 +44,7 @@
             @click="change"
           ></div>
         </div>
-        <label
-          :for="id"
-          class="e-label"
-          style="left: 0px; right: auto; position: relative"
-        >
+        <label :for="id" class="e-label" :style="labelStyle">
           {{ label }}
         </label>
       </div>
@@ -65,8 +61,11 @@ import Field from "@/mixin/field";
 import { Component, Prop, Mixins } from "vue-property-decorator";
 @Component({ name: "e-checkbox" })
 export default class ECheckbox extends Mixins(Common, Field) {
+  @Prop({ type: Boolean, default: true })
+  outlined!: boolean;
   @Prop({ type: [Boolean, String, Number], default: false })
   falseValue!: boolean;
+  @Prop({ type: [Boolean, String, Number], default: true })
   @Prop({ type: [Boolean, String, Number], default: true })
   trueValue!: boolean;
 
@@ -75,6 +74,7 @@ export default class ECheckbox extends Mixins(Common, Field) {
     disabled: "e-field--is-disabled",
     dense: "e-field--dense",
     readonly: "e-field--is-readonly",
+    outlined: "e-field--outlined",
   };
 
   get checked(): boolean {

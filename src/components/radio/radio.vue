@@ -33,7 +33,7 @@
         :class="rootColor + '--text'"
       ></div>
     </div>
-    <label class="e-label" style="left: 0px; right: auto; position: relative">
+    <label class="e-label">
       <slot name="label"> {{ label }} </slot>
     </label>
   </div>

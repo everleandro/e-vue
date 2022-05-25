@@ -39,60 +39,98 @@ export const Form = () => ({
   },
   template: `
   <div class="container">
-  <p>
-    The internal e-form component makes it easy to add validation to form
-    inputs. All input components have a rules prop which accepts a mixed array
-    of types function. These allow you to specify conditions in which the
-    input is valid or invalid. Whenever the value of an input is changed, each
-    function in the array will receive the new value and each array element
-    will be evaluated. If a function or array element returns false or a
-    string, validation has failed and the string value will be presented as an
-    error message.
-  </p>
-  <div class="outlined pa-3 mt-10">
-    <h3>Lazy: true</h3>
-    <e-form ref="form1" v-model="form1Model">
-      <e-text-field
+  <e-form ref="form1" v-model="form1Model" label-min-width="111px" grid>
+    <e-text-field
         v-model="fields.name"
-        label="Name"
+        label="NAME"
+        lg="12"
+        md="16"
+        dense
         outlined
-      ></e-text-field>
-      <e-text-field
-        v-model="fields.email"
-        label="E-mail *"
+    ></e-text-field>
+    <e-radio-group
+        v-model="fields.gender"
+        row
+        lg="6"
+        md="8"
+        dense
+        label="GENDER"
         outlined
-        :rules="[required, emailRule]"
-      ></e-text-field>
-      <e-select v-model="selectModel" :rules="[required]" :items="['value1','value2']"/>
-      <e-checkbox
-        v-model="fields.acceptRules"
-        :rules="[checkboxRule]"
-        label="I accept the policies"
-      ></e-checkbox>
-    </e-form>
-    <e-radio-group v-model="radio" row>
-      <e-radio label="Masculino" input-value="M"></e-radio>
-      <e-radio label="Femenino" input-value="F"></e-radio>
-    </e-radio-group>
-    <hr class="e-divider mb-3" />
-    <e-button color="primary" :disabled="!form1Model" @click="validate()"
-      >Validate</e-button
+        default-value="one"
     >
-    <e-button color="primary" @click="reset()">Reset validation</e-button>
-  </div>
-
-  <div class="outlined pa-3 mt-24">
-    <h3 class="mt-10">Lazy: <code>false</code></h3>
-    <e-form ref="form2" v-model="form2Model" :lazy="false">
-      <e-text-field label="Name" outlined></e-text-field>
-      <e-text-field
-        label="Last Name *"
-        :rules="[required]"
+      <e-radio label="F" input-value="one"/>
+      <e-radio label="M" input-value="two"/>
+    </e-radio-group>
+    <e-text-field
+        v-model="fields.birthDate"
+        label="BIRTHDATE"
+        placeholder="dd/mm/yyyy"
+        md="12"
+        lg="6"
+        dense
         outlined
-      ></e-text-field>
-    </e-form>
-    <e-button color="primary" :disabled="!form2Model">Submit</e-button>
-  </div>
+    />
+    <e-text-field
+        v-model="fields.surname"
+        label="SURNAME"
+        md="12"
+        lg="12"
+        dense
+        outlined
+    ></e-text-field> 
+    <e-text-field
+        v-model="fields.dni"
+        label="DNI"
+        md="12"
+        lg="12"
+        append-icon="mdi mdi-card-account-details"
+        dense
+        outlined
+    ></e-text-field> 
+    <e-text-field
+        v-model="fields.secondName"
+        label="SECOND NAME"
+        md="12"
+        lg="12"
+        dense
+        outlined
+    ></e-text-field>
+    <e-text-field
+        v-model="fields.phone"
+        md="12"
+        lg="6"
+        dense
+        placeholder="+00 0000 0000"
+        prepend-icon="mdi mdi-phone"
+        outlined
+    ></e-text-field>
+    <e-text-field
+        v-model="fields.phone2"
+        md="12"
+        lg="6"
+        dense
+        placeholder="+00 0000 0000"
+        prepend-icon="mdi mdi-phone"
+        outlined
+    ></e-text-field>
+    <e-text-field
+        v-model="fields.address"
+        md="12"
+        lg="18"
+        dense
+        label="ADDRESS"
+        outlined
+    ></e-text-field>
+    <e-text-field
+        v-model="fields.pc"
+        md="12"
+        lg="6"
+        dense
+        label="P.C."
+        placeholder="0000"
+        outlined
+    ></e-text-field>
+  </e-form>
 </div>
   `,
   props: {},
@@ -101,10 +139,18 @@ export const Form = () => ({
     form2Model: null,
     radio: "M",
     selectModel: null,
+    radioModel: null,
     fields: {
       email: "",
+      birthDate: "",
+      address: "",
       name: "",
-      lastName: "",
+      dni: "",
+      pc: "",
+      phone: "",
+      phone2: "",
+      surname: "",
+      secondName: "",
       gender: "M",
       acceptRules: false,
     },

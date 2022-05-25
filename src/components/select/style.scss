@@ -12,28 +12,7 @@
       }
     }
   }
-  &--outlined {
-    &.e-select--is-open {
-      .e-field__slot {
-        border-color: currentColor;
-      }
-    }
-    &.e-field--has-error {
-      .e-field__slot {
-        border-color: currentColor;
-      }
-    }
-    .e-field__slot {
-      border-style: solid;
-      border-width: 1px;
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-    &.e-select--is-hovered {
-      .e-field__slot {
-        border-color: currentColor;
-      }
-    }
-  }
+
   &__slot {
     cursor: pointer;
     position: relative;

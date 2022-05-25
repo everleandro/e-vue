@@ -181,12 +181,33 @@
     color: currentColor;
     cursor: pointer;
   }
-  &.e-select--outlined,
-  &.e-text-field--outlined {
+
+  &--outlined {
     &.e-field--is-disabled {
       .e-field__slot {
         border-style: dashed;
       }
+    }
+    &.e-field--is-hovered {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
+    &.e-field--is-focused {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
+
+    &.e-field--has-error {
+      .e-field__slot {
+        border-color: currentColor;
+      }
+    }
+    .e-field__slot {
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgba(0, 0, 0, 0.1);
     }
   }
   &--is-readonly {

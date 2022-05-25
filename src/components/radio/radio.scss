@@ -5,6 +5,12 @@
   outline: none;
 }
 .e-field--radio-group {
+  > .e-field__control > .e-field__slot {
+    > label {
+      padding-right: 8px;
+      display: none;
+    }
+  }
   &--column {
     .e-radio {
       &:not(:last-child):not(:only-child) {
@@ -22,6 +28,11 @@
     width: 100%;
   }
   &--row {
+    > .e-field__control > .e-field__slot {
+      > label {
+        display: block;
+      }
+    }
     .e-radio {
       &:not(:last-child):not(:only-child) {
         margin-right: 16px;

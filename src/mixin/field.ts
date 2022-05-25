@@ -13,6 +13,7 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) readonly!: boolean;
   @Prop({ type: Boolean, default: false }) counter!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
+  @Prop({ type: String, default: undefined }) prependIcon!: string;
   @Prop({
     type: Array as PropType<((param: any) => string | boolean)[]>,
     default: () => [],
@@ -30,6 +31,9 @@ export default class Field extends Vue {
   localReadonly!: boolean;
   focused = false;
   hovered = false;
+  //this section is reserved for parentForm
+  inputsHoverState = true;
+  LabelMinWidth: string | null = null;
 
   get model(): any {
     return this.value !== null ? this.value : this.localValue;
@@ -39,8 +43,18 @@ export default class Field extends Vue {
     this.localValue = val;
     this.dirty = true;
   }
+  update(): void {
+    console.log(this.$el);
+  }
+  get labelStyle(): Record<string, string> {
+    let minWidth = this.LabelMinWidth || "unset";
+    if (this.prependIcon && this.LabelMinWidth) {
+      minWidth = `calc(${minWidth} - 28px)`;
+    }
+    return { minWidth };
+  }
   handleHover(hovered: boolean): void {
-    this.hovered = hovered;
+    this.inputsHoverState && (this.hovered = hovered);
   }
   get rootColor(): string {
     return this.disabled || this.localDisabled

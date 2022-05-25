@@ -2,7 +2,12 @@
   <div :class="rootClass('e-field e-field__slider')">
     <div class="e-field__control">
       <div class="e-field__slot">
-        <label :for="id" class="e-label">
+        <label
+          :for="id"
+          class="e-label"
+          :class="textColorClass"
+          :style="labelStyle"
+        >
           {{ label }}
         </label>
         <div

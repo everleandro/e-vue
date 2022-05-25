@@ -1,35 +1,41 @@
 @use "sass:math";
 .row {
   margin: -$space-base;
-}
-.col {
-  padding: $space-base;
-  box-sizing: border-box;
-  @for $i from 1 through $grid-cols {
-    $_col_percent: math.div($i, $grid-cols) * 100%;
-    &-#{$i} {
-      flex: 0 0 $_col_percent;
-      max-width: $_col_percent;
-    }
+  $extra_px: 0px;
+  &.e-form {
+    $extra_px: 1px;
   }
-  @for $i from 1 through $grid-cols {
-    $_col_percent: math.div($i, $grid-cols) * 100%;
-    &-sm-#{$i} {
-      @include _sm {
+  .col {
+    padding: $space-base;
+    box-sizing: border-box;
+    @for $i from 1 through $grid-cols {
+      $_col_percent_: math.div($i, $grid-cols) * 100%;
+      $_col_percent: calc(#{$_col_percent_} + #{$extra_px});
+      &-#{$i} {
         flex: 0 0 $_col_percent;
         max-width: $_col_percent;
       }
     }
-    &-md-#{$i} {
-      @include _md {
-        flex: 0 0 $_col_percent;
-        max-width: $_col_percent;
+    @for $i from 1 through $grid-cols {
+      $_col_percent_: math.div($i, $grid-cols) * 100%;
+      $_col_percent: calc(#{$_col_percent_} + #{$extra_px});
+      &-sm-#{$i} {
+        @include _sm {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
       }
-    }
-    &-lg-#{$i} {
-      @include _lg {
-        flex: 0 0 $_col_percent;
-        max-width: $_col_percent;
+      &-md-#{$i} {
+        @include _md {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
+      }
+      &-lg-#{$i} {
+        @include _lg {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
       }
     }
   }

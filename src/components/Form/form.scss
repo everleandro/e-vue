@@ -1,0 +1,24 @@
+.e-form {
+  padding: 0 0.5px 0.5px 0;
+  &.row {
+    & > .e-field {
+      &:not([class*="col-"]) {
+        flex: 0 0 calc(100% + 1px);
+        max-width: calc(100% + 1px);
+      }
+      margin: -0.5px;
+      padding-top: 0;
+      .e-field__slot {
+        margin-bottom: 0;
+        height: 50px;
+      }
+      &:not(.e-field--has-error):not(.e-field--is-hovered):not(.e-field--is-focused) {
+        &.e-field--outlined {
+          .e-field__slot {
+            border-color: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+  }
+}

@@ -16,7 +16,12 @@
           @mouseenter="handleHover(true)"
           @mouseleave="handleHover(false)"
         >
-          <label :for="id" class="e-label" :class="textColorClass">
+          <label
+            :for="id"
+            class="e-label"
+            :class="textColorClass"
+            :style="labelStyle"
+          >
             {{ label }}
           </label>
           <input
@@ -84,7 +89,6 @@ import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
 @Component({ name: "e-text-field" })
 export default class TextField extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
-  @Prop({ type: String, default: null }) prependIcon!: boolean;
   @Prop({ type: String, default: undefined }) placeholder!: string;
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: "text" }) type!: string;
@@ -94,9 +98,9 @@ export default class TextField extends Mixins(Common, Field) {
     disabled: "e-field--is-disabled",
     readonly: "e-field--is-readonly",
     hasError: "e-field--has-error",
-    outlined: "e-text-field--outlined",
-    focused: "e-text-field--is-focused",
-    hovered: "e-text-field--is-hovered",
+    outlined: "e-field--outlined",
+    focused: "e-field--is-focused",
+    hovered: "e-field--is-hovered",
   };
   @Watch("model")
   handler(): void {

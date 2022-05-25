@@ -1,7 +1,14 @@
 <template>
-  <div :class="rootClass('e-field--selection-controls  e-field--radio-group')">
+  <div
+    :class="
+      rootClass('e-field--selection-controls e-field e-field--radio-group')
+    "
+  >
     <div class="e-field__control">
-      <div class="e-field__slot" style="height: auto">
+      <div class="e-field__slot">
+        <label class="e-label" :class="textColorClass" :style="labelStyle">
+          {{ label }}
+        </label>
         <div
           role="radiogroup"
           :aria-labelledby="id"
@@ -26,6 +33,7 @@ import Radio from "@/components/radio/radio.vue";
 export default class ERadioGroup extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) mandatory!: boolean;
   @Prop({ type: Boolean, default: false }) row!: boolean;
+  @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({}) defaultValue!: null;
   localValue = null;
   availableRootClasses = {
@@ -33,6 +41,7 @@ export default class ERadioGroup extends Mixins(Common, Field) {
     readonly: "e-field--is-readonly",
     column: "e-field--radio-group--column",
     row: "e-field--radio-group--row",
+    outlined: "e-field--outlined",
   };
 
   @Watch("disabled")

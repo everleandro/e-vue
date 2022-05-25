@@ -17,7 +17,7 @@
           @mouseenter="handleHover(true)"
           @mouseleave="handleHover(false)"
         >
-          <label :for="id" class="e-label" :class="textColorClass">
+          <label :for="id" class="e-label" :class="textColorClass" :style="labelStyle">
             {{ label }}
           </label>
           <div class="e-select__selections">
@@ -126,7 +126,6 @@ import EListItem from "@/components/List/List-item.vue";
 @Component({ name: "e-select", components: { EList, EListGroup, EListItem } })
 export default class ESelect extends Mixins(Common, Field) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
-  @Prop({ type: String, default: undefined }) prependIcon!: string;
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
@@ -152,11 +151,11 @@ export default class ESelect extends Mixins(Common, Field) {
     disabled: "e-field--is-disabled",
     readonly: "e-field--is-readonly",
     hasError: "e-field--has-error",
-    outlined: "e-select--outlined",
+    outlined: "e-field--outlined",
     dense: "e-field--dense",
-    focused: "e-select--is-focused",
+    focused: "e-field--is-focused",
     opened: "e-select--is-open",
-    hovered: "e-select--is-hovered",
+    hovered: "e-field--is-hovered",
   };
 
   displayedText(item: never): string {
