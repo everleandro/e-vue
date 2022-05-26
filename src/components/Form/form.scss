@@ -1,7 +1,28 @@
 .e-form {
   padding: 0 0.5px 0.5px 0;
+  @keyframes formFieldDetailsEntranceAnimation {
+    0% {
+      margin-top: -10px;
+    }
+    100% {
+      margin-top: 0;
+    }
+  }
   &.row {
     & > .e-field {
+      .e-field__details {
+        animation-duration: 200ms;
+        display: none;
+        .e-messages {
+          padding: 4px 0;
+        }
+      }
+      &.e-field--has-error {
+        .e-field__details {
+          animation-name: formFieldDetailsEntranceAnimation;
+          display: flex;
+        }
+      }
       &:not([class*="col-"]) {
         flex: 0 0 calc(100% + 1px);
         max-width: calc(100% + 1px);
@@ -14,6 +35,11 @@
       }
       &:not(.e-field--has-error):not(.e-field--is-hovered):not(.e-field--is-focused) {
         &.e-field--outlined {
+          &.e-field--is-disabled:not(.e-field--is-readonly) {
+            .e-field__slot {
+              border-color: rgba(0, 0, 0, 0.1);
+            }
+          }
           .e-field__slot {
             border-color: rgba(0, 0, 0, 0.05);
           }

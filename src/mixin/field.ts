@@ -1,5 +1,6 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { PropType } from "vue";
+import { boolean } from "@storybook/addon-knobs";
 // import clickOutside from "@/directives/click-outside";
 
 @Component({
@@ -13,6 +14,7 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) readonly!: boolean;
   @Prop({ type: Boolean, default: false }) counter!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
+  @Prop({ type: Boolean, default: false }) detailsOnMessageOnly!: boolean;
   @Prop({ type: String, default: undefined }) prependIcon!: string;
   @Prop({
     type: Array as PropType<((param: any) => string | boolean)[]>,
@@ -33,6 +35,7 @@ export default class Field extends Vue {
   hovered = false;
   //this section is reserved for parentForm
   inputsHoverState = true;
+  inputsOutlined = false;
   LabelMinWidth: string | null = null;
 
   get model(): any {
@@ -73,6 +76,9 @@ export default class Field extends Vue {
   }
   get details(): string {
     return this.hasError ? this.errorMessage : "" || this.detail;
+  }
+  get showDetails(): boolean {
+    return this.detailsOnMessageOnly ? !!this.details : !this.dense;
   }
   get textColorClass(): string {
     return this.hasError

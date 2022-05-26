@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      <div v-if="!dense" class="e-field__details">
+      <div v-if="showDetails" class="e-field__details">
         <div class="e-messages" role="alert">
           <div class="e-messages__wrapper" :class="textColorClass">
             {{ details }}
@@ -100,6 +100,7 @@ export default class TextField extends Mixins(Common, Field) {
     hasError: "e-field--has-error",
     outlined: "e-field--outlined",
     focused: "e-field--is-focused",
+    inputsOutlined: "e-field--outlined",
     hovered: "e-field--is-hovered",
   };
   @Watch("model")

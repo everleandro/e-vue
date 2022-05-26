@@ -105,7 +105,7 @@
           </transition>
         </div>
       </div>
-      <div v-if="!dense" class="e-field__details">
+      <div v-if="showDetails" class="e-field__details">
         <div class="e-messages" role="alert">
           <div class="e-messages__wrapper" :class="textColorClass">
             {{ details }}
@@ -152,6 +152,7 @@ export default class ESelect extends Mixins(Common, Field) {
     readonly: "e-field--is-readonly",
     hasError: "e-field--has-error",
     outlined: "e-field--outlined",
+    inputsOutlined: "e-field--outlined",
     dense: "e-field--dense",
     focused: "e-field--is-focused",
     opened: "e-select--is-open",

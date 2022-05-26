@@ -39,23 +39,21 @@ export const Form = () => ({
   },
   template: `
   <div class="container">
-  <e-form ref="form1" v-model="form1Model" label-min-width="111px" grid>
+  <e-form ref="form1" v-model="form1Model" label-min-width="111px" inputs-hover-state grid>
     <e-text-field
         v-model="fields.name"
         label="NAME"
         lg="12"
         md="16"
-        dense
-        outlined
+        :rules="[required]"
     ></e-text-field>
     <e-radio-group
         v-model="fields.gender"
         row
         lg="6"
+        color="success"
         md="8"
-        dense
         label="GENDER"
-        outlined
         default-value="one"
     >
       <e-radio label="F" input-value="one"/>
@@ -67,16 +65,12 @@ export const Form = () => ({
         placeholder="dd/mm/yyyy"
         md="12"
         lg="6"
-        dense
-        outlined
     />
     <e-text-field
         v-model="fields.surname"
         label="SURNAME"
         md="12"
         lg="12"
-        dense
-        outlined
     ></e-text-field> 
     <e-text-field
         v-model="fields.dni"
@@ -84,53 +78,60 @@ export const Form = () => ({
         md="12"
         lg="12"
         append-icon="mdi mdi-card-account-details"
-        dense
-        outlined
     ></e-text-field> 
     <e-text-field
         v-model="fields.secondName"
         label="SECOND NAME"
         md="12"
         lg="12"
-        dense
-        outlined
     ></e-text-field>
     <e-text-field
         v-model="fields.phone"
         md="12"
         lg="6"
-        dense
         placeholder="+00 0000 0000"
         prepend-icon="mdi mdi-phone"
-        outlined
     ></e-text-field>
     <e-text-field
         v-model="fields.phone2"
         md="12"
         lg="6"
-        dense
         placeholder="+00 0000 0000"
         prepend-icon="mdi mdi-phone"
-        outlined
     ></e-text-field>
     <e-text-field
         v-model="fields.address"
         md="12"
         lg="18"
-        dense
         label="ADDRESS"
-        outlined
     ></e-text-field>
     <e-text-field
         v-model="fields.pc"
         md="12"
         lg="6"
-        dense
         label="P.C."
         placeholder="0000"
-        outlined
     ></e-text-field>
+    <e-select
+        v-model="fields.select"
+        lg="18"
+        md="16"
+        :items="['Process 1','Process 2','Process 3']"
+        label="PROCESS"
+    />
+    <e-checkbox 
+        v-model="fields.agree"
+        md="8" 
+        lg="6" 
+        label="AGREE"
+        :rules="[checkboxRule]"/>
+    <e-select
+        v-model="fields.select"
+        :items="['Process 1','Process 2','Process 3']"
+        label="PROCESS"
+    />
   </e-form>
+
 </div>
   `,
   props: {},
@@ -142,6 +143,8 @@ export const Form = () => ({
     radioModel: null,
     fields: {
       email: "",
+      select: "",
+      agree: false,
       birthDate: "",
       address: "",
       name: "",

@@ -48,8 +48,12 @@
           {{ label }}
         </label>
       </div>
-      <div v-if="!dense" class="e-messages" :class="rootColor + '--text'">
-        <div class="e-messages__wrapper">{{ details }}</div>
+      <div v-if="showDetails" class="e-field__details">
+        <div class="e-messages" role="alert">
+          <div class="e-messages__wrapper" :class="textColorClass">
+            {{ details }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -73,8 +77,12 @@ export default class ECheckbox extends Mixins(Common, Field) {
   availableRootClasses = {
     disabled: "e-field--is-disabled",
     dense: "e-field--dense",
+    inputsOutlined: "e-field--outlined",
     readonly: "e-field--is-readonly",
     outlined: "e-field--outlined",
+    hasError: "e-field--has-error",
+    focused: "e-field--is-focused",
+    hovered: "e-field--is-hovered",
   };
 
   get checked(): boolean {

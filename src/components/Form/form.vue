@@ -60,6 +60,7 @@ export default class EForm extends Mixins(Common) {
     testList.forEach((vueComponent: Field, index) => {
       vueComponent.inputsHoverState = this.inputsHoverState;
       vueComponent.LabelMinWidth = this.LabelMinWidth;
+      vueComponent.inputsOutlined = this.grid;
       if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
       this.fieldsChild.splice(index, 1, vueComponent.hasError);

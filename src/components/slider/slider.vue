@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div v-if="!dense" class="e-messages" :class="rootColor + '--text'">
+      <div v-if="showDetails" class="e-messages" :class="rootColor + '--text'">
         <div class="e-messages__wrapper">{{ details }}</div>
       </div>
     </div>
@@ -104,6 +104,12 @@ export default class ESlider extends Mixins(Common, Field) {
 
   availableRootClasses = {
     disabled: "e-field--is-disabled",
+    inputsOutlined: "e-field--outlined",
+    readonly: "e-field--is-readonly",
+    hasError: "e-field--has-error",
+    outlined: "e-field--outlined",
+    focused: "e-field--is-focused",
+    hovered: "e-field--is-hovered",
   };
   availableSliderClasses = {
     horizontal: " e-slider--horizontal",

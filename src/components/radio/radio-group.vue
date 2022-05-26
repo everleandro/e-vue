@@ -17,8 +17,12 @@
           <slot></slot>
         </div>
       </div>
-      <div v-if="!dense" class="e-messages" :class="rootColor + '--text'">
-        <div class="e-messages__wrapper">{{ details }}</div>
+      <div v-if="showDetails" class="e-field__details">
+        <div class="e-messages" role="alert">
+          <div class="e-messages__wrapper" :class="textColorClass">
+            {{ details }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -39,6 +43,7 @@ export default class ERadioGroup extends Mixins(Common, Field) {
   availableRootClasses = {
     disabled: "e-field--is-disabled",
     readonly: "e-field--is-readonly",
+    inputsOutlined: "e-field--outlined",
     column: "e-field--radio-group--column",
     row: "e-field--radio-group--row",
     outlined: "e-field--outlined",
