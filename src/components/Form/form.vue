@@ -1,5 +1,5 @@
 <template>
-  <form :class="rootClass('e-form')" @submit="$emit('submit')">
+  <form :class="rootClass('e-form row')" @submit="$emit('submit')">
     <slot></slot>
   </form>
 </template>
@@ -12,7 +12,7 @@ import Common from "@/mixin/common";
 export default class EForm extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) value!: boolean;
   @Prop({ type: Boolean, default: true }) lazy!: boolean;
-  @Prop({ type: Boolean, default: false }) grid!: boolean;
+  @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: [String], default: "unset" }) LabelMinWidth!: string;
   @Prop({ type: Boolean, default: false }) inputsHoverState!: boolean;
   localValue = true;
@@ -25,7 +25,7 @@ export default class EForm extends Mixins(Common) {
     "e-select",
   ];
   availableRootClasses = {
-    grid: "row no-gutters",
+    outlined: "no-gutters",
   };
   unwatch: Array<() => void> = [];
 
@@ -59,8 +59,8 @@ export default class EForm extends Mixins(Common) {
     this.fieldsChild = new Array(testList.length).fill(false);
     testList.forEach((vueComponent: Field, index) => {
       vueComponent.inputsHoverState = this.inputsHoverState;
-      vueComponent.LabelMinWidth = this.LabelMinWidth;
-      vueComponent.inputsOutlined = this.grid;
+      vueComponent.inputsLabelMinWidth = this.LabelMinWidth;
+      vueComponent.inputsOutlined = this.outlined;
       if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
       this.fieldsChild.splice(index, 1, vueComponent.hasError);

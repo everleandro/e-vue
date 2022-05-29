@@ -17,7 +17,12 @@
           @mouseenter="handleHover(true)"
           @mouseleave="handleHover(false)"
         >
-          <label :for="id" class="e-label" :class="textColorClass" :style="labelStyle">
+          <label
+            :for="id"
+            class="e-label"
+            :class="textColorClass"
+            :style="labelStyle"
+          >
             {{ label }}
           </label>
           <div class="e-select__selections">

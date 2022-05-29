@@ -16,7 +16,7 @@ export default class Common extends Mixins(GridMixin) {
     _default?: string,
     _objCLass: Record<string, string> = this.availableRootClasses
   ): string {
-    const objCLass= {..._objCLass,...this.gridClass}
+    const objCLass = { ..._objCLass, ...this.gridClass };
     const result = Object.keys(objCLass).filter(
       (key: string) => !!(this as never)[key]
     );

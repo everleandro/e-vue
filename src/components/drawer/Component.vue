@@ -1,7 +1,7 @@
 <template>
   <div
     :is="tag"
-    v-click-outside="handleOtside"
+    v-click-outside="handleOutside"
     :class="rootClass('e-drawer')"
     :style="style"
   >
@@ -45,7 +45,7 @@ export default class EDrawer extends Mixins(Common) {
   }
 
   @Watch("mdBreakpoint", { immediate: true, deep: true })
-  onMdBreakpointChanged(value: boolean): void {
+  onMdBreakpointChanged(): void {
     this.setOverlay();
     this.refreshLayoutStyle();
   }
@@ -74,11 +74,11 @@ export default class EDrawer extends Mixins(Common) {
       window?.addEventListener("resize", this.observeBreakpoint);
     });
   }
-  destroy() {
+  destroy(): void {
     window?.removeEventListener("resize", this.observeBreakpoint);
     this.destroyOverlay();
   }
-  handleOtside() {
+  handleOutside(): void {
     if (this.absoluteComputed && this.model) {
       this.model = false;
       this.destroyOverlay();

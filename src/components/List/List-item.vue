@@ -38,7 +38,7 @@ export default class EListItem extends Mixins(Common) {
   @Prop({ type: Boolean, default: true }) ripple!: boolean;
   @Prop({ type: String, default: undefined }) prependIcon!: string;
   @Prop({ type: String, default: "e-list-item--active" }) activeClass!: string;
-  @Prop({ default: undefined }) value!: any;
+  @Prop({ default: undefined }) value!: never;
 
   availableRootClasses = {
     disabled: "e-list-item--disabled",
@@ -46,11 +46,11 @@ export default class EListItem extends Mixins(Common) {
     link: "e-list-item--link",
   };
 
-  get active() {
+  get active(): boolean {
     if (this.isIntoItemGroup) {
       const valueIsObject = typeof this.value === "object";
       const parentValue = (this.$parent as EListGroup).model;
-      const parentValueIsObject = typeof parentValue === "object";
+      // const parentValueIsObject = typeof parentValue === "object";
       if (valueIsObject && parentValue) {
         return JSON.stringify(this.value) === JSON.stringify(parentValue);
       } else {
@@ -59,10 +59,10 @@ export default class EListItem extends Mixins(Common) {
     }
     return false;
   }
-  get hasPrependSlot() {
+  get hasPrependSlot(): boolean {
     return !!this.$slots["prepend-icon"];
   }
-  get isIntoItemGroup() {
+  get isIntoItemGroup(): boolean {
     return this.$parent.$options.name === "e-list-group";
   }
   get tag(): string {
@@ -80,10 +80,9 @@ export default class EListItem extends Mixins(Common) {
       (this.$parent as EListGroup).model = this.value;
     }
   }
-  get link() {
-    return this.$attrs.to || this.value !== undefined;
+  get link(): boolean {
+    return !!this.$attrs.to || this.value !== undefined;
   }
 }
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

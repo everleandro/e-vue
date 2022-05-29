@@ -29,15 +29,15 @@ export default class EBar extends Mixins(Common) {
     outlined: "outlined",
   };
   appLayoutStyle = {};
-  mounted() {
+  mounted(): void {
     this.refreshLayoutStyle();
   }
   refreshLayoutStyle(): void {
-    const eapp = this.$parent as EApp;
-    if (eapp.$options.name === "e-app") {
+    const eApp = this.$parent as EApp;
+    if (eApp.$options.name === "e-app") {
       const height = `${this.$el.getBoundingClientRect().height}px`;
 
-      eapp.updateChildrenStyle({
+      eApp.updateChildrenStyle({
         "e-main": {
           "padding-top": height,
         },
@@ -51,7 +51,7 @@ export default class EBar extends Mixins(Common) {
   get barClass(): string {
     return this.rootClass(`${this.color} e-bar`);
   }
-  get style() {
+  get style(): Record<string, string> {
     const propertyResult: Record<string, string> = { ...this.appLayoutStyle };
     if (this.clipped) {
       delete propertyResult.left;

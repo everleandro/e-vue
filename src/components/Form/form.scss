@@ -9,6 +9,12 @@
     }
   }
   &.row {
+    & > * {
+      &:not([class*="col-"]) {
+        flex: 0 0 calc(100% + 1px);
+        max-width: calc(100% + 1px);
+      }
+    }
     & > .e-field {
       .e-field__details {
         animation-duration: 200ms;
@@ -22,10 +28,6 @@
           animation-name: formFieldDetailsEntranceAnimation;
           display: flex;
         }
-      }
-      &:not([class*="col-"]) {
-        flex: 0 0 calc(100% + 1px);
-        max-width: calc(100% + 1px);
       }
       margin: -0.5px;
       padding-top: 0;

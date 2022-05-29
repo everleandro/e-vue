@@ -1,6 +1,5 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { PropType } from "vue";
-import { boolean } from "@storybook/addon-knobs";
 // import clickOutside from "@/directives/click-outside";
 
 @Component({
@@ -15,6 +14,9 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) counter!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
   @Prop({ type: Boolean, default: false }) detailsOnMessageOnly!: boolean;
+  @Prop({ type: [String], default: "unset" }) labelMinWidth!:
+    | string
+    | undefined;
   @Prop({ type: String, default: undefined }) prependIcon!: string;
   @Prop({
     type: Array as PropType<((param: any) => string | boolean)[]>,
@@ -36,7 +38,7 @@ export default class Field extends Vue {
   //this section is reserved for parentForm
   inputsHoverState = true;
   inputsOutlined = false;
-  LabelMinWidth: string | null = null;
+  inputsLabelMinWidth: string | undefined = undefined;
 
   get model(): any {
     return this.value !== null ? this.value : this.localValue;
@@ -46,12 +48,9 @@ export default class Field extends Vue {
     this.localValue = val;
     this.dirty = true;
   }
-  update(): void {
-    console.log(this.$el);
-  }
   get labelStyle(): Record<string, string> {
-    let minWidth = this.LabelMinWidth || "unset";
-    if (this.prependIcon && this.LabelMinWidth) {
+    let minWidth = this.labelMinWidth || this.inputsLabelMinWidth || "unset";
+    if (this.prependIcon && this.labelMinWidth) {
       minWidth = `calc(${minWidth} - 28px)`;
     }
     return { minWidth };

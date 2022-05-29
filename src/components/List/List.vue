@@ -20,7 +20,7 @@ export default class EList extends Mixins(Common) {
     depressed: "e-list--depressed",
     outlined: "e-list--outlined",
   };
-  get listCLass() {
+  get listCLass(): string {
     return this.rootClass(`e-list ${this.colorText(this.color)}`);
   }
 }

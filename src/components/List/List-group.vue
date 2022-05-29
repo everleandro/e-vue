@@ -12,19 +12,18 @@ import { Component, Prop, Mixins } from "vue-property-decorator";
 export default class EListGroup extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
   @Prop({ type: String, default: "primary" }) color!: string;
-  @Prop({ default: null }) value!: any;
+  @Prop({ default: null }) value!: never;
 
   availableRootClasses = {};
-  get groupCLass() {
+  get groupCLass(): string {
     return this.rootClass(`e-list-group ${this.colorText(this.color)}`);
   }
-  get model(): any {
+  get model(): never {
     return this.value;
   }
-  set model(val: any) {
+  set model(val: never) {
     this.$emit("input", val);
   }
 }
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

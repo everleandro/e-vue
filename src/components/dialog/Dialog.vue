@@ -30,7 +30,7 @@ export default class EDIalog extends Mixins(Common) {
   @Prop({ type: [Number, String], default: null }) maxWidth!: string | number;
   animated = false;
   active = false;
-  inmediate = false;
+  immediate = false;
 
   @Watch("value")
   onValueChanged(val: boolean): void {
@@ -39,14 +39,14 @@ export default class EDIalog extends Mixins(Common) {
     } else {
       document.removeEventListener("keydown", this.handleExcListener);
     }
-    if (this.inmediate) {
+    if (this.immediate) {
       this.active = val;
     } else {
       setTimeout(() => {
         this.active = val;
       }, 200);
     }
-    this.inmediate = false;
+    this.immediate = false;
   }
 
   availableRootClasses = {
@@ -56,7 +56,7 @@ export default class EDIalog extends Mixins(Common) {
     persistent: "e-dialog--persistant",
   };
 
-  handleExcListener({ key }: KeyboardEvent) {
+  handleExcListener({ key }: KeyboardEvent): void {
     if (key === "Escape") {
       this.close();
     }
@@ -82,7 +82,7 @@ export default class EDIalog extends Mixins(Common) {
         this.animated = false;
       }, 200);
     } else {
-      this.inmediate = true;
+      this.immediate = true;
       this.model = false;
     }
   }
