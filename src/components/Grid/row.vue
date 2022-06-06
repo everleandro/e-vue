@@ -1,5 +1,5 @@
 <template>
-  <div :class="rootClass('row')"><slot name="default"></slot></div>
+  <div :class="rootClass('e-row')"><slot name="default"></slot></div>
 </template>
 
 <script lang="ts">

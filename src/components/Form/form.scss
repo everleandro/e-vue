@@ -8,14 +8,13 @@
       margin-top: 0;
     }
   }
-  &.row {
-    & > * {
-      &:not([class*="col-"]) {
-        flex: 0 0 calc(100% + 1px);
-        max-width: calc(100% + 1px);
-      }
-    }
+  &--grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
     & > .e-field {
+      flex: 0 0 calc(100% + 1px);
+      max-width: calc(100% + 1px);
       .e-field__details {
         animation-duration: 200ms;
         display: none;
@@ -43,7 +42,7 @@
             }
           }
           .e-field__slot {
-            border-color: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.07);
           }
         }
       }

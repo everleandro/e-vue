@@ -39,7 +39,7 @@ export const Form = () => ({
   },
   template: `
   <div class="container">
-  <e-form ref="form1" v-model="form1Model" label-min-width="111px" inputs-hover-state outlined>
+  <e-form ref="form1" v-model="form1Model" label-min-width="111px" inputs-hover-state outlined grid>
     <e-text-field
         v-model="fields.name"
         label="NAME"

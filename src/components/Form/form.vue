@@ -1,5 +1,5 @@
 <template>
-  <form :class="rootClass('e-form row')" @submit="$emit('submit')">
+  <form :class="rootClass('e-form')" @submit="$emit('submit')">
     <slot></slot>
   </form>
 </template>
@@ -12,6 +12,7 @@ import Common from "@/mixin/common";
 export default class EForm extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) value!: boolean;
   @Prop({ type: Boolean, default: true }) lazy!: boolean;
+  @Prop({ type: Boolean, default: false }) grid!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: [String], default: "unset" }) LabelMinWidth!: string;
   @Prop({ type: Boolean, default: false }) inputsHoverState!: boolean;
@@ -26,6 +27,7 @@ export default class EForm extends Mixins(Common) {
   ];
   availableRootClasses = {
     outlined: "no-gutters",
+    grid: "e-form--grid",
   };
   unwatch: Array<() => void> = [];
 

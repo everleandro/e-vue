@@ -11,12 +11,12 @@ export default class GridMixin extends Vue {
   @Prop({ type: [String, Number], default: null }) xl!: number | string;
 
   get gridClass(): Record<string, string | null> {
-    const col = this.col ? `col-${this.col}` : null;
-    const xs = this.xs ? `col-xs-${this.xs}` : null;
-    const sm = this.sm ? `col-sm-${this.sm}` : null;
-    const md = this.md ? `col-md-${this.md}` : null;
-    const lg = this.lg ? `col-lg-${this.lg}` : null;
-    const xl = this.xl ? `col-xl-${this.xl}` : null;
+    const col = this.col ? `e-col-${this.col}` : null;
+    const xs = this.xs ? `e-col-xs-${this.xs}` : null;
+    const sm = this.sm ? `e-col-sm-${this.sm}` : null;
+    const md = this.md ? `e-col-md-${this.md}` : null;
+    const lg = this.lg ? `e-col-lg-${this.lg}` : null;
+    const xl = this.xl ? `e-col-xl-${this.xl}` : null;
     return { col, xs, sm, lg, md, xl };
   }
 }
