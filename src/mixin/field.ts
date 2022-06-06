@@ -14,7 +14,7 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) counter!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
   @Prop({ type: Boolean, default: false }) detailsOnMessageOnly!: boolean;
-  @Prop({ type: [String], default: "unset" }) labelMinWidth!:
+  @Prop({ type: [String], default: undefined }) labelMinWidth!:
     | string
     | undefined;
   @Prop({ type: String, default: undefined }) prependIcon!: string;
@@ -38,7 +38,7 @@ export default class Field extends Vue {
   //this section is reserved for parentForm
   inputsHoverState = true;
   inputsOutlined = false;
-  inputsLabelMinWidth: string | undefined = undefined;
+  inputsLabelMinWidth = "unset";
 
   get model(): any {
     return this.value !== null ? this.value : this.localValue;
@@ -49,7 +49,7 @@ export default class Field extends Vue {
     this.dirty = true;
   }
   get labelStyle(): Record<string, string> {
-    let minWidth = this.labelMinWidth || this.inputsLabelMinWidth || "unset";
+    let minWidth = this.labelMinWidth || this.inputsLabelMinWidth;
     if (this.prependIcon && this.labelMinWidth) {
       minWidth = `calc(${minWidth} - 28px)`;
     }
