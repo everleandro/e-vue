@@ -13,4 +13,4 @@ export default class EVue {
   }
 }
 EVue.install = install;
-EVue.version = "0.1.80";
+EVue.version = "0.1.81";
