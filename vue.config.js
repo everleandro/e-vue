@@ -14,7 +14,6 @@ module.exports = {
           @import "styles/icon.scss";
           @import "styles/messages.scss";
           @import "styles/typography.scss";
-          @import "styles/override.scss";
         `,
       },
     },
