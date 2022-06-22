@@ -1,0 +1,20 @@
+$icon-font-sizes: map-merge(
+  (
+    "x-small": 18px,
+    "small": 20px,
+    "default": 24px,
+    "large": 28px,
+    "x-large": 32px,
+  ),
+  ()
+) !default;
+
+@each $key, $value in $icon-font-sizes {
+  .e-icon--size-#{$key} {
+    font-size: $value;
+    .e-icon__svg {
+      height: $value;
+      width: $value;
+    }
+  }
+}

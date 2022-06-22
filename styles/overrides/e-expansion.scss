@@ -1,0 +1,9 @@
+@use "sass:map";
+$text-field-border-radius: $border-radius-root !default;
+.e-text-field {
+  color: map-get($colors, "black");
+  .e-messages,
+  .e-field__slot {
+    border-radius: $text-field-border-radius;
+  }
+}

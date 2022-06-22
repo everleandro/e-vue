@@ -1,0 +1,20 @@
+$field-input-font-size: 21px;
+$field-input-color: #4f636b;
+$field-label-font-size: 14px;
+$field-label-color: #91a0a8;
+
+.e-field {
+  input {
+    font-size: $field-input-font-size;
+    color: $field-input-color;
+  }
+  label.e-label {
+    font-size: $field-label-font-size;
+    margin-bottom: 0;
+    color: $field-label-color;
+  }
+}
+.e-label {
+  font-size: $field-label-font-size;
+  margin-bottom: 0;
+}

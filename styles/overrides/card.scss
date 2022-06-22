@@ -1,0 +1,12 @@
+.e-select {
+  .e-field__icon.e-field__icon--append {
+    .e-icon.flip-icon {
+      font-size: $icon-action-select-font-size;
+    }
+  }
+  .e-field__icon.e-field__icon--clear {
+    .e-icon {
+      font-size: $icon-close-font-size;
+    }
+  }
+}

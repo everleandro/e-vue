@@ -1,0 +1,42 @@
+.e-expansion {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 24px;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    h4 {
+      font-style: normal;
+      margin: 0;
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        font-size: 21px;
+        transition: all 0.5s ease;
+        display: flex;
+      }
+    }
+  }
+
+  &__body {
+    padding-top: 24px;
+
+    &-content {
+      background-color: white;
+    }
+  }
+
+  &--opened {
+    .e-expansion__header-icon i {
+      transform: rotate(180deg);
+    }
+  }
+}
