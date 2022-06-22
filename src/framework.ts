@@ -13,7 +13,8 @@ export default class EVue {
   }
 }
 EVue.install = install;
-EVue.version = "0.1.81";
+import { version } from "../package.json";
+EVue.version = version;
 if (typeof window !== "undefined" && window.Vue) {
   window.Vue.use(EVue);
 }
