@@ -1,13 +1,13 @@
 <template>
   <transition name="fade">
     <div
-      v-show="active"
-      role="dialog"
-      ref="dialog"
-      aria-modal="true"
-      class="e-dialog__content"
-      tabindex="0"
-      @click.self="close()"
+        v-show="active"
+        role="dialog"
+        ref="dialog"
+        aria-modal="true"
+        class="e-dialog__content"
+        tabindex="0"
+        @click.self="close()"
     >
       <transition name="scale">
         <div v-show="active" :class="rootClass('e-dialog')" :style="style()">
@@ -20,14 +20,14 @@
 
 <script lang="ts">
 import Common from "@/mixin/common";
-import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
+import {Component, Prop, Mixins, Watch} from "vue-property-decorator";
 
-@Component({ name: "e-dialog" })
-export default class EDIalog extends Mixins(Common) {
-  @Prop({ type: Boolean, default: false }) fullscreen!: boolean;
-  @Prop({ type: Boolean, default: false }) value!: boolean;
-  @Prop({ type: Boolean, default: false }) persistent!: boolean;
-  @Prop({ type: [Number, String], default: null }) maxWidth!: string | number;
+@Component({name: "e-dialog"})
+export default class EDialog extends Mixins(Common) {
+  @Prop({type: Boolean, default: false}) fullscreen!: boolean;
+  @Prop({type: Boolean, default: false}) value!: boolean;
+  @Prop({type: Boolean, default: false}) persistent!: boolean;
+  @Prop({type: [Number, String], default: null}) maxWidth!: string | number;
   animated = false;
   active = false;
   immediate = false;
@@ -56,7 +56,11 @@ export default class EDIalog extends Mixins(Common) {
     persistent: "e-dialog--persistant",
   };
 
-  handleExcListener({ key }: KeyboardEvent): void {
+  mounted() {
+    this.active = this.model;
+  }
+
+  handleExcListener({key}: KeyboardEvent): void {
     if (key === "Escape") {
       this.close();
     }
@@ -65,16 +69,19 @@ export default class EDIalog extends Mixins(Common) {
   get model(): boolean {
     return this.value;
   }
+
   set model(val: boolean) {
     this.$emit("input", val);
   }
+
   style(): { maxWidth?: string } {
     const maxWidth =
-      this.maxWidth && !this.fullscreen
-        ? { maxWidth: `${this.maxWidth}px` }
-        : {};
-    return { ...maxWidth };
+        this.maxWidth && !this.fullscreen
+            ? {maxWidth: `${this.maxWidth}px`}
+            : {};
+    return {...maxWidth};
   }
+
   close(): void {
     if (this.persistent) {
       this.animated = true;

@@ -6,12 +6,18 @@
   outline: 0;
   position: relative;
   cursor: pointer;
+
+  &__content {
+    line-height: initial;
+  }
+
   @include prefix(user-select, none);
   text-decoration: none;
   transition-property: box-shadow, transform, opacity, background;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   vertical-align: middle;
   white-space: nowrap;
+
   &:before {
     content: "";
     background-color: currentColor;
@@ -26,14 +32,21 @@
     position: absolute;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
   }
+
+  &:focus, &:active {
+    text-decoration: none;
+  }
+
   &:not(.e-btn--icon):not(.e-btn--fab) {
     padding: 0 16px;
     min-width: 64px;
   }
-  &:not(.e-btn--depressed):not(.e-btn--disabled):not(.e-btn--icon) {
+
+  &:not(.e-btn--depressed):not(.e-btn--disabled):not(.e-btn--text):not(.e-btn--icon) {
     box-shadow: 0 3px 1px -2px rgb(0, 0, 0, 0.2), 0 2px 2px 0 rgb(0, 0, 0, 0.14),
-      0 1px 5px 0 rgb(0, 0, 0, 0.12);
+    0 1px 5px 0 rgb(0, 0, 0, 0.12);
   }
+
   &--block {
     &:not(.e-btn--fab):not(.e-btn--icon) {
       display: flex;
@@ -45,17 +58,21 @@
   &:not(.e-btn--outlined) {
     border: none;
   }
+
   &--outlined {
     background-color: transparent;
   }
+
   &--icon {
     background-color: transparent;
     padding: 0;
     border-radius: 100%;
   }
+
   &--fab {
     border-radius: 100%;
   }
+
   &--fab,
   &--icon {
     .e-btn__content {

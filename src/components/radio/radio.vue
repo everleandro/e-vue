@@ -1,5 +1,8 @@
 <template>
-  <div :class="rootClass('e-radio ' + rootColor + '--text')" @click="change()">
+  <div
+    :class="rootClass('e-radio e-field ' + rootColor + '--text')"
+    @click="change()"
+  >
     <div class="e-field--selection-controls__field">
       <span aria-hidden="true" class="e-icon" :class="rootColor + '--text'"
         ><svg
@@ -56,6 +59,7 @@ export default class Radio extends Mixins(Common, Field) {
     dense: "e-field--dense",
     localDisabled: "e-field--is-disabled",
     localReadonly: "e-field--is-readonly",
+    labelInline: "e-field--label-inline",
     readonly: "e-field--is-readonly",
   };
   get active(): boolean {

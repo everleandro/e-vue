@@ -1,7 +1,7 @@
-@use "sass:math";
-.e-form.e-form--grid {
-  margin: -$space-base;
-  .e-col {
-    @include grid-generator(1px);
+.e-form {
+  &.e-form--grid {
+    .e-col {
+      @include grid-generator(1px);
+    }
   }
 }

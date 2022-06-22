@@ -2,62 +2,81 @@
 $btn-border-radius: $border-radius-root !default;
 $btn-font-weight: 500 !default;
 $btn-letter-spacing: 0.0892857143em !default;
+$btn-border-style: solid !default;
 $btn-border-width: 2px !default;
 $btn-rounded-border-radius: 28px !default;
 $btn-text-transform: uppercase !default;
 $btn-transition-duration: 0.28s !default;
 
-$btn-states: (
-  "focus": 0.05,
-  "hover": 0.1,
-  "active": 0.3,
+$btn-states: map-merge(
+  (
+    "focus": 0.05,
+    "hover": 0.1,
+    "active": 0.3,
+  ),
+  ()
 ) !default;
 
-$btn-font-sizes: (
-  "x-small": 0.625rem,
-  "small": 0.75rem,
-  "default": 0.875rem,
-  "large": 0.875rem,
-  "x-large": 1rem,
+$btn-font-sizes: map-merge(
+  (
+    "x-small": 0.625rem,
+    "small": 0.75rem,
+    "default": 0.875rem,
+    "large": 0.875rem,
+    "x-large": 1rem,
+  ),
+  ()
 ) !default;
 
-$fab-font-sizes: (
-  "x-small": 18px,
-  "small": 20px,
-  "default": 24px,
-  "large": 28px,
-  "x-large": 32px,
+$fab-font-sizes: map-merge(
+  (
+    "x-small": 18px,
+    "small": 20px,
+    "default": 24px,
+    "large": 28px,
+    "x-large": 32px,
+  ),
+  ()
 ) !default;
 
-$fab-height: (
-  "x-small": 32px,
-  "small": 40px,
-  "default": 56px,
-  "large": 64px,
-  "x-large": 72px,
+$fab-height: map-merge(
+  (
+    "x-small": 32px,
+    "small": 40px,
+    "default": 56px,
+    "large": 64px,
+    "x-large": 72px,
+  ),
+  ()
 ) !default;
 
-$btn-height: (
-  "x-small": 35px,
-  "small": 40px,
-  "default": 45px,
-  "large": 45px,
-  "x-large": 50px,
+$btn-height: map-merge(
+  (
+    "x-small": 35px,
+    "small": 40px,
+    "default": 45px,
+    "large": 45px,
+    "x-large": 50px,
+  ),
+  ()
 ) !default;
 
-$icon-font-sizes: (
-  "x-small": 18px,
-  "small": 20px,
-  "default": 24px,
-  "large": 28px,
-  "x-large": 32px,
+$icon-font-sizes: map-merge(
+  (
+    "x-small": 18px,
+    "small": 20px,
+    "default": 24px,
+    "large": 28px,
+    "x-large": 32px,
+  ),
+  ()
 ) !default;
 
 .e-btn {
   font-weight: $btn-font-weight;
   letter-spacing: $btn-letter-spacing;
-  color: map.get($colors, "black");
-  border-color: map.get($colors, "black");
+  color: map-get($colors, "black");
+  border-color: map-get($colors, "black");
   text-indent: $btn-letter-spacing;
   text-transform: $btn-text-transform;
   transition-duration: $btn-transition-duration;
@@ -68,7 +87,7 @@ $icon-font-sizes: (
     border-radius: $btn-rounded-border-radius;
   }
   &--outlined {
-    border: $btn-border-width solid;
+    border: $btn-border-width $btn-border-style;
 
     @each $key, $value in $colors {
       &.e-btn--#{$key}:not(.e-btn--disabled) {
@@ -77,11 +96,18 @@ $icon-font-sizes: (
       }
     }
   }
+  &--text {
+    @each $key, $value in $colors {
+      &.e-btn--#{$key}:not(.e-btn--disabled) {
+        color: $value;
+      }
+    }
+  }
 
   @each $key, $value in $colors {
-    &--#{$key}:not(.e-btn--outlined):not(.e-btn--disabled) {
+    &--#{$key}:not(.e-btn--outlined):not(.e-btn--text):not(.e-btn--disabled) {
       &:not(.e-btn--icon) {
-        color: map.get($contrast-colors, $key) or white;
+        color: map-get($contrast-colors, $key) or white;
         background-color: $value;
       }
       &.e-btn--icon {
@@ -100,25 +126,26 @@ $icon-font-sizes: (
     &.e-btn--size-#{$key} {
       &:not(.e-btn--fab) {
         font-size: $value;
-        height: map.get($btn-height, $key);
+        height: map-get($btn-height, $key);
       }
       &.e-btn--icon {
-        @include force-sizes(map.get($btn-height, $key));
+        @include force-sizes(map-get($btn-height, $key));
         .e-icon {
-          font-size: map.get($icon-font-sizes, $key);
+          font-size: map-get($icon-font-sizes, $key);
           .e-icon__svg {
-            height: map.get($icon-font-sizes, $key);
-            width: map.get($icon-font-sizes, $key);
+            height: map-get($icon-font-sizes, $key);
+            width: map-get($icon-font-sizes, $key);
           }
         }
       }
       &.e-btn--fab {
-        @include force-sizes(map.get($fab-height, $key));
-        font-size: map.get($fab-font-sizes, $key);
+        @include force-sizes(map-get($fab-height, $key));
+        font-size: map-get($fab-font-sizes, $key);
         .e-icon {
+          font-size: map-get($fab-font-sizes, $key);
           .e-icon__svg {
-            height: map.get($fab-font-sizes, $key);
-            width: map.get($fab-font-sizes, $key);
+            height: map-get($fab-font-sizes, $key);
+            width: map-get($fab-font-sizes, $key);
           }
         }
       }

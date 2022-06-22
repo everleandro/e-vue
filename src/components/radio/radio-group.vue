@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="
-      rootClass('e-field--selection-controls e-field e-field--radio-group')
-    "
-  >
+  <div :class="componentClass">
     <div class="e-field__control">
       <div class="e-field__slot">
         <label class="e-label" :class="textColorClass" :style="labelStyle">
@@ -33,8 +29,9 @@ import Common from "@/mixin/common";
 import Field from "@/mixin/field";
 import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
 import Radio from "@/components/radio/radio.vue";
+import GridMixin from "@/mixin/grid";
 @Component({ name: "e-radio-group" })
-export default class ERadioGroup extends Mixins(Common, Field) {
+export default class ERadioGroup extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: Boolean, default: false }) mandatory!: boolean;
   @Prop({ type: Boolean, default: false }) row!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
@@ -48,6 +45,12 @@ export default class ERadioGroup extends Mixins(Common, Field) {
     row: "e-field--radio-group--row",
     outlined: "e-field--outlined",
   };
+  get componentClass(): string {
+    return this.rootClass(
+      `'e-field--selection-controls e-field e-field--radio-group'`,
+      { ...this.availableRootClasses, ...this.gridClass }
+    );
+  }
 
   @Watch("disabled")
   onDisabledChanged(): void {

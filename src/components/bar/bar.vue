@@ -15,8 +15,9 @@ export default class EBar extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) dense!: boolean;
   @Prop({ type: Boolean, default: false }) app!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
+  @Prop({ type: String, default: undefined }) height!: string;
   @Prop({ type: Boolean, default: false }) fixed!: boolean;
-  @Prop({ type: Boolean, default: false }) depressed!: boolean;
+  @Prop({ type: Boolean, default: true }) depressed!: boolean;
   @Prop({ type: String, default: "" }) color!: string;
   @Prop({ type: Boolean, default: false }) clipped!: boolean;
 
@@ -52,7 +53,16 @@ export default class EBar extends Mixins(Common) {
     return this.rootClass(`${this.color} e-bar`);
   }
   get style(): Record<string, string> {
-    const propertyResult: Record<string, string> = { ...this.appLayoutStyle };
+    const _height = this.height ? `${this.height}px !important;` : "unset";
+    const height = {
+      height: _height,
+      maxHeight: _height,
+      minHeight: _height,
+    };
+    const propertyResult: Record<string, string> = {
+      ...height,
+      ...this.appLayoutStyle,
+    };
     if (this.clipped) {
       delete propertyResult.left;
       delete propertyResult.right;

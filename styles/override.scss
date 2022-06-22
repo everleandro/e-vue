@@ -3,12 +3,44 @@ $root-font-size: 1rem !default;
 $border-radius-root: 1px !default;
 $space-base: 12px !default;
 $grid-cols: 24 !default;
-$breakpoint: (
-  "xs": 600px,
-  "sm": 960px,
-  "md": 1264px,
-  "lg": 1904px,
-) !default;
+$root-font-family: "Roboto", sans-serif;
+//icons configuration
+$icon-arrow-down: "mdi mdi-chevron-down" !default;
+$icon-arrow-down-font-size: 24px !default;
+$icon-close: "mdi mdi-close" !default;
+$icon-close-font-size: 24px !default;
+//select
+$icon-action-select: $icon-arrow-down !default;
+$icon-action-select-font-size: $icon-arrow-down-font-size;
+//expansion
+$icon-expand: $icon-arrow-down !default;
+$icon-expand-font-size: $icon-arrow-down-font-size;
+//checkbox
+$icon-checkbox-off: "" !default;
+$icon-checkbox-on: "" !default;
+$icon-checkbox-font-size: 24px !default;
+
+$breakpoint: map-merge(
+  (
+    "xs": 600px,
+    "sm": 960px,
+    "md": 1264px,
+    "lg": 1904px,
+  ),
+  (
+    "icon-action-select": $icon-action-select,
+    "icon-expand": $icon-expand,
+    "icon-close": $icon-close,
+    "icon-checkbox-off": $icon-checkbox-off,
+    "icon-checkbox-on": $icon-checkbox-on,
+  )
+);
+:root {
+  @each $key, $value in $breakpoint {
+    --#{$key}: #{$value};
+  }
+}
+
 @import "./overrides/mixins.scss";
 @import "./overrides/grid.scss";
 @import "./overrides/colors.scss";
@@ -17,3 +49,9 @@ $breakpoint: (
 @import "./overrides/e-button.scss";
 @import "./overrides/e-icon.scss";
 @import "./overrides/form.scss";
+@import "./overrides/e-expansion.scss";
+@import "./overrides/select.scss";
+@import "./overrides/field.scss";
+@import "./overrides/card.scss";
+@import "./overrides/checkbox.scss";
+@import "./overrides/typography.scss";

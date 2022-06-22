@@ -1,7 +1,61 @@
 .e-card {
   display: flex;
   flex-wrap: nowrap;
-  &-content {
+  position: relative;
+  background-color: white;
+
+  &:not(.e-card--depressed) {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+    box-sizing: border-box;
+  }
+
+  &__content {
     flex: 1 1 auto;
+    padding: 8px;
+  }
+
+  &__avatar {
+    padding: 16px 16px 16px 23px;
+
+    &-content {
+      display: flex;
+      justify-content: center;
+
+      & > img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__actions {
+    &-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+
+      & > .e-btn {
+        &[class*="e-btn--size"] {
+          height: 100%;
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+
+  &__icon-close {
+    position: absolute !important;
+    display: none;
+    z-index: 1;
+  }
+
+  &--with-close-button {
+    .e-card__icon-close {
+      display: block;
+    }
   }
 }

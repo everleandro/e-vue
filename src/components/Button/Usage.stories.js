@@ -32,6 +32,7 @@ export const Usage = () => ({
     sizes: ["XSmall", "small", "large", "XLarge"],
     types: ["fab", "icon", "standard"],
     fab: false,
+    text: true,
     depressed: false,
     outlined: false,
     block: false,
@@ -55,6 +56,7 @@ export const Usage = () => ({
                   :depressed="depressed"
                   :outlined="outlined"
                   :block="block"
+                  :text="text"
                   :rounded="rounded"
                   v-bind="{ [selectedSize]: true ,[selectedType]: true}"
               >
@@ -96,6 +98,7 @@ export const Usage = () => ({
                 </e-col>
                 <e-col col="12">
                   <e-checkbox v-model="disabled" dense label="disabled"></e-checkbox>            
+                  <e-checkbox v-model="text" dense label="text"></e-checkbox>            
                   <e-checkbox v-model="depressed" dense label="depressed"></e-checkbox>
                   <e-checkbox v-model="outlined" dense label="outlined"></e-checkbox>
                   <e-checkbox v-model="block" dense label="block"></e-checkbox>

@@ -4,7 +4,7 @@
     .e-slider__thumb,
     .e-slider__track-background,
     .e-slider__track-fill {
-      background: map.get($colors, "primary");
+      background: map-get($colors, "primary");
     }
   }
 }

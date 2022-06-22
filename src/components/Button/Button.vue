@@ -1,11 +1,6 @@
 <template>
-  <div
-    v-ripple="{ disabled: !ripple }"
-    :is="tag"
-    :class="rootClass(btnClass)"
-    :style="style"
-    v-on="$listeners"
-  >
+  <div v-ripple="{ disabled: !ripple }" :is="tag" :class="rootClass(btnClass)"
+    v-bind="!!$attrs.to ? { to: $attrs.to } : {}" :style="style" v-on="$listeners">
     <span class="e-btn__content">
       <slot name="default"></slot>
     </span>
@@ -22,7 +17,8 @@ export default class EButton extends Mixins(Common) {
   @Prop({ type: String, default: "" }) color!: string;
   @Prop({ type: Boolean, default: true }) ripple!: boolean;
   @Prop({ type: Boolean, default: false }) fab!: boolean;
-  @Prop({ type: Boolean, default: false }) depressed!: boolean;
+  @Prop({ type: Boolean, default: true }) depressed!: boolean;
+  @Prop({ type: Boolean, default: false }) text!: boolean;
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: Boolean, default: false }) block!: boolean;
   @Prop({ type: Boolean, default: false }) small!: boolean;
@@ -38,6 +34,7 @@ export default class EButton extends Mixins(Common) {
     disabled: "e-btn--disabled",
     icon: "e-btn--icon",
     depressed: "e-btn--depressed",
+    text: "e-btn--text",
     ripple: "v-ripple-element",
     fab: "e-btn--fab",
     block: "e-btn--block",

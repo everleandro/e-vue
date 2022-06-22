@@ -14,3 +14,6 @@ export default class EVue {
 }
 EVue.install = install;
 EVue.version = "0.1.81";
+if (typeof window !== "undefined" && window.Vue) {
+  window.Vue.use(EVue);
+}

@@ -1,7 +1,6 @@
-import { Component, Mixins } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import ripple from "@/directives/ripple";
 import clickOutside from "@/directives/click-outside";
-import GridMixin from "@/mixin/grid";
 
 @Component({
   directives: {
@@ -9,14 +8,14 @@ import GridMixin from "@/mixin/grid";
     clickOutside,
   },
 })
-export default class Common extends Mixins(GridMixin) {
+export default class Common extends Vue {
   availableRootClasses!: Record<string, string>;
 
   rootClass(
     _default?: string,
     _objCLass: Record<string, string> = this.availableRootClasses
   ): string {
-    const objCLass = { ..._objCLass, ...this.gridClass };
+    const objCLass = { ..._objCLass };
     const result = Object.keys(objCLass).filter(
       (key: string) => !!(this as never)[key]
     );

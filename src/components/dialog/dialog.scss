@@ -8,13 +8,17 @@
   background-color: white;
   transform-origin: center center;
   box-shadow: 0 10px 12px -5px rgb(0, 0, 0, 0.15);
+  user-select: text;
+
   &:not(.e-dialog--fullscreen) {
     max-height: 90%;
   }
+
   &--animated {
     @include prefix("animation-name", "scale", "webkit");
     @include prefix("animation-duration", 0.1s, "webkit");
   }
+
   &--fullscreen {
     border-radius: 0;
     margin: 0;
@@ -24,8 +28,10 @@
     top: 0;
     left: 0;
   }
+
   &__content {
     z-index: 202;
+    user-select: none;
     align-items: center;
     display: flex;
     background-color: rgba(0, 0, 0, 0.4);
@@ -37,5 +43,6 @@
     transition: 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), z-index 1ms;
     width: 100%;
     outline: none;
+    max-height: 100vh;
   }
 }

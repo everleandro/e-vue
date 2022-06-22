@@ -1,52 +1,81 @@
 <template>
-  <div class="e-card" :style="cardStyle">
+  <div :class="rootClass('e-card')" :style="cardStyle">
     <button
-      class="e-button e-icon card-icon-close"
-      :style="buttonIconCloseStyle"
+      v-if="!hideCloseIcon"
+      v-ripple
+      class="
+        e-btn e-btn--depressed e-btn--fab e-btn--size-x-small
+        v-ripple-element
+        e-card__icon-close
+      "
+      :class="closeIconButtonClass"
+      :style="buttonCloseStyle"
+      @click="$emit('click:close', $event)"
     >
-      <i :class="closeIconClass"></i>
+      <span class="e-btn__content">
+        <i :class="closeIconClass"></i>
+      </span>
     </button>
-    <div class="e-card-image">
-      <img src="https://picsum.photos/id/11/500/300" alt="ad" />
-    </div>
-    <div class="e-card-content">contenido</div>
-    <div class="e-card-actions">
-      <v-slot name="actions"></v-slot>
-    </div>
+    <slot> </slot>
   </div>
 </template>
 
 <script lang="ts">
 import Common from "@/mixin/common";
-import { Component, Prop, Mixins } from "vue-property-decorator";
+import { Component, Mixins, Prop } from "vue-property-decorator";
 
 @Component
 export default class ECard extends Mixins(Common) {
   @Prop({ type: String, default: undefined }) height!: string;
-  @Prop({ type: String, default: "left-top" }) iconCloseStylePosition!: string;
-  availableRootClasses = {};
+  @Prop({ type: String, default: "top-left" }) closePosition!: string;
+  @Prop({ type: String, default: "grey" }) closeColor!: string;
+  @Prop({ type: String, default: "" }) closeBgColor!: string;
+  @Prop({ type: String, default: "" }) closeIcon!: string;
+  @Prop({ type: Boolean, default: false }) hideCloseIcon!: boolean;
+  @Prop({ type: Boolean, default: true }) depressed!: boolean;
+  availableRootClasses = {
+    withCloseButton: "e-card--with-close-button",
+    depressed: "e-card--depressed",
+  };
+  buttonCloseStyle = "";
   get cardStyle(): Record<string, string> {
     const _height = this.height ? `${this.height}px` : "auto";
-    const heigth = {
+    return {
       maxHeight: _height,
       minHeight: _height,
       height: _height,
     };
-
-    return heigth;
+  }
+  get withCloseButton(): boolean {
+    return !!this.closePosition;
   }
   get closeIconClass(): string {
     const icon =
-      getComputedStyle(document.body).getPropertyValue(
-        "--icon-action-select"
-      ) || "mdi mdi-chevron-down";
-    return `${icon} e-icon`;
-  }
-  get buttonIconCloseStyle(): string {
-    const icon =
+      this.closeIcon ||
       getComputedStyle(document.body).getPropertyValue("--icon-close") ||
       "mdi mdi-chevron-down";
-    return `${icon} e-icon`;
+    return `${icon} e-icon e-icon--size-default`;
+  }
+  get closeIconButtonClass(): string {
+    const color = `${this.closeColor}--text`;
+    const bg = `${this.closeBgColor}`;
+    return [color, bg].join(" ").trim();
+  }
+
+  mounted(): void {
+    this.$nextTick(() => {
+      const color =
+        !this.closeBgColor &&
+        this.$el &&
+        getComputedStyle(this.$el.parentNode as Element).getPropertyValue(
+          "background-color"
+        );
+      const position = this.closePosition
+        .split("-")
+        .map((key) => `${key}:0;margin-${key}:-16px`)
+        .join(";");
+      this.buttonCloseStyle = `background-color:${color};${position}`;
+    });
   }
 }
 </script>

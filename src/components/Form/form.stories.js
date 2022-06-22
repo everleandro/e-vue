@@ -39,7 +39,7 @@ export const Form = () => ({
   },
   template: `
   <div class="container">
-  <e-form ref="form1" v-model="form1Model" label-min-width="111px" inputs-hover-state outlined grid>
+  <e-form ref="form1" v-model="form1Model" :grid="true">
     <e-text-field
         v-model="fields.name"
         label="NAME"
@@ -61,6 +61,7 @@ export const Form = () => ({
     </e-radio-group>
     <e-text-field
         v-model="fields.birthDate"
+        inputAlign="right"
         label="BIRTHDATE"
         placeholder="dd/mm/yyyy"
         md="12"

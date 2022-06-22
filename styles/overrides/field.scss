@@ -2,18 +2,34 @@ $field-input-font-size: 21px;
 $field-input-color: #4f636b;
 $field-label-font-size: 14px;
 $field-label-color: #91a0a8;
+$field-label-color: #91a0a8;
+$field-placeholder-color: #F0F0F0;
+$field-placeholder-font-size: 20px;
 
 .e-field {
   input {
     font-size: $field-input-font-size;
     color: $field-input-color;
+
+    &::placeholder {
+      color: $field-placeholder-color;
+      font-size: $field-placeholder-font-size;
+      font-weight: 400;
+    }
   }
+
   label.e-label {
     font-size: $field-label-font-size;
     margin-bottom: 0;
     color: $field-label-color;
   }
+
+  &__suffix,
+  &__prefix {
+    color: $field-label-color;
+  }
 }
+
 .e-label {
   font-size: $field-label-font-size;
   margin-bottom: 0;

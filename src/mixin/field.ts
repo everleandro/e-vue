@@ -12,6 +12,7 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) dense!: boolean;
   @Prop({ type: Boolean, default: false }) readonly!: boolean;
   @Prop({ type: Boolean, default: false }) counter!: boolean;
+  @Prop({ type: Boolean, default: true }) labelInline!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
   @Prop({ type: Boolean, default: false }) detailsOnMessageOnly!: boolean;
   @Prop({ type: [String], default: undefined }) labelMinWidth!:
@@ -37,6 +38,7 @@ export default class Field extends Vue {
   hovered = false;
   //this section is reserved for parentForm
   inputsHoverState = true;
+  inputsFocusState = true;
   inputsOutlined = false;
   inputsLabelMinWidth = "unset";
 
@@ -79,10 +81,13 @@ export default class Field extends Vue {
   get showDetails(): boolean {
     return this.detailsOnMessageOnly ? !!this.details : !this.dense;
   }
+  get focusedEnabled(): boolean {
+    return this.inputsFocusState && this.focused;
+  }
   get textColorClass(): string {
     return this.hasError
       ? `error--text`
-      : this.focused || this.hovered
+      : this.focusedEnabled || this.hovered
       ? `${this.rootColor}--text`
       : "";
   }

@@ -1,3 +1,13 @@
 export * from "@/components";
 export * from "@/directives";
-export { default as EVue } from "@/framework";
+import { default as EVue } from "@/framework";
+
+declare global {
+  interface Window {
+    EVue: never;
+  }
+}
+if (window) {
+  window.EVue = window.EVue || EVue;
+}
+export default EVue;

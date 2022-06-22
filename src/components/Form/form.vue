@@ -12,10 +12,11 @@ import Common from "@/mixin/common";
 export default class EForm extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) value!: boolean;
   @Prop({ type: Boolean, default: true }) lazy!: boolean;
-  @Prop({ type: Boolean, default: false }) grid!: boolean;
-  @Prop({ type: Boolean, default: false }) outlined!: boolean;
+  @Prop({ type: Boolean, default: true }) grid!: boolean;
   @Prop({ type: [String], default: "unset" }) LabelMinWidth!: string;
   @Prop({ type: Boolean, default: false }) inputsHoverState!: boolean;
+  @Prop({ type: Boolean, default: true }) inputsOutlined!: boolean;
+  @Prop({ type: Boolean, default: false }) inputsFocusState!: boolean;
   localValue = true;
 
   fieldsChild: Array<boolean> = [];
@@ -26,7 +27,6 @@ export default class EForm extends Mixins(Common) {
     "e-select",
   ];
   availableRootClasses = {
-    outlined: "no-gutters",
     grid: "e-form--grid",
   };
   unwatch: Array<() => void> = [];
@@ -61,8 +61,9 @@ export default class EForm extends Mixins(Common) {
     this.fieldsChild = new Array(testList.length).fill(false);
     testList.forEach((vueComponent: Field, index) => {
       vueComponent.inputsHoverState = this.inputsHoverState;
+      vueComponent.inputsFocusState = this.inputsFocusState;
       vueComponent.inputsLabelMinWidth = this.LabelMinWidth;
-      vueComponent.inputsOutlined = this.outlined;
+      vueComponent.inputsOutlined = this.grid || this.inputsOutlined;
       if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
       this.fieldsChild.splice(index, 1, vueComponent.hasError);

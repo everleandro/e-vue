@@ -1,8 +1,6 @@
 <template>
-  <div class="e-card__actions">
-    <div class="e-card__actions-content">
-      <slot></slot>
-    </div>
+  <div class="e-card__content">
+    <slot></slot>
   </div>
 </template>
 
@@ -10,5 +8,5 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class ECardActions extends Vue {}
+export default class ECardContent extends Vue {}
 </script>

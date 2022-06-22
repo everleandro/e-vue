@@ -1,5 +1,5 @@
 <template>
-  <div :class="rootClass('e-field e-field__slider')">
+  <div :class="componentClass">
     <div class="e-field__control">
       <div class="e-field__slot">
         <label
@@ -84,8 +84,9 @@
 import Common from "@/mixin/common";
 import Field from "@/mixin/field";
 import { Component, Prop, Mixins, Watch } from "vue-property-decorator";
+import GridMixin from "@/mixin/grid";
 @Component
-export default class ESlider extends Mixins(Common, Field) {
+export default class ESlider extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: [Number, String], default: 100 }) max!: number | string;
   @Prop({ type: [Number, String], default: 0 }) min!: number | string;
   @Prop({ type: Number, default: 10 }) step!: number;
@@ -108,6 +109,7 @@ export default class ESlider extends Mixins(Common, Field) {
     readonly: "e-field--is-readonly",
     hasError: "e-field--has-error",
     outlined: "e-field--outlined",
+    labelInline: "e-field--label-inline",
     focused: "e-field--is-focused",
     hovered: "e-field--is-hovered",
   };
@@ -116,6 +118,13 @@ export default class ESlider extends Mixins(Common, Field) {
     vertical: " e-slider--vertical",
     disabled: "e-slider--disabled",
   };
+
+  get componentClass(): string {
+    return this.rootClass(`e-field e-field__slider`, {
+      ...this.availableRootClasses,
+      ...this.gridClass,
+    });
+  }
 
   get colorConfig(): Record<string, string> {
     return {

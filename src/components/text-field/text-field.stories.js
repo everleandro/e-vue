@@ -26,6 +26,8 @@ export const TextField = () => ({
       :limit="limit"
       :detail="detail"
       :color="color"
+      :suffix="suffix"
+      :prefix="prefix"
       prepend-icon="mdi mdi-account"
       :rules="required?[_required]:[]"
       :counter="counter"
@@ -50,6 +52,12 @@ export const TextField = () => ({
     },
     detail: {
       default: text("detail", "hint!!"),
+    },
+    suffix: {
+      default: text("suffix", "suffix"),
+    },
+    prefix: {
+      default: text("prefix", "prefix"),
     },
     label: {
       default: text("label", "label"),

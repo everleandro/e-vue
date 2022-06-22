@@ -50,6 +50,14 @@
     &:not(.e-list-item--active):not(.e-list-item--disabled) {
       color: rgba(0, 0, 0, 0.87);
     }
+    &:hover {
+      &:not(.e-list-item--active):not(.e-list-item--disabled) {
+        color: inherit;
+      }
+      &:before {
+        opacity: 0.12;
+      }
+    }
 
     &__content {
       align-items: center;

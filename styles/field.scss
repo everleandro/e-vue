@@ -6,6 +6,29 @@
   letter-spacing: normal;
   max-width: 100%;
   text-align: left;
+
+  &--dense {
+    .e-field__slot {
+      margin-bottom: 0;
+    }
+  }
+
+  &__suffix,
+  &__prefix {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    align-self: baseline;
+    cursor: default;
+    transition: color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    white-space: nowrap;
+    padding-left: 4px;
+  }
+
+  &__prefix {
+    text-align: right;
+  }
+
   &__icon {
     align-items: center;
     display: inline-flex;
@@ -15,15 +38,19 @@
     min-width: 24px;
     width: 24px;
   }
+
   .e-label {
-    font-size: 16px;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 18px;
+    margin-bottom: 0;
   }
 
   &__prepend-inner {
     margin-right: auto;
     padding-right: 4px;
   }
+
   &__append-inner {
     margin-left: auto;
     padding-left: 4px;
@@ -36,6 +63,7 @@
     line-height: 1;
     @include prefix(user-select, none);
   }
+
   &__details {
     display: flex;
     flex: 1 0 auto;
@@ -44,6 +72,7 @@
     overflow: hidden;
     padding: 0 8px;
   }
+
   .e-counter {
     white-space: nowrap;
     flex: 0 1 auto;
@@ -52,14 +81,17 @@
     line-height: 12px;
     color: rgba(0, 0, 0, 0.6);
   }
+
   &--selection-controls {
     .e-radio,
     .e-field__slot {
       cursor: pointer;
     }
+
     .e-field {
       flex: 0 1 auto;
     }
+
     &__ripple {
       border-radius: 50%;
       cursor: pointer;
@@ -85,6 +117,7 @@
         transition: inherit;
       }
     }
+
     &__field {
       margin-right: 8px;
       color: inherit;
@@ -96,9 +129,11 @@
       transition-property: transform;
       width: 24px;
       @include prefix(user-select, none);
+
       .e-icon {
         width: 100%;
       }
+
       input {
         max-height: 32px;
       }
@@ -110,6 +145,7 @@
         cursor: pointer;
         @include prefix(user-select, none);
       }
+
       .e-icon.e-icon {
         &:after {
           background-color: currentColor;
@@ -127,11 +163,13 @@
           transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
         }
       }
+
       &:hover .e-field--selection-controls__ripple:before {
         background: currentColor;
         transform: scale(1.2);
         transition: none;
       }
+
       input[role="checkbox"],
       input[role="radio"],
       input[role="switch"] {
@@ -155,28 +193,32 @@
     min-width: 0;
     width: 100%;
   }
+
   &__slot {
     align-items: center;
     color: inherit;
     display: flex;
     height: 48px;
     margin-bottom: 8px;
-    padding: 0 8px;
+    padding: 0 12px;
     min-height: inherit;
     max-width: 100%;
     position: relative;
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
     width: 100%;
   }
+
   &--dense {
     .e-field__slot {
       margin-bottom: 0;
     }
   }
+
   &--is-disabled:not(.e-field--is-readonly) {
     pointer-events: none;
     color: rgba(0, 0, 0, 0.38);
   }
+
   button {
     color: currentColor;
     cursor: pointer;
@@ -188,11 +230,13 @@
         border-style: dashed;
       }
     }
+
     &.e-field--is-hovered {
       .e-field__slot {
         border-color: currentColor;
       }
     }
+
     &.e-field--is-focused {
       .e-field__slot {
         border-color: currentColor;
@@ -204,15 +248,18 @@
         border-color: currentColor;
       }
     }
+
     .e-field__slot {
       border-style: solid;
       border-width: 1px;
       border-color: rgba(0, 0, 0, 0.1);
     }
   }
+
   &--is-readonly {
     pointer-events: none;
   }
+
   // &--is-focused {
   // }
   input:active,
@@ -220,5 +267,11 @@
   textarea:active,
   textarea:focus {
     outline: none;
+  }
+
+  &--label-inline {
+    .e-label {
+      white-space: nowrap;
+    }
   }
 }

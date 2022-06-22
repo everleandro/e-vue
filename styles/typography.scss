@@ -1,14 +1,38 @@
-h1 + p {
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-h1 {
-  font-weight: 400;
-  font-size: 3rem !important;
-}
-.e-app {
-  line-height: 1.5;
-  p {
-    margin-bottom: 14px;
+.heading {
+  &--1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 28px;
+    text-transform: uppercase;
+    margin: 0;
   }
+
+  &--2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.e-title {
+  font-style: normal;
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0;
+  line-height: 25px;
+  text-transform: uppercase;
+}
+
+.e-subtitle {
+  margin: 0;
+  font-style: normal;
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
 }

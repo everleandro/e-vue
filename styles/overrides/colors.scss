@@ -1,16 +1,24 @@
-$colors: (
-  "primary": #f19933,
-  "secondary": #4c5f68,
-  "white": white,
-  "black": black,
-  "disabled": rgba(0, 0, 0, 0.38),
-  "success": #66bb6a,
-  "red": #f44336,
-  "error": #f44336,
+$colors: map-merge(
+  (
+    "primary": #f19933,
+    "secondary": #4c5f68,
+    "input": #4f636b,
+    "grey": #91a0a8,
+    "disabled": rgba(0, 0, 0, 0.38),
+    "error": #f44336,
+    "white": white,
+    "black": black,
+    "success": #66bb6a,
+    "red": #f44336,
+  ),
+  ()
 ) !default;
 
-$contrast-colors: (
-  "white": black,
+$contrast-colors: map-merge(
+  (
+    "white": black,
+  ),
+  ()
 ) !default;
 
 @each $color, $value in $colors {

@@ -6,13 +6,14 @@ export default {
 
 export const Usage = () => ({
   components: {
-    ECard
+    ECard,
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   template: `
 
-     <e-card>asd</e-card>   
+  <div class="white">
+  <e-card>asd</e-card>
+  </div>
 
   `,
 });

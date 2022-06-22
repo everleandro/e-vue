@@ -1,9 +1,22 @@
-@use "sass:map";
-$text-field-border-radius: $border-radius-root !default;
-.e-text-field {
-  color: map-get($colors, "black");
-  .e-messages,
-  .e-field__slot {
-    border-radius: $text-field-border-radius;
+$expansion-header-height: 40px;
+.e-expansion {
+  &__header-content {
+    background: map-get($colors, "secondary");
+  }
+
+  &__header {
+    max-height: $expansion-header-height;
+    min-height: $expansion-header-height;
+    height: $expansion-header-height;
+    &-actions > * {
+      max-height: $expansion-header-height !important;
+      min-height: $expansion-header-height !important;
+      height: $expansion-header-height !important;
+    }
+    &-icon {
+      i {
+        font-size: $icon-expand-font-size;
+      }
+    }
   }
 }

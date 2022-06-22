@@ -2,10 +2,29 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    padding: 12px 24px;
     cursor: pointer;
+    align-items: center;
     color: white;
+    user-select: none;
     position: relative;
+
+    &-actions {
+      height: 100%;
+
+      > * {
+        margin-left: 12px;
+      }
+    }
+
+    &-content {
+      padding: 4px 24px;
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
     h4 {
       font-style: normal;
       margin: 0;
@@ -13,6 +32,7 @@
       font-size: 18px;
       text-transform: uppercase;
     }
+
     &-icon {
       display: flex;
       align-items: center;
@@ -30,7 +50,9 @@
     padding-top: 24px;
 
     &-content {
-      background-color: white;
+      .e-expansion__body-content {
+        margin-bottom: 24px;
+      }
     }
   }
 

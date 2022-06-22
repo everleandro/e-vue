@@ -1,12 +1,11 @@
-@use "sass:map";
+
 .e-text-field {
-  padding-top: 12px;
-  margin-top: 4px;
   &__slot {
     display: flex;
     flex: 1 1 auto;
-    align-items: center;
+    align-items: baseline;
     max-width: 100%;
+
     input {
       flex: 1 1 auto;
       line-height: 20px;
@@ -15,9 +14,11 @@
       font-size: 16px;
     }
   }
+
   .e-counter {
     margin-left: 8px;
   }
+
   .e-messages,
   .e-field__slot {
     width: auto;

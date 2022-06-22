@@ -1,11 +1,6 @@
-.e-select {
-  .e-field__icon.e-field__icon--append {
-    .e-icon.flip-icon {
-      font-size: $icon-action-select-font-size;
-    }
-  }
-  .e-field__icon.e-field__icon--clear {
-    .e-icon {
+.e-card {
+  &--with-close-button {
+    .e-btn.e-btn--fab.e-card__icon-close .e-icon {
       font-size: $icon-close-font-size;
     }
   }

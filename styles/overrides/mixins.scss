@@ -1,66 +1,104 @@
-@use "sass:math";
 @use "sass:map";
 @mixin _xs {
-  @media (max-width: #{map.get($breakpoint,'xs')}) {
+  @media (max-width: #{map-get($breakpoint,'xs')}) {
     @content;
   }
 }
 @mixin _sm {
-  @media (min-width: #{map.get($breakpoint,'xs') + 1px}) and (max-width: #{map.get($breakpoint,'sm')}) {
+  @media (min-width: #{map-get($breakpoint,'xs') + 1px}) and (max-width: #{map-get($breakpoint,'sm')}) {
     @content;
   }
 }
 
 @mixin _md {
-  @media (min-width: #{map.get($breakpoint,'sm') + 1px}) and (max-width: #{map.get($breakpoint,'md')}) {
+  @media (min-width: #{map-get($breakpoint,'sm') + 1px}) and (max-width: #{map-get($breakpoint,'md')}) {
     @content;
   }
 }
 
 @mixin _lg {
-  @media (min-width: #{map.get($breakpoint,'md') + 1px}) and (max-width: #{map.get($breakpoint,'lg')}) {
+  @media (min-width: #{map-get($breakpoint,'md') + 1px}) and (max-width: #{map-get($breakpoint,'lg')}) {
     @content;
   }
 }
 
 @mixin _xl {
-  @media (min-width: #{map.get($breakpoint,'lg') + 1px}) {
+  @media (min-width: #{map-get($breakpoint,'lg') + 1px}) {
     @content;
   }
 }
 
+@mixin _from_sm {
+  @media only screen and (min-width: #{map-get($breakpoint,'xs') + 1px}) {
+    @content;
+  }
+}
+
+@mixin _from_md {
+  @media only screen and (min-width: #{map-get($breakpoint,'sm') + 1px}) {
+    @content;
+  }
+}
+
+@mixin _from_lg {
+  @media only screen and (min-width: #{map-get($breakpoint,'md') + 1px}) {
+    @content;
+  }
+}
+
+@mixin _from_xl {
+  @media only screen and (min-width: #{map-get($breakpoint,'lg') + 1px}) {
+    @content;
+  }
+}
+@function col-percent($i, $extra_px) {
+  $base: calc(#{$i} / #{$grid-cols} * 100%);
+  $result: calc(#{$base} + #{$extra_px});
+  @return $result;
+}
+
+@mixin grid-generator-by-breakpoint($breakpoint_key, $extra_px: 0px) {
+  @for $i from 1 through $grid-cols {
+    $_col_percent: col-percent($i, $extra_px);
+    &#{$breakpoint_key}#{$i} {
+      @if ($breakpoint_key == "-") {
+        flex: 0 0 $_col_percent;
+        max-width: $_col_percent;
+      } @else if ($breakpoint_key == "-sm-") {
+        @include _from_sm {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
+      } @else if ($breakpoint_key == "-md-") {
+        @include _from_md {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
+      } @else if ($breakpoint_key == "-lg-") {
+        @include _from_lg {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
+      } @else if ($breakpoint_key == "-xl-") {
+        @include _from_xl {
+          flex: 0 0 $_col_percent;
+          max-width: $_col_percent;
+        }
+      }
+    }
+  }
+}
+$breakpoint_keys: "-", "-sm-", "-md-", "-lg-", "-xl-";
+
 @mixin grid-generator($extra_px: 0px) {
   padding: $space-base;
   box-sizing: border-box;
-  @for $i from 1 through $grid-cols {
-    $_col_percent_: math.div($i, $grid-cols) * 100%;
-    $_col_percent: calc(#{$_col_percent_} + #{$extra_px});
-    &-#{$i} {
-      flex: 0 0 $_col_percent;
-      max-width: $_col_percent;
-    }
-  }
-  @for $i from 1 through $grid-cols {
-    $_col_percent_: math.div($i, $grid-cols) * 100%;
-    $_col_percent: calc(#{$_col_percent_} + #{$extra_px});
-    &-sm-#{$i} {
-      @include _sm {
-        flex: 0 0 $_col_percent;
-        max-width: $_col_percent;
-      }
-    }
-    &-md-#{$i} {
-      @include _md {
-        flex: 0 0 $_col_percent;
-        max-width: $_col_percent;
-      }
-    }
-    &-lg-#{$i} {
-      @include _lg {
-        flex: 0 0 $_col_percent;
-        max-width: $_col_percent;
-      }
-    }
+  $_col_percent: col-percent($grid-cols, $extra_px);
+  flex: 0 0 $_col_percent;
+  max-width: $_col_percent;
+
+  @each $key in $breakpoint_keys {
+    @include grid-generator-by-breakpoint($key, $extra_px);
   }
 }
 
