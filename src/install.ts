@@ -10,7 +10,6 @@ export function install(Vue: VueConstructor, args: any = {}): void {
       `Multiple instances of Vue detected See https://github.com/vuetifyjs/vuetify/issues/4068 If you're seeing "$attrs is readonly", it's caused by this`
     );
   }
-  console.log("Installed successfull");
   const directives = _directives as Record<string, DirectiveOptions>;
   for (const key in directives) {
     Vue.directive(key, directives[key]);
