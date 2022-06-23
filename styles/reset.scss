@@ -4,24 +4,11 @@
     border-spacing: 0;
   }
 
-  button,
   input,
   select,
   textarea {
     background-color: transparent;
     border-style: none;
-  }
-
-  *,
-  :after,
-  :before {
-    background-repeat: no-repeat;
-    box-sizing: inherit;
-  }
-
-  * {
-    padding: 0;
-    margin: 0;
   }
 
   input::-webkit-outer-spin-button,

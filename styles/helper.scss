@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "sass:list";
+
 $alignments: start, center, end, space-around, space-between;
 $displays: block, flex, table;
 $text-aligment: right, left, center;
@@ -7,72 +8,73 @@ $space-amount: 24;
 $space-step: 4px;
 
 $spaces-states: (
-  "pa": "padding",
-  "pr": "padding-right",
-  "pb": "padding-bottom",
-  "pl": "padding-left",
-  "ma": "margin",
-  "mr": "margin-right",
-  "mt": "margin-top",
-  "mb": "margin-bottom",
-  "ml": "margin-left",
+        "pa": "padding",
+        "pr": "padding-right",
+        "pb": "padding-bottom",
+        "pl": "padding-left",
+        "ma": "margin",
+        "mr": "margin-right",
+        "mt": "margin-top",
+        "mb": "margin-bottom",
+        "ml": "margin-left",
 );
-
-@each $key, $value in $spaces-states {
-  .#{$key} {
-    @for $i from 0 through $space-amount {
-      &-#{$i} {
-        #{$value}: $i * $space-step !important;
+.e-app {
+  @each $key, $value in $spaces-states {
+    .#{$key} {
+      @for $i from 0 through $space-amount {
+        &-#{$i} {
+          #{$value}: $i * $space-step !important;
+        }
       }
     }
   }
-}
 
-@each $value in $displays {
-  .d-#{$value} {
-    display: $value;
+  @each $value in $displays {
+    .d-#{$value} {
+      display: $value;
+    }
   }
-}
 
-@each $value in $text-aligment {
-  .text-#{$value} {
-    text-align: $value;
+  @each $value in $text-aligment {
+    .text-#{$value} {
+      text-align: $value;
+    }
   }
-}
 
-@for $i from 0 through $space-amount {
-  .mx-#{$i} {
-    margin-right: calc(#{$i} * #{$space-step}) !important;
-    margin-left: calc(#{$i} * #{$space-step}) !important;
+  @for $i from 0 through $space-amount {
+    .mx-#{$i} {
+      margin-right: calc(#{$i} * #{$space-step}) !important;
+      margin-left: calc(#{$i} * #{$space-step}) !important;
+    }
+    .my-#{$i} {
+      margin-top: calc(#{$i} * #{$space-step}) !important;
+      margin-bottom: calc(#{$i} * #{$space-step}) !important;
+    }
+    .px-#{$i} {
+      padding-right: calc(#{$i} * #{$space-step}) !important;
+      padding-left: calc(#{$i} * #{$space-step}) !important;
+    }
+    .py-#{$i} {
+      padding-top: calc(#{$i} * #{$space-step}) !important;
+      padding-bottom: calc(#{$i} * #{$space-step}) !important;
+    }
   }
-  .my-#{$i} {
-    margin-top: calc(#{$i} * #{$space-step}) !important;
-    margin-bottom: calc(#{$i} * #{$space-step}) !important;
-  }
-  .px-#{$i} {
-    padding-right: calc(#{$i} * #{$space-step}) !important;
-    padding-left: calc(#{$i} * #{$space-step}) !important;
-  }
-  .py-#{$i} {
-    padding-top: calc(#{$i} * #{$space-step}) !important;
-    padding-bottom: calc(#{$i} * #{$space-step}) !important;
-  }
-}
 
-@each $value in $alignments {
-  .justify-#{$value} {
-    justify-content: $value;
+  @each $value in $alignments {
+    .justify-#{$value} {
+      justify-content: $value;
+    }
+    .align-#{$value} {
+      align-items: $value;
+    }
   }
-  .align-#{$value} {
-    align-items: $value;
+
+  .fill-width {
+    width: 100%;
   }
-}
 
-.fill-width {
-  width: 100%;
-}
+  .fill-height {
+    width: 100%;
+  }
 
-.fill-height {
-  width: 100%;
 }
-
