@@ -3,6 +3,9 @@
   display: flex;
   height: auto;
   outline: none;
+  label.e-label {
+    align-self: center;
+  }
 }
 .e-field--radio-group {
   > .e-field__control > .e-field__slot {

@@ -13,13 +13,15 @@
           <slot></slot>
         </div>
       </div>
-      <div v-if="showDetails" class="e-field__details">
-        <div class="e-messages" role="alert">
-          <div class="e-messages__wrapper" :class="textColorClass">
-            {{ details }}
+      <transition name="scale">
+        <div v-if="showDetails" class="e-field__details">
+          <div class="e-messages" role="alert">
+            <div class="e-messages__wrapper" :class="textColorClass">
+              {{ details }}
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -47,7 +49,7 @@ export default class ERadioGroup extends Mixins(Common, Field, GridMixin) {
   };
   get componentClass(): string {
     return this.rootClass(
-      `'e-field--selection-controls e-field e-field--radio-group'`,
+      `e-field--selection-controls e-field e-field--radio-group`,
       { ...this.availableRootClasses, ...this.gridClass }
     );
   }

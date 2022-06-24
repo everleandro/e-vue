@@ -195,6 +195,8 @@
   }
 
   &__slot {
+    max-width: 100%;
+    @include prefix(box-sizing, border-box);
     align-items: center;
     color: inherit;
     display: flex;

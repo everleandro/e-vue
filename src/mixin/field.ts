@@ -1,11 +1,11 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { PropType } from "vue";
-// import clickOutside from "@/directives/click-outside";
+import EExpandTransition from "@/components/transitions/expand/Component.vue";
 
 @Component({
-  // directives: {
-  //   clickOutside,
-  // },
+  components: {
+    EExpandTransition,
+  },
 })
 export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
@@ -40,6 +40,7 @@ export default class Field extends Vue {
   inputsHoverState = true;
   inputsFocusState = true;
   inputsOutlined = false;
+  inputsDetailsOnMessageOnly = false;
   inputsLabelMinWidth = "unset";
 
   get model(): any {
@@ -79,7 +80,9 @@ export default class Field extends Vue {
     return this.hasError ? this.errorMessage : "" || this.detail;
   }
   get showDetails(): boolean {
-    return this.detailsOnMessageOnly ? !!this.details : !this.dense;
+    return this.detailsOnMessageOnly || this.inputsDetailsOnMessageOnly
+      ? !!this.details
+      : !this.dense;
   }
   get focusedEnabled(): boolean {
     return this.inputsFocusState && this.focused;

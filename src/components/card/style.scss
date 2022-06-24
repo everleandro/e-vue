@@ -6,7 +6,7 @@
 
   &:not(.e-card--depressed) {
     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 1px 5px 0 rgb(0 0 0 / 12%);
+      0 1px 5px 0 rgb(0 0 0 / 12%);
     box-sizing: border-box;
   }
 
@@ -51,11 +51,18 @@
     position: absolute !important;
     display: none;
     z-index: 1;
+    .e-icon {
+      transition: transform 300ms;
+    }
   }
-
   &--with-close-button {
     .e-card__icon-close {
       display: block;
+    }
+  }
+  &--to-destroy {
+    .e-card__icon-close .e-icon {
+      transform: rotate(45deg);
     }
   }
 }

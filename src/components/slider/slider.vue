@@ -73,9 +73,15 @@
           </div>
         </div>
       </div>
-      <div v-if="showDetails" class="e-messages" :class="rootColor + '--text'">
-        <div class="e-messages__wrapper">{{ details }}</div>
-      </div>
+      <transition name="scale">
+        <div
+          v-if="showDetails"
+          class="e-messages"
+          :class="rootColor + '--text'"
+        >
+          <div class="e-messages__wrapper">{{ details }}</div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>

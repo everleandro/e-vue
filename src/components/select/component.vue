@@ -4,24 +4,50 @@
       <div role="button" aria-expanded="false" class="e-field__slot">
         <div v-if="prependIcon" class="e-field__prepend-inner">
           <div class="e-field__icon e-field__icon--prepend-inner">
-            <i aria-hidden="true" class="e-icon e-icon--size-default" :class="prependIcon"></i>
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="prependIcon"
+            ></i>
           </div>
         </div>
-        <div class="e-select__slot" @click="handleSelectSlotCLick" @mouseenter="handleHover(true)"
-          @mouseleave="handleHover(false)">
-          <label :for="id" class="e-label" :class="textColorClass" :style="labelStyle">
+        <div
+          class="e-select__slot"
+          @click="handleSelectSlotCLick"
+          @mouseenter="handleHover(true)"
+          @mouseleave="handleHover(false)"
+        >
+          <label
+            :for="id"
+            class="e-label"
+            :class="textColorClass"
+            :style="labelStyle"
+          >
             {{ label }}
           </label>
           <div class="e-select__selections">
             <div class="e-select__selection" :style="selectionStyle">
               {{ displayedText(model) }}
             </div>
-            <input :id="id" readonly="readonly" type="text" aria-readonly="false" autocomplete="off" />
+            <input
+              :id="id"
+              readonly="readonly"
+              type="text"
+              aria-readonly="false"
+              autocomplete="off"
+            />
           </div>
           <div v-show="showClearable" class="e-field__append-inner">
-            <div class="e-field__icon e-field__icon--clear e-icon--size-default">
-              <button type="button" v-ripple aria-label="clear icon" class="e-btn e-btn--icon e-btn--size-x-small"
-                @click="clear">
+            <div
+              class="e-field__icon e-field__icon--clear e-icon--size-default"
+            >
+              <button
+                type="button"
+                v-ripple
+                aria-label="clear icon"
+                class="e-btn e-btn--icon e-btn--size-x-small"
+                @click="clear"
+              >
                 <i :class="iconClearClass"></i>
               </button>
             </div>
@@ -35,15 +61,27 @@
 
         <div v-if="appendIcon" class="e-field__append-inner">
           <div class="e-field__icon e-field__icon--append">
-            <i aria-hidden="true" class="e-icon e-icon--size-default" :class="appendIcon"></i>
+            <i
+              aria-hidden="true"
+              class="e-icon e-icon--size-default"
+              :class="appendIcon"
+            ></i>
           </div>
         </div>
         <div class="e-menu">
           <transition name="fade">
-            <div v-if="opened" v-click-outside="handleOutsideMenu" class="e-menu__content">
+            <div
+              v-if="opened"
+              v-click-outside="handleOutsideMenu"
+              class="e-menu__content"
+            >
               <e-list :color="color">
                 <e-list-group v-model="model">
-                  <e-list-item v-for="(item, index) in items" :key="index" :value="item">
+                  <e-list-item
+                    v-for="(item, index) in items"
+                    :key="index"
+                    :value="item"
+                  >
                     {{ displayedText(item) }}
                   </e-list-item>
                 </e-list-group>
@@ -52,13 +90,15 @@
           </transition>
         </div>
       </div>
-      <div v-if="showDetails" class="e-field__details">
-        <div class="e-messages" role="alert">
-          <div class="e-messages__wrapper" :class="textColorClass">
-            {{ details }}
+      <transition name="scale">
+        <div v-if="showDetails" class="e-field__details">
+          <div class="e-messages" role="alert">
+            <div class="e-messages__wrapper" :class="textColorClass">
+              {{ details }}
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -79,7 +119,9 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
-  @Prop({ type: Array, default: () => [] }) items!: Array<string | number | Record<never, never>>;
+  @Prop({ type: Array, default: () => [] }) items!: Array<
+    string | number | Record<never, never>
+  >;
 
   localValue = "";
   focused = false;
@@ -130,7 +172,7 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   get iconClearClass(): string {
     const icon =
       getComputedStyle(document.body).getPropertyValue("--icon-close") ||
-      "mdi mdi-chevron-down";
+      "mdi mdi-close";
     return `${icon} e-icon`;
   }
 

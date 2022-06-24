@@ -5,31 +5,56 @@
         <div class="e-field--selection-controls__field">
           <i v-if="iconOn && checked" :class="iconOn"></i>
           <i v-else-if="iconOff && !checked" :class="iconOff"></i>
-          <span v-else aria-hidden="true" class="e-icon" :class="rootColor + '--text'"><svg
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" class="e-icon__svg">
-              <path v-if="checked"
-                    d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3Z">
-              </path>
-              <path v-else
-                    d="M19,3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z">
-              </path>
+          <span
+            v-else
+            aria-hidden="true"
+            class="e-icon"
+            :class="rootColor + '--text'"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              role="img"
+              aria-hidden="true"
+              class="e-icon__svg"
+            >
+              <path
+                v-if="checked"
+                d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3Z"
+              ></path>
+              <path
+                v-else
+                d="M19,3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
+              ></path>
             </svg>
           </span>
-          <input aria-checked="true" :id="id" role="checkbox" type="checkbox" @input="change" :value="checked"/>
-          <div v-ripple="{ center: true }" class="e-field--selection-controls__ripple" :class="rootColor + '--text'"
-               @click="change"></div>
+          <input
+            aria-checked="true"
+            :id="id"
+            role="checkbox"
+            type="checkbox"
+            @input="change"
+            :value="checked"
+          />
+          <div
+            v-ripple="{ center: true }"
+            class="e-field--selection-controls__ripple"
+            :class="rootColor + '--text'"
+            @click="change"
+          ></div>
         </div>
         <label :for="id" class="e-label" :style="labelStyle">
           {{ label }}
         </label>
       </div>
-      <div v-if="showDetails" class="e-field__details">
-        <div class="e-messages" role="alert">
-          <div class="e-messages__wrapper" :class="textColorClass">
-            {{ details }}
+      <transition name="scale">
+        <div v-if="showDetails" class="e-field__details">
+          <div class="e-messages" role="alert">
+            <div class="e-messages__wrapper" :class="textColorClass">
+              {{ details }}
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -37,17 +62,17 @@
 <script lang="ts">
 import Common from "@/mixin/common";
 import Field from "@/mixin/field";
-import {Component, Prop, Mixins} from "vue-property-decorator";
+import { Component, Prop, Mixins } from "vue-property-decorator";
 import GridMixin from "@/mixin/grid";
 
-@Component({name: "e-checkbox"})
+@Component({ name: "e-checkbox" })
 export default class ECheckbox extends Mixins(Common, GridMixin, Field) {
-  @Prop({type: Boolean, default: false})
+  @Prop({ type: Boolean, default: false })
   outlined!: boolean;
-  @Prop({type: [Boolean, String, Number], default: false})
+  @Prop({ type: [Boolean, String, Number], default: false })
   falseValue!: boolean;
-  @Prop({type: [Boolean, String, Number], default: true})
-  @Prop({type: [Boolean, String, Number], default: true})
+  @Prop({ type: [Boolean, String, Number], default: true })
+  @Prop({ type: [Boolean, String, Number], default: true })
   trueValue!: boolean;
 
   localValue = false;
@@ -65,23 +90,24 @@ export default class ECheckbox extends Mixins(Common, GridMixin, Field) {
 
   get componentClass(): string {
     return this.rootClass(
-        `e-field e-field--selection-controls e-field--checkbox ${this.rootColor}--text`,
-        {...this.availableRootClasses, ...this.gridClass}
+      `e-field e-field--selection-controls e-field--checkbox ${this.rootColor}--text`,
+      { ...this.availableRootClasses, ...this.gridClass }
     );
   }
 
   get iconOff(): string | boolean {
-    const icon =
-        getComputedStyle(document.body).getPropertyValue("--icon-checkbox-off")
+    const icon = getComputedStyle(document.body).getPropertyValue(
+      "--icon-checkbox-off"
+    );
     return `${icon}`.trim().length > 3 ? `${icon} e-icon` : false;
   }
 
   get iconOn(): string | boolean {
-    const icon =
-        getComputedStyle(document.body).getPropertyValue("--icon-checkbox-on")
+    const icon = getComputedStyle(document.body).getPropertyValue(
+      "--icon-checkbox-on"
+    );
     return `${icon}`.trim().length > 3 ? `${icon} e-icon` : false;
   }
-
 
   get checked(): boolean {
     return this.model === this.trueValue;

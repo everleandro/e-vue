@@ -3,14 +3,16 @@
     <button
       v-if="!hideCloseIcon"
       v-ripple
+      tabindex="-1"
       class="
         e-btn e-btn--depressed e-btn--fab e-btn--size-x-small
         v-ripple-element
         e-card__icon-close
       "
+      type="button"
       :class="closeIconButtonClass"
       :style="buttonCloseStyle"
-      @click="$emit('click:close', $event)"
+      @click.stop.prevent="$emit('click:close', $event)"
     >
       <span class="e-btn__content">
         <i :class="closeIconClass"></i>
@@ -29,13 +31,16 @@ export default class ECard extends Mixins(Common) {
   @Prop({ type: String, default: undefined }) height!: string;
   @Prop({ type: String, default: "top-left" }) closePosition!: string;
   @Prop({ type: String, default: "grey" }) closeColor!: string;
+  @Prop({ type: String, default: "primary" }) closeColorToDestroy!: string;
   @Prop({ type: String, default: "" }) closeBgColor!: string;
   @Prop({ type: String, default: "" }) closeIcon!: string;
   @Prop({ type: Boolean, default: false }) hideCloseIcon!: boolean;
+  @Prop({ type: Boolean, default: false }) toDestroy!: boolean;
   @Prop({ type: Boolean, default: true }) depressed!: boolean;
   availableRootClasses = {
     withCloseButton: "e-card--with-close-button",
     depressed: "e-card--depressed",
+    toDestroy: "e-card--to-destroy",
   };
   buttonCloseStyle = "";
   get cardStyle(): Record<string, string> {
@@ -57,7 +62,9 @@ export default class ECard extends Mixins(Common) {
     return `${icon} e-icon e-icon--size-default`;
   }
   get closeIconButtonClass(): string {
-    const color = `${this.closeColor}--text`;
+    const color = this.toDestroy
+      ? `${this.closeColorToDestroy}--text`
+      : `${this.closeColor}--text`;
     const bg = `${this.closeBgColor}`;
     return [color, bg].join(" ").trim();
   }

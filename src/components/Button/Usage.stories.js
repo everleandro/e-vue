@@ -45,7 +45,7 @@ export const Usage = () => ({
     },
   },
   template: `
-    <template>
+
       <div class="button-usage">
         <div class="e-card pa-4">
           <e-row>
@@ -109,7 +109,7 @@ export const Usage = () => ({
           </e-row>
         </div>
       </div>
-    </template>
+
   `,
 });
 

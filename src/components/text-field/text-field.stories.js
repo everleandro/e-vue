@@ -6,6 +6,7 @@ import {
   number,
 } from "@storybook/addon-knobs";
 import ETextField from "./text-field.vue";
+import EForm from "./../Form/form.vue";
 
 export default {
   component: ETextField,
@@ -14,9 +15,9 @@ export default {
 };
 
 export const TextField = () => ({
-  components: { ETextField },
+  components: { ETextField, EForm },
   template: `
-  <div>
+  <e-form :inputs-outlined="false" :grid="false">
     <e-text-field
       v-model="model"
       :disabled="disabled"
@@ -34,7 +35,7 @@ export const TextField = () => ({
       :outlined="outlined"
       :label="label"
     />
-  </div>
+  </e-form>
   `,
   data: () => ({
     model: "",

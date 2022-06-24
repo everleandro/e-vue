@@ -64,6 +64,7 @@ export default class EForm extends Mixins(Common) {
       vueComponent.inputsFocusState = this.inputsFocusState;
       vueComponent.inputsLabelMinWidth = this.LabelMinWidth;
       vueComponent.inputsOutlined = this.grid || this.inputsOutlined;
+      vueComponent.inputsDetailsOnMessageOnly = this.grid;
       if (!this.lazy || !ignoreFieldDirty) vueComponent.dirty = true;
 
       this.fieldsChild.splice(index, 1, vueComponent.hasError);
