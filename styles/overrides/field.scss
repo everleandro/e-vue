@@ -17,6 +17,17 @@ $field-placeholder-font-size: 20px;
       font-weight: 400;
     }
   }
+  &.e-select {
+    .e-select__selection {
+      font-size: $field-input-font-size;
+      color: $field-input-color;
+      &-placeholder {
+        color: $field-placeholder-color;
+        font-size: $field-placeholder-font-size;
+        font-weight: 400;
+      }
+    }
+  }
 
   label.e-label {
     font-size: $field-label-font-size;

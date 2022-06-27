@@ -28,6 +28,12 @@
           <div class="e-select__selections">
             <div class="e-select__selection" :style="selectionStyle">
               {{ displayedText(model) }}
+              <span
+                v-show="!displayedText(model)"
+                class="e-select__selection-placeholder"
+              >
+                {{ placeholder }}
+              </span>
             </div>
             <input
               :id="id"
@@ -116,6 +122,7 @@ import GridMixin from "@/mixin/grid";
 export default class ESelect extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: "center" }) alignSelection!: string;
+  @Prop({ type: String, default: "" }) placeholder!: string;
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
