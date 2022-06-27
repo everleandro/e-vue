@@ -50,10 +50,14 @@ export default class EListItem extends Mixins(Common) {
     if (this.isIntoItemGroup) {
       const valueIsObject = typeof this.value === "object";
       const parentValue = (this.$parent as EListGroup).model;
+      const itemValue = (this.$parent as EListGroup).itemValue;
       // const parentValueIsObject = typeof parentValue === "object";
       if (valueIsObject && parentValue) {
+        if (itemValue) {
+          return this.value[itemValue] === parentValue;
+        }
         return JSON.stringify(this.value) === JSON.stringify(parentValue);
-      } else {
+      } else if (`${parentValue}`.length > 0) {
         return parentValue === this.value;
       }
     }
@@ -77,8 +81,12 @@ export default class EListItem extends Mixins(Common) {
   }
   handleItemClick(): void {
     if (this.isIntoItemGroup && this.value !== undefined) {
-      (this.$parent as EListGroup).model = this.value;
+      const itemValue = (this.$parent as EListGroup).itemValue;
+      (this.$parent as EListGroup).model = itemValue
+        ? this.value[itemValue]
+        : this.value;
     }
+    this.$emit("click");
   }
   get link(): boolean {
     return !!this.$attrs.to || this.value !== undefined;
