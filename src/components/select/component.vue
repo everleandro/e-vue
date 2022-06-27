@@ -27,7 +27,7 @@
           </label>
           <div class="e-select__selections">
             <div class="e-select__selection" :style="selectionStyle">
-              {{ displayedSelection(model) }}
+              {{ displayedText(model) }}
             </div>
             <input
               :id="id"
@@ -76,12 +76,11 @@
               class="e-menu__content"
             >
               <e-list :color="color">
-                <e-list-group :value="model">
+                <e-list-group v-model="model">
                   <e-list-item
                     v-for="(item, index) in items"
                     :key="index"
                     :value="item"
-                    @click="handleItemClick(item)"
                   >
                     {{ displayedText(item) }}
                   </e-list-item>
@@ -119,15 +118,12 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: String, default: "center" }) alignSelection!: string;
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
-  @Prop({ type: Boolean, default: false }) returnObject!: boolean;
   @Prop({ type: String, default: "label" }) itemText!: string;
-  @Prop({ type: String, default: "value" }) itemValue!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
     string | number | Record<never, never>
   >;
 
   localValue = "";
-  localSelected = this.value;
   focused = false;
   opened = false;
 
@@ -162,22 +158,6 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   }
 
   displayedText(item: never): string {
-    return this.isObject(item) ? item[this.itemText] : item;
-  }
-  handleItemClick(item: never): void {
-    if (this.returnObject) {
-      this.model = item;
-    } else {
-      this.model = this.isObject(item) ? item[this.itemValue] : item;
-    }
-  }
-  displayedSelection(item: never): string {
-    if (this.itemValue && !this.returnObject) {
-      const el = (this.items as Array<Record<string, string>>).find(
-        (e) => e?.[this.itemValue] === this.model
-      );
-      if (el) return el[this.itemText];
-    }
     return this.isObject(item) ? item[this.itemText] : item;
   }
 

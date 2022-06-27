@@ -25,23 +25,17 @@ export const Select = () => ({
       :outlined="outlined" 
       :rules="[_required]"
     />
-    <e-select
-      v-model="model"
-      :items="items2" 
-      outlined
-    />
     <p> model-value: {{model}} </p>
   </div>
   `,
   data: () => ({
-    model: 1,
+    model: null,
     items: [
       { label: "item1", value: 1 },
       { label: "item2", value: 2 },
       { label: "item3", value: 3 },
       { label: "item4", value: 4 },
     ],
-    items2: [1, 2, 3, 4],
   }),
   props: {
     color: {
