@@ -22,7 +22,7 @@
             :class="textColorClass"
             :style="labelStyle"
           >
-            <slot name="label">{{ label }}</slot>
+            <slot name="label">{{ label }}{{detailError}}</slot>
           </label>
           <div
             v-if="prefix"
