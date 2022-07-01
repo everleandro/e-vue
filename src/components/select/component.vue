@@ -29,7 +29,7 @@
             <div class="e-select__selection" :style="selectionStyle">
               {{ displayedText(model) }}
               <span
-                v-show="!displayedText(model)"
+                v-show="model === undefined || model === null"
                 class="e-select__selection-placeholder"
               >
                 {{ placeholder }}
@@ -82,7 +82,7 @@
               class="e-menu__content"
             >
               <e-list :color="color">
-                <e-list-group v-model="model">
+                <e-list-group v-model="model" :item-value="itemValue">
                   <e-list-item
                     v-for="(item, index) in items"
                     :key="index"
@@ -126,6 +126,7 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
+  @Prop({ type: String, default: undefined }) itemValue!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
     string | number | Record<never, never>
   >;
@@ -165,6 +166,15 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   }
 
   displayedText(item: never): string {
+    if (this.itemValue) {
+      let _item = item as Record<never, string>;
+      if (!this.isObject(item)) {
+        _item = this.items.find(
+          (e) => (e as Record<string, string>).value === this.value
+        ) as Record<never, string>;
+      }
+      return (_item as Record<string, string>)[this.itemText];
+    }
     return this.isObject(item) ? item[this.itemText] : item;
   }
 

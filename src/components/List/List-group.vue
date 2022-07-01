@@ -12,6 +12,7 @@ import { Component, Prop, Mixins } from "vue-property-decorator";
 export default class EListGroup extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
   @Prop({ type: String, default: "primary" }) color!: string;
+  @Prop({ type: String, default: undefined }) itemValue!: string;
   @Prop({ default: null }) value!: never;
 
   availableRootClasses = {};
