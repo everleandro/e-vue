@@ -1,6 +1,12 @@
 <template>
-  <div v-ripple="{ disabled: !ripple }" :is="tag" :class="rootClass(btnClass)"
-    v-bind="!!$attrs.to ? { to: $attrs.to } : {}" :style="style" v-on="$listeners">
+  <div
+    v-ripple="{ disabled: !ripple }"
+    :is="tag"
+    :class="rootClass(btnClass)"
+    v-bind="!!$attrs.to ? { to: $attrs.to } : {}"
+    :style="style"
+    v-on="$listeners"
+  >
     <span class="e-btn__content">
       <slot name="default"></slot>
     </span>
