@@ -14,7 +14,11 @@ export default class Field extends Vue {
   @Prop({ type: Boolean, default: false }) counter!: boolean;
   @Prop({ type: Boolean, default: true }) labelInline!: boolean;
   @Prop({ type: String, default: null }) detail!: string;
-  @Prop({ type: String, default: null }) detailError!: string;
+  @Prop({
+    type: Array as PropType<string[]>,
+    default: () => [],
+  })
+  private readonly detailErrors!: string[];
   @Prop({ type: Boolean, default: false }) detailsOnMessageOnly!: boolean;
   @Prop({ type: [String], default: undefined }) labelMinWidth!:
     | string
@@ -75,10 +79,12 @@ export default class Field extends Vue {
   }
 
   get hasError(): boolean {
-    return !!(this.dirty && this.errorMessage) || !!this.detailError;
+    return !!(this.dirty && this.errorMessage) || !!this.detailErrors?.[0];
   }
   get details(): string {
-    return this.hasError ? this.errorMessage || this.detailError : this.detail;
+    return this.hasError
+      ? this.detailErrors?.[0] || this.errorMessage
+      : this.detail;
   }
   get showDetails(): boolean {
     return this.detailsOnMessageOnly || this.inputsDetailsOnMessageOnly

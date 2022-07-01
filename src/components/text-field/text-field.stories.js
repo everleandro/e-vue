@@ -27,7 +27,7 @@ export const TextField = () => ({
       :limit="limit"
       :detail="detail"
       :color="color"
-      :detail-error="detailError"
+      :detail-errors="detailErrors"
       :suffix="suffix"
       :prefix="prefix"
       prepend-icon="mdi mdi-account"
@@ -40,6 +40,7 @@ export const TextField = () => ({
   `,
   data: () => ({
     model: "",
+    detailErrors: ["asdasd"],
   }),
   props: {
     color: {
@@ -54,9 +55,6 @@ export const TextField = () => ({
     },
     detail: {
       default: text("detail", "hint!!"),
-    },
-    detailError: {
-      default: text("detailError", "error"),
     },
     suffix: {
       default: text("suffix", "suffix"),
