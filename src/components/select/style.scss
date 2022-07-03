@@ -4,6 +4,11 @@
     right: 0px;
     margin-bottom: -2px;
   }
+  .e-list {
+    &-item {
+      cursor: pointer;
+    }
+  }
 
   &--is-open {
     .e-field__icon.e-field__icon--append {

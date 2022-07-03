@@ -37,6 +37,7 @@ export default class EListItem extends Mixins(Common) {
   @Prop({ type: Boolean, default: false }) disabled!: boolean;
   @Prop({ type: Boolean, default: true }) ripple!: boolean;
   @Prop({ type: String, default: undefined }) prependIcon!: string;
+  @Prop({ type: String, default: false }) isActive!: boolean;
   @Prop({ type: String, default: "e-list-item--active" }) activeClass!: string;
   @Prop({ default: undefined }) value!: never;
 
@@ -63,7 +64,7 @@ export default class EListItem extends Mixins(Common) {
         return parentValue === this.value;
       }
     }
-    return false;
+    return this.isActive;
   }
   get hasPrependSlot(): boolean {
     return !!this.$slots["prepend-icon"];
@@ -81,13 +82,13 @@ export default class EListItem extends Mixins(Common) {
     }
     return result;
   }
-  handleItemClick(): void {
-    const itemValue = (this.$parent as EListGroup).itemValue;
-    const val = itemValue ? this.value[itemValue] : this.value;
+  handleItemClick(evt: never): void {
     if (this.isIntoItemGroup && this.value !== undefined) {
+      const itemValue = (this.$parent as EListGroup).itemValue;
+      const val = itemValue ? this.value[itemValue] : this.value;
       (this.$parent as EListGroup).model = val;
     }
-    this.$emit("click:item", val);
+    this.$emit("click:item", evt);
   }
   get link(): boolean {
     return !!this.$attrs.to || this.value !== undefined;

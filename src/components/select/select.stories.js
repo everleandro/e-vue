@@ -22,6 +22,7 @@ export const Select = () => ({
       :disabled="disabled"
       item-value="value"
       placeholder="asd"
+      return-object
       :items="items"
       :detail="detail"
       :outlined="outlined"

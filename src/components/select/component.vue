@@ -27,7 +27,7 @@
           </label>
           <div class="e-select__selections">
             <div class="e-select__selection" :style="selectionStyle">
-              {{ displayedText(model) }}
+              {{ selectedText }}
               <span
                 v-show="model === undefined || model === null"
                 class="e-select__selection-placeholder"
@@ -81,17 +81,30 @@
               v-click-outside="handleOutsideMenu"
               class="e-menu__content"
             >
-              <e-list :color="color">
-                <e-list-group v-model="model" :item-value="itemValue">
-                  <e-list-item
+              <div :class="['e-list', colorText(color)]">
+                <div role="listbox" :class="['e-list-group', colorText(color)]">
+                  <div
+                    v-ripple
                     v-for="(item, index) in items"
                     :key="index"
-                    :value="item"
+                    tabindex="0"
+                    role="option"
+                    aria-selected="true"
+                    :class="{
+                      'v-ripple-element': true,
+                      'e-list-item': true,
+                      'e-list-item--active': active(item),
+                    }"
+                    @click="handleItemClick(item)"
                   >
-                    {{ displayedText(item) }}
-                  </e-list-item>
-                </e-list-group>
-              </e-list>
+                    <div class="e-list-item__content">
+                      <slot name="item">
+                        {{ displayedText(item) }}
+                      </slot>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </transition>
         </div>
@@ -113,20 +126,18 @@
 import Common from "@/mixin/common";
 import Field from "@/mixin/field";
 import { Component, Mixins, Prop, Watch } from "vue-property-decorator";
-import EList from "@/components/List/List.vue";
-import EListGroup from "@/components/List/List-group.vue";
-import EListItem from "@/components/List/List-item.vue";
 import GridMixin from "@/mixin/grid";
 
-@Component({ name: "e-select", components: { EList, EListGroup, EListItem } })
+@Component({ name: "e-select" })
 export default class ESelect extends Mixins(Common, Field, GridMixin) {
   @Prop({ type: Boolean, default: false }) outlined!: boolean;
   @Prop({ type: String, default: "center" }) alignSelection!: string;
   @Prop({ type: String, default: "" }) placeholder!: string;
   @Prop({ type: Boolean, default: false }) clearable!: boolean;
+  @Prop({ type: Boolean, default: false }) returnObject!: boolean;
   @Prop({ type: String, default: undefined }) appendIcon!: string;
   @Prop({ type: String, default: "label" }) itemText!: string;
-  @Prop({ type: String, default: undefined }) itemValue!: string;
+  @Prop({ type: String, default: "value" }) itemValue!: string;
   @Prop({ type: Array, default: () => [] }) items!: Array<
     string | number | Record<never, never>
   >;
@@ -166,16 +177,45 @@ export default class ESelect extends Mixins(Common, Field, GridMixin) {
   }
 
   displayedText(item: never): string {
-    if (this.itemValue) {
-      let _item = item as Record<never, string>;
-      if (!this.isObject(item)) {
-        _item = this.items.find(
-          (e) => (e as Record<string, string>).value === this.value
-        ) as Record<never, string>;
-      }
-      return (_item as Record<string, string>)[this.itemText];
-    }
     return this.isObject(item) ? item[this.itemText] : item;
+  }
+
+  handleItemClick(item: never): void {
+    if (this.returnObject) {
+      this.model = item;
+    } else {
+      this.model = item[this.itemValue];
+    }
+  }
+  active(item: never): boolean {
+    if (!this.isObject(item)) {
+      return item === this.value;
+    } else if (this.returnObject) {
+      return JSON.stringify(item) === JSON.stringify(this.value);
+    } else {
+      return item[this.itemValue] === this.value;
+    }
+  }
+
+  get selectedText(): string {
+    if (this.value === null || this.value === undefined) {
+      return "";
+    }
+    if (!this.isObject((this.items?.[0] as never) || {})) {
+      return `${this.value}`;
+    } else if (this.returnObject) {
+      const item = this.items.find(
+        (e) =>
+          (e as Record<string, string>)[this.itemValue] ===
+          this.value[this.itemValue]
+      ) as Record<string, string>;
+      return item[this.itemText];
+    } else {
+      const item = this.items.find(
+        (e) => (e as Record<string, string>)[this.itemValue] === this.value
+      ) as Record<string, string>;
+      return item?.[this.itemText];
+    }
   }
 
   get iconFlipClass(): string {
